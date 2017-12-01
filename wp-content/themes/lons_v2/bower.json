@@ -1,0 +1,15 @@
+{
+  "name": "lons",
+  "version": "5.0",
+  "homepage": "http://loversandnerds.com",
+  "authors": [
+    "Maaku W <maakuwemail@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules"
+  ],
+  "dependencies": {}
+}

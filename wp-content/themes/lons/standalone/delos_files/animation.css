@@ -1,0 +1,93 @@
+@media screen and (min-width: 64em){
+	.callout,
+	.callout > * {
+		opacity: 0;
+	}
+	main > *:not(#evidence).callout {
+		-webkit-transform: scale(0.8);
+		-moz-transform: scale(0.8);
+		-o-transform: scale(0.8);
+		transform: scale(0.8);
+	}
+	*:not(#evidence).callout:not(.in) {
+		-o-transform: scale(0.9);
+		-moz-transform: scale(0.9);
+		-webkit-transform: scale(0.9);
+		transform: scale(0.9);
+	}
+		.callout.in {
+			-o-transform: scale(1);
+			-moz-transform: scale(1);
+			-webkit-transform: scale(1);
+			transform: scale(1);
+		}
+		.callout.in, 
+		.callout.in > *, 
+		main .callout.in {
+			opacity: 1;
+		}
+
+	a:focus,
+	a:active,
+	a.active, 
+	a:hover, 
+	.callout,
+	.callout.in,
+	.callout > *,
+	.callout.in > *,  
+	main .callout.in, 
+	article .callout,
+	svg, 
+	svg.active, 
+	svg #logoTagline,
+	svg.active #logoTagline, 
+	svg #logoBlueCircle, 
+	svg.active #logoBlueCircle, 
+	svg #logoGreyCircle, 
+	svg.active #logoGreyCircle {
+		-moz-transition: all 300ms ease; 
+		-webkit-transition: all 300ms ease; 
+		-o-transition: all 300ms ease;
+		transition: all 300ms ease;
+	}
+	
+	#evidence {
+		-moz-transition: none;
+		-webkit-transition: none;
+		-o-transition: none;
+		transition: none;
+	}
+	
+		#clintonDiv.in {
+			-moz-transition-delay: 100ms;
+			-webkit-transition-delay: 100ms;
+			-o-transition-delay: 100ms;
+			transition-delay: 100ms;
+		} 
+		.callout > h1,
+		.callout > h3,
+		.callout.in > h1,
+		.callout.in > h3 {
+			-moz-transition-delay: 100ms;
+			-webkit-transition-delay: 100ms;
+			-o-transition-delay: 100ms;
+			transition-delay: 100ms;
+		}
+		.callout > h2,
+		.callout > p,
+		.callout.in > h2,
+		.callout.in > p {
+			-moz-transition-delay: 150ms;
+			-webkit-transition-delay: 150ms;
+			-o-transition-delay: 150ms;
+			transition-delay: 150ms;
+		}
+		svg, 
+		svg #logoBlueCircle,
+		svg.active #logoTagline {
+			-moz-transition-delay: 250ms;
+			-webkit-transition-delay: 250ms;
+			-o-transition-delay: 250ms;
+			transition-delay: 250ms;
+		}
+}

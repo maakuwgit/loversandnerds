@@ -1,0 +1,852 @@
+/*
+Theme Name: Delos
+Theme URI: http://sagon-phior.com
+Author: Sagon Phior
+Author URI: https://wordpress.org/
+Description: It's a theme. It's amazing
+Version: 0.3.7
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: one-column, footer-sidebar, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready, blog
+Text Domain: delos
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+/* Trace */
+body.trace {
+	background: url(../images/trace.jpg) top center no-repeat;
+	background-size: 100% auto;
+}
+body.trace main, 
+body.trace > article, 
+body.trace > footer, 
+body.trace [data-scroll],
+body.trace .hero {
+	opacity: 0.8;
+}
+
+/* Repeatables */
+footer, 
+.callout:not(.grey),
+.white,
+.hero.fullwidth figcaption {
+	color: white;
+}
+
+.blue,
+.content h3 {
+	color: #0032a0;
+}
+
+figure figcaption h2, 
+body > header nav a, 
+.brown, 
+.callout.grey h3,
+blockquote:before,
+blockquote:after, 
+#circadian_day h2 {
+	color: #b87711;
+}
+
+main,
+body > article,
+body > footer,
+[data-scroll],
+[data-scroll="horizontal"] figure,
+.hero {
+	position: relative;
+}
+
+.callout,
+.hero figcaption {
+	position: absolute;
+}
+
+footer,
+.callout {
+	background-color: #0032a0;
+}
+
+header, 
+figure:not(.fullwidth) figcaption,
+.hero:not(.fullwidth) figcaption {
+	background-color: white;
+}
+
+.hero {
+	background-color: #f2f2f2;
+}
+
+/* Generic */
+body.page main {
+	min-height: 100vh;
+}
+blockquote:before,
+blockquote:after {
+	font-size: 2.75rem;
+	line-height: 0;
+	white-space: nowrap;
+	vertical-align: text-bottom;
+}
+	blockquote:before {
+		margin-left: -1rem;
+		margin-right: 0.0625rem;
+	}
+[data-direction="margin-right"] {
+	overflow-x: hidden;
+}
+body > article {
+	overflow-x: hidden;
+}
+.disabled {
+	opacity: 0;
+}
+/* Header */
+header {
+	top: 0;
+	z-index: 50;
+	padding: 1.25rem 0;
+}
+	header a {
+		display: inline-block;
+	  padding: 0 1.5625vw;
+		font-size: 0.875rem;
+		font-weight: 600;
+	}
+	header a.active {
+		color: #ccc;
+		pointer-events: none;
+	}
+svg #logoTagline {
+	opacity:0;
+}
+	svg.active #logoTagline {
+		opacity:1;
+	}
+svg #logoBlueCircle {
+	fill: transparent;
+	transform: translateY(-11.375rem);
+}
+	svg.active #logoBlueCircle {
+		fill: #003399;
+		transform: translateY(0);
+	}
+
+/* Main */
+main > .callout {
+	width: calc(85.75vw - 3rem);
+}
+
+#chopraDiv {
+	max-width: calc(86vw - 5rem);
+	font-size: 0.875rem;
+	font-size: 3.5vw;
+}
+#healthyFig {
+  width: 100vw;
+  padding-top: 2rem;
+}
+#definitionDiv {
+  max-width: calc(86vw - 5rem);
+}
+
+/* Footer */
+footer .table {
+  max-width: 100%;
+  padding: 2.25rem 5vw;
+}
+	footer a,
+	footer a:focus,
+	footer a:hover {
+		color: inherit;
+	}
+	footer address {
+		font-style: normal;
+	}
+
+/* Callouts */
+.callout {
+	z-index: 5;
+  padding: 1.875rem 2.25rem;
+}
+	aside.callout {
+		top: -5.5vh;
+		width: calc(86vw - 2.5rem);
+		right: 7vw;
+		padding: 1rem 1.25rem;
+  }
+	.callout.grey {
+		z-index: 4;
+		background-color: #f2f2f2;
+	}
+	.callout.brown {
+		z-index: 6;
+		background-color: #b87711;
+	}
+	.callout.has_quote {
+		padding: 2rem 2.5rem;
+	}
+
+	.callout > :last-child {
+		margin-bottom: auto;
+	}
+	
+/* Heroes */
+#top .hero {
+	margin-top: 6.25rem;
+}
+#innovation .hero {
+	width: 100vw;
+}
+
+	#innovation .hero figcaption {
+	  width: 91vw;
+	  padding: 3.5vh 4.5vw;
+	}
+
+#circadian_day > .hero {
+  padding: 3rem 6vw;
+}
+
+.hero {
+  margin-left: 0;
+	background-position: left top;
+	background-repeat: no-repeat;
+}
+	.hero > :last-child {
+		margin-bottom: auto;
+	}
+	.hero.fullwidth {
+		position: relative;
+	}
+		.hero.fullwidth figcaption {
+		  bottom: 3vh;
+		  right: 3.5vw;
+		  text-align: right;
+		  font-style: italic;
+		  font-weight: bold;
+		  font-size: 0.75rem;
+		  font-size: 3vw;
+		  white-space: nowrap;
+		}
+	.feature img {
+		opacity: 0;
+	}
+
+/* Side-Scroller */
+[data-scroll="horizontal"] {
+	height: 100vh;
+	width: 100%;
+	overflow-y: hidden;
+}
+	[data-scroll="horizontal"] figure {
+		width: 100%;
+		height: 100%;
+		display: none;
+	  background-position: center;
+		background-size: cover;
+	  background-repeat: no-repeat;
+  }
+		[data-scroll="horizontal"] figure.deactive {
+			position: absolute;
+			left: -100vw;
+		}
+			[data-scroll="horizontal"] figure.active {
+			  display: block;
+		  }
+		
+	[data-scroll="horizontal"] .callout {
+		bottom: 0;
+		margin-left: 1.5rem;
+		margin-right: 1.5rem;
+	}
+	
+[data-scroll-nav] {
+  position: absolute;
+  bottom: calc(50% - 1rem);
+  bottom: 50vh;
+  right: 1rem;
+  left: 1rem;
+  z-index: 5;
+  font-size: 5rem;
+  font-size: 6.25vw;
+}
+	
+#healthyFig {
+	overflow-x: hidden;
+}
+	
+/* Circadian Day */
+#indoorsFig {
+  width: 100vw;
+}
+#indoorsDiv {
+  width: calc(80vw - 3rem);
+  padding: 1rem 2.5rem;
+}
+	#indoorsDiv cite {
+		font-size: 0.75rem;
+	}
+#circadian_day h2 {
+	margin-top: auto;
+	font-size: 1.5rem;
+  line-height: 1.125;
+}
+	#circadian_day .content {
+	  padding: 1.5rem 6vw;
+	}
+
+/* Mobile Only */
+@media only screen and (max-width:39.9375em) {	
+	#logo_svg {
+	  width: 6.25rem;
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	}
+	header > * {
+		text-align: center;
+	}
+	header > figure {
+		margin-bottom: 0.625rem;
+	}
+	
+	h2, 
+	h3 {
+		margin-bottom: 0.5rem;
+	}
+	
+  footer address:nth-child(n+2){
+		margin-top: 2rem;
+	}
+	footer .table {
+		padding-top: 4.5rem;
+	}
+	
+	.callout,
+	.callout.has_quote {	
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+	
+	main > .callout {
+		position: relative;
+		padding: 1rem 1.5rem;
+		width: calc(100% - 3rem);
+		margin: -1px auto auto auto;
+	}
+	.hero {
+		background-size: contain;
+	}
+		.hero.fullwidth {
+		  background-position: center;
+		}
+	
+	.content > :last-child {
+		margin-bottom: auto;
+	}
+	
+	#circadian_day > .hero {
+	  margin-top: 1.875rem;
+	}
+		#circadian_day section .hero {
+			background-position: center;
+		  height: 40vh;
+		  background-size: 200vw auto;
+		}
+	#chopraDiv {
+		position: static;
+		margin: 1.75rem auto;
+	}
+		#chopraDiv cite:before {
+			margin-left: -0.8125rem;
+		}
+	#clintonDiv {
+		position: relative;
+		max-width: calc(86vw - 5rem);
+		margin: auto;
+	}
+	#definitionDiv {
+		position: relative;
+		margin: -2rem auto 2rem auto;
+	}
+	#evidence {
+	  margin-bottom: 1.5rem;
+		margin-left: 6vw;
+		width: calc(88vw - 5rem);
+		position: relative;
+	}
+	#indoorsDiv {
+		position: relative;
+		margin: -7vh auto auto auto;
+	}
+	#innovation .hero {
+	  min-height: 50vh;
+	  background-size: contain;
+	}
+	#innovation .hero figcaption {
+	  position: static;
+	  width: 88.25vw;
+	  padding: 3.5vh 5.875vw;
+	}
+	#innovation .hero figcaption p:last-of-type {
+		margin-bottom: auto;
+	}
+	#top_scroll {
+		overflow-x: hidden;
+	}
+	
+	[data-scroll="horizontal"] {
+		overflow-x: scroll;
+		width: 100%;
+	  margin: 1.5rem auto 4rem auto;
+	}
+	[data-scroll-nav] {
+	  right: 1vw;
+	  bottom: 38rem;
+	}
+}
+
+/* Phablet Up */
+@media only screen and (min-width:26.3125em) {}
+
+/* Tablet Only Portrait*/
+@media only screen and (min-width:40em) and (max-width:63.9375em) and (orientation:portrait) {
+	header > * {
+		text-align: center;
+	}
+	header > figure {
+		margin-bottom: 0.625rem;
+	}
+	
+  footer address:nth-child(n+2){
+		margin-top: 2rem;
+	}
+	footer .table {
+		padding-top: 4.5rem;
+	}
+	main > .callout {
+		position: relative;
+		padding: 1rem 1.5rem;
+		width: calc(100% - 3rem);
+		margin: -1px auto auto auto;
+	}
+	.hero {
+		background-size: contain;
+	}
+		.hero.fullwidth {
+		  background-position: center;
+		}
+	
+	.content > :last-child {
+		margin-bottom: auto;
+	}
+	
+	#circadian_day > .hero {
+	  margin-top: 1.875rem;
+	}
+		#circadian_day section .hero {
+			background-position: center;
+		  height: 40vh;
+		  background-size: 200vw auto;
+		}
+	#chopraDiv {
+		position: static;
+		margin: 1.75rem auto;
+	}
+		#chopraDiv cite:before {
+			margin-left: -0.8125rem;
+		}
+	#clintonDiv {
+		position: relative;
+		max-width: calc(86vw - 5rem);
+		margin: auto;
+	}
+	#definitionDiv {
+		position: relative;
+		margin: -2rem auto 2rem auto;
+	}
+	#evidence {
+	  margin-bottom: 1.5rem;
+		margin-left: 6vw;
+		width: calc(88vw - 5rem);
+		position: relative;
+	}
+	#indoorsDiv {
+		position: relative;
+		margin: -7vh auto auto auto;
+	}
+	#innovation .hero {
+	  min-height: 50vh;
+	  background-size: contain;
+	}
+	#innovation .hero figcaption {
+	  position: static;
+	}
+	#innovation .hero figcaption p:last-of-type {
+		margin-bottom: auto;
+	}
+	#top_scroll {
+		overflow-x: hidden;
+	}
+	
+	[data-scroll="horizontal"] {
+		overflow-x: scroll;
+		width: calc(100% - 7vw);
+	}
+		[data-scroll="horizontal"] figure {
+			margin-left: 7vw;
+			margin-right: 7vw;
+	  }
+	[data-scroll-nav] {
+	  right: 0;
+	  bottom: 38rem;
+	}
+}
+
+@media only screen and (min-width:40em) {
+	
+	main > .callout {
+		right: 7.2125vw;
+		top: 63.5vh;
+	}
+}
+/* Tablet Only Landscape */
+@media only screen and (min-width:64em) and (orientation:landscape) {
+	.hero {
+	  background-size: cover;
+	}
+	body .hero {
+	  background-attachment: initial;
+	}	
+		#circadian_parallax .hero .feature img {
+			min-height: 50vh;
+			height: auto;
+		}
+}
+
+/* Tablet Only */
+@media only screen and (min-width:40em) and (max-width:63.9375em) {
+	header > figure {
+		text-align: left;
+		padding-left: 2rem;
+	}
+	header > nav {
+		padding-right: 2rem;
+	}
+	
+	blockquote:before,
+	blockquote:after {
+		font-size: 3.25rem;
+	}
+	
+	#chopraDiv {
+		left: 7vw;
+		top: 10.3125vh;
+		font-size: 1.1875rem;
+	}
+	#circadian_parallax .hero {
+		background-size: contain;
+		background-attachment: initial;
+	}
+	#circadian_day h2 {
+	  font-size: 1.5rem;
+	}
+	#clintonDiv {
+		padding: 3.25rem 5.625rem 1.75rem 4.5rem;
+	}
+	#indoorsDiv blockquote {
+		min-width: 300px;
+		max-width: 250px;
+	}
+	
+	.hero.fullwidth figcaption {
+		font-size: 1.30625rem;
+	}
+	.callout {
+		padding: 2.5rem 1.875rem;
+	}
+		.callout.has_quote {
+			padding-right: 3.5rem;
+			padding-left: 3.5rem;
+		}
+	footer .table {	
+		padding: 2.25rem 0 1rem 5.75rem;
+	}
+	
+}
+
+/* Tablet Up */
+@media only screen and (min-width:64em) {
+	a[href*="tel:"] {
+		pointer-events: none;
+	}
+	header > nav {
+		text-align: right;
+	}
+	#circadian_parallax .feature img, 
+	#circadian_parallax .feature.transparent {
+		opacity: 1;
+	}
+		#circadian_parallax .feature img {
+			height: auto;
+		}
+	.hero.fullwidth figcaption {
+		bottom: 8vh;
+	}
+	.hero {
+		background-size: cover;
+	}
+	#clintonDiv {
+	  top: 87.5vh;
+	}
+	#healthyFig {
+	  padding: 52vh 0 71.5vh 0;
+	}
+	[data-scroll="horizontal"] figure {
+		width: 100vw;
+	  background-position: center left;
+	  background-size: 80% auto;
+  }
+}
+
+/* Tablet Down */
+@media only screen and (max-width:63.9375em) {
+	#nextBtn,
+	#prevBtn {
+	  font-size: 12vw;
+	}
+	
+	.show-for-large {
+		display:none!important
+	}
+}
+
+/* Tablet Up (Landscape) + Laptop Up */
+@media only screen and (min-width:40em) and (orientation:landscape) {
+	header > nav {
+		-webkit-flex-wrap: nowrap;
+		-ms-flex-wrap: nowrap;
+		flex-wrap: nowrap;
+		padding-right: 2.125rem;
+	}
+	header a {
+		padding-left: 3.125vw;
+	}
+	
+	#logo a {
+	  position: absolute;
+	  top: 1rem;
+	  left: 1rem;
+  }
+	main > .callout {
+		width: 39.25vw;
+		min-width: 340px;
+	}
+	
+	blockquote:before {
+		margin-left: -1.25rem;
+		margin-left: -1.5625vw;
+		margin-right: 0.0625rem;
+		margin-right: 0.2125vw;
+	}
+	
+	aside.callout {	
+		top: -5.5vh;
+		width: 25vw;
+		right: 7.5vw;
+	}
+	
+	footer .table {		
+		max-width: 50%;
+		padding: 2.25rem 0 1rem 3.5rem;
+		padding: 5.875vh 0 2.75vh 4.375vw;
+  }
+  
+	#top .hero {
+		height: 83.75vh;
+		margin-top: 4.125rem;
+		margin-top: 7.25vh;
+	}
+  
+	#healthyFig {
+		width: 66.5vw;
+		/*Dev Note: need padding in rems here too?*/
+		padding: 11vh 0 0 28.5vw;
+	}
+	
+	#clintonDiv {
+		top: 27.5vh;
+	  right: 4.5vw;
+	  max-width: 42.5vw;
+	  min-width: 280px;
+	}
+	
+	#chopraDiv {	
+		top: 11.3125vh;
+		left: 8.25vw;
+		width: 42.5vw;
+		min-width: 320px;
+	}
+	#definitionDiv {
+		bottom: 14.5vh;
+		left: 5.875vw;
+		max-width: 38.5vw;
+	}
+  
+	#innovation .hero {
+	  width: 59.75vw;
+	  margin-bottom: 9.5vh;
+	}
+	  #innovation .hero figcaption {
+			right: -40.25vw;
+			top: 3.75vh;
+			width: 40.25vw;
+			padding: 1.875rem 2.25rem;
+		}
+			
+	#indoorsFig {
+		width: 60.125vw;
+		margin-left: 4vw;
+		padding-bottom: 9.75vh;
+	}
+	
+	#indoorsDiv {
+		bottom: 13vh;
+	  right: 2.375vw;
+	  padding: 2rem 2rem 1.5rem 2.5rem;
+	  min-width: 320px;
+		width: 34.875vw;
+	}
+		#indoorsDiv blockquote {
+			width: 23vw;
+		}
+		
+	#circadian_day > .hero {
+		padding: 9.5vh 50vw 9.5vh 7vw;
+	}
+	#circadian_day .content {
+		padding: 7.25vh 40vw 4.25vh 6.5vw;
+	}
+		#circadian_day .content h3, 
+		#circadian_day .content p {
+			max-width: 77.5%;
+		}
+		
+	#evidence {	
+		right: 0;
+		top: 11vh;
+		width: 27.25vw;
+		max-width: 620px;
+		min-width: 250px;
+		padding-top: 6vh;
+	}
+
+	[data-scroll="horizontal"] {
+		height: 100vh;
+		width: 100vw;
+		overflow: hidden;
+	}
+			
+		[data-scroll="horizontal"] .callout {
+			right: 4.5rem;
+			bottom: 4rem;
+			width: 30vw;
+			min-width: 320px;
+		}
+			
+	.callout.has_quote {
+		padding-right: 3.5rem;
+		padding-right: 4.375vw;
+		padding-left: 3.5rem;
+		padding-left: 4.375vw;
+	}
+	
+	aside.callout {
+		top: -2.125rem;
+		top: -5.5vh;
+	}
+	#circadianHero {
+		height: auto;
+	}
+}
+
+/* Laptop Up */
+/*Dev Note: duplicate breakpoint*/
+@media only screen and (min-width:64em) {
+	header a {
+		font-size: 0.9375rem;
+		font-size: 1.1725vw;
+	}
+	
+	blockquote:before,
+	blockquote:after {
+		font-size: 3.25rem;
+		font-size: 3.9375vw;
+	}
+	
+	#chopraDiv {	
+	  top: 9vh;
+		left: 4.5vw;
+		font-size: 1.1875rem;
+		font-size: 1.5vw;
+	}
+	#clintonDiv {
+	  right: 4.5vw;
+	}
+	#circadian_day h2 {
+	  font-size: 2rem;
+	  font-size: 2.5vw;
+	  line-height: 1.5;
+	} 
+		#circadian_day .content p {
+		  line-height: 1.375;
+		}
+	
+	.hero.fullwidth figcaption {
+		font-size: 1.30625rem;
+		font-size: 1.625vw;
+	}
+	
+	.hide-for-large {
+		display:none!important
+	}	
+	
+	header > figure {
+		padding-left: 5.75rem;
+	}
+	#top .hero {
+		width: 80.625vw;
+	}
+	#logo img,
+	#logo svg {
+		width: 8.875vw;
+	}
+	#logo svg {	
+		margin-top: -33.334%;
+	}
+		#logo svg.active {
+			margin-top: 0;
+		}
+	
+	
+	main > .callout {
+		top: 64.5vh;
+	}
+	.hero {
+		background-attachment: fixed;
+	}
+	
+	.hero .feature img {
+		height: 100vh;
+	}
+}
+
+/* Desktop Up */
+@media only screen and (min-width: 80em){
+	
+	#top_scroll {
+		padding-top: 63.5vh;
+	}
+}
