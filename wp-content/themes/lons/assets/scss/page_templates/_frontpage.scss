@@ -18,9 +18,9 @@
 			background-position: center bottom;
 		}
 		h2 {
-			font-size: 1.75rem;
 			text-align: center;
-			line-height: 1;
+/*			font-size: 1.75rem;
+			line-height: 1;*/
 		}
 
 		.entry-header {
@@ -44,6 +44,7 @@
 			h2 {
 			  margin-left: 3.75vw;
 				margin-right: 3.75vw;
+				font-size: 2.25rem;
 		  }
 		}
 		
@@ -51,6 +52,22 @@
 		@media only screen and (min-width:40em) {
 			&.callout {
 				height: calc(40vh - 2rem);
+			}
+		}
+		
+		/* Large Up */
+		@media only screen and (min-width:64em) {
+			.entry-body {
+				margin-right: auto;
+			}/*
+			h2 {
+				font-size: 2.5vw;
+			}*/
+			&:first-child h2 {
+				font-size: 2vw;
+			}
+			.entry-header h1 .unicorns {
+				font-size: 6vw;
 			}
 		}
 	}

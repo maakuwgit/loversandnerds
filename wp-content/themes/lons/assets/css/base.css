@@ -84,7 +84,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 400;
+  font-weight: 900;
   font-style: normal;
   color: inherit;
   text-rendering: optimizeLegibility;
@@ -175,8 +175,10 @@ strong {
   line-height: inherit; }
 
 b,
-strong {
-  font-weight: 400; }
+.bold,
+strong,
+.strong {
+  font-weight: 900; }
 
 dl,
 ol,
@@ -313,7 +315,7 @@ h1 {
   margin: auto 0; }
 
 h4 {
-  font-weight: 400;
+  font-weight: 900;
   font-size: 1.75rem; }
 
 mark {
@@ -371,7 +373,7 @@ legend {
   padding: 0; }
 
 optgroup {
-  font-weight: 400; }
+  font-weight: 900; }
 
 audio:not([controls]) {
   display: none;
@@ -483,9 +485,6 @@ body.admin-bar [data-stick-to] {
 
 .uppercase {
   text-transform: uppercase; }
-
-.strong {
-  font-weight: 400; }
 
 .no-bullet {
   margin-left: 0;
@@ -1318,7 +1317,11 @@ body.admin-bar [data-stick-to] {
     margin-left: 0;
     margin-right: 0;
     float: left; } }
-@media screen and (min-width: 64em) {
+/* Large Up */
+@media only screen and (min-width: 64em) {
+  p {
+    font-size: 1.5vw; }
+
   .large-1 {
     width: 8.33333%;
     -webkit-box-flex: .8333;

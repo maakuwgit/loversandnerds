@@ -97,7 +97,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight:$text-bold;
+	font-weight:$text-black;
 	font-style:normal;
 	color:inherit;
 	text-rendering:optimizeLegibility;
@@ -205,8 +205,10 @@ strong {
 }
 
 b,
-strong {
-	font-weight:$text-bold;
+.bold, 
+strong,
+.strong {
+	font-weight:$text-black;
 }
 
 dl,
@@ -370,7 +372,7 @@ h1 {
 }
 
 h4 {
-	font-weight: $text-bold;
+	font-weight: $text-black;
   font-size: 1.75rem;
 }
 
@@ -444,7 +446,7 @@ legend {
 }
 
 optgroup {
-	font-weight:$text-bold;
+	font-weight:$text-black;
 }
 
 audio:not([controls]) {
@@ -574,9 +576,7 @@ button.ellipsis,
 .uppercase {
 	text-transform: uppercase;
 }
-.strong {
-	font-weight: $text-bold;
-}
+
 .no-bullet {
 	margin-left:0;
 	list-style:none
@@ -1526,7 +1526,12 @@ button.ellipsis,
 
 }
 
-@media screen and (min-width:64em) {
+/* Large Up */
+@media only screen and (min-width:64em) {
+	p {
+		font-size:1.5vw;
+	}
+	
 	.large-1 {
 		width:8.33333%;
 		flex: .8333 1 auto;

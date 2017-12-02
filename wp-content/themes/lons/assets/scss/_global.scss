@@ -167,13 +167,25 @@ input[type="button"],
 		opacity: 1;
 	}
 
-//Callout	
-	.callout a {
+//Callout
+.callout {
+	button,
+	.button {
+		background-color: transparent;
+		border: solid 2px $white;
+		color: $white;
+		box-shadow: 1px 1px 5px rgba(183, 61, 14, 0.6);
+		text-shadow: -1px -1px 1px rgba(183, 61, 14, 0.3);
+		font-weight: 900;
+		text-transform: uppercase;
+  }
+	a {
 		color: inherit;
 	}
-	.callout .feature {
+	.feature {
 		position: absolute;
 	}
+}
 	.entry-content.callout {
 		height: 50vh;
 		padding: 3.6875rem 1rem 1rem;
@@ -300,6 +312,16 @@ input[type="button"],
 	  	margin: auto;
 			border: solid 4px $white;
 	  }
+	.callout {
+		.table {
+			display: block;
+			padding: 0 3.5rem;
+			.column:not(:last-child),
+			.columns:not(:last-child) {
+				margin-bottom: 1rem;
+			}
+		}
+	}
 }
 
 /* Medium Down */
@@ -556,21 +578,12 @@ input[type="button"],
 			.entry-content.format-gallery.active .entry-body {
 				max-height: 55vh;
 			}
-		.home .entry-body {
-			margin-right: auto;
-		}
-			.home .entry-content h2 {
-			  font-size: 2.5vw;
-			}
-			  .home .entry-content:first-child h2 {
-			    font-size: 2vw;
-			  }
 		
 	.callout h1, 
 	.callout h2, 
 	.entry-header h1,
 	.entry-header h2 {
-		font-size: 4vw;
+		font-size: 3.25vw;
 	  line-height: 1.125;
 	}
 	body:not(.single-post) .entry-header h1,
@@ -585,10 +598,6 @@ input[type="button"],
 			.entry-content.format-gallery.active .entry-header h2 {
 		  	margin-top: 17.25vh;
 		  }
-		  
-	.home .entry-header h1 .unicorns {
-		font-size: 6vw;
-	}
 
 	.entry-footer button,
 	.entry-footer .button {
@@ -612,10 +621,6 @@ input[type="button"],
 	.format-image .feature {
    width: 33.3334%;
   }
-
-	p {
-		font-size:1.5vw;
-	}
 	
 	#content > a {
 	  top: calc(50vh - 25px);

@@ -166,6 +166,11 @@
 
 /* Small Only */
 @media only screen and (max-width:39.9375em) {
+	#masthead {
+		position: absolute;
+		top: 46px;
+	}
+	
 	#site-navigation.menu > li > a {
 		margin-right: 0.9375vw;
 	}
