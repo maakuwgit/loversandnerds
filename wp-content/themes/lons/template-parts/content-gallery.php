@@ -94,7 +94,7 @@ if( '' !== $project ) {
 						<button class="button secondary" data-href="<?php echo $btn_href; ?>" title="<?php echo $btn_label; ?>"><em class="fa fa-external-link"></em></button>
 					</li>
 				<?php endif; ?>
-				<?php if( is_admin() ) : ?>
+				<?php if( current_user_can('edit_post', $post_id ) ) : ?>
 					<li>
 						<a class="button" href="<?php echo get_edit_post_link($post_id);?>"><em class="fa fa-pencil"></em></a>
 					</li>

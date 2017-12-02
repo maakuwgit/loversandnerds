@@ -31,7 +31,7 @@
 				<h1 class="entry-title"><?php the_title();?></h1>
 				<?php the_content(); ?>
 			</div>
-			<?php if( is_admin() ) : ?>
+			<?php if( current_user_can('edit_post', $post_id ) ) : ?>
 			<footer class="entry-footer">
 				<ul class="inline-list">
 					<li>

@@ -240,62 +240,44 @@ add_action( 'wp_head', 'twentysixteen_javascript_detection', 0 );
 /**
  * Enqueues scripts and styles.
  *
- * @since Twenty Sixteen 1.0
+ * @since Lovers + Nerds 2.1.6.7
  */
-function twentysixteen_scripts() {
+function global_enqueue() {
 	
 	$server = $_SERVER['SERVER_NAME'];
 	$template_dir = get_template_directory_uri();
 	
-	wp_enqueue_style( 'core_styles', $template_dir . '/css/core.css', array(), '2.1.8' );
+	//Theme stylesheets.
+	wp_enqueue_style( 'lons-style', $template_dir . '/style.min.css');
+	wp_enqueue_style( 'core_styles', $template_dir . '/assets/css/base.min.css', array(), '2' );
 	
 	// Add custom fonts, used in the main stylesheet.
 	wp_enqueue_style( 'roboto_slab', '//fonts.googleapis.com/css?family=Roboto+Slab', array(), null);
 	wp_enqueue_style( 'roboto', '//fonts.googleapis.com/css?family=Roboto:400,400i,700,700i', array(), null);
 	
 	// Add Genericons, used in the main stylesheet.
-	wp_enqueue_style( 'font-awesome', $template_dir . '/css/font-awesome.min.css', array(), '4.6.3' );
-
-	// Theme stylesheet.
-	wp_enqueue_style( 'twentysixteen-style', get_stylesheet_uri() );
-
-	// Load the Internet Explorer specific stylesheet.
-	//Dev Note: Return here and make this today's date
-	wp_enqueue_style( 'twentysixteen-ie', $template_dir . '/css/ie.css', array( 'twentysixteen-style' ), '20160816' );
-	wp_style_add_data( 'twentysixteen-ie', 'conditional', 'lt IE 10' );
-
-	// Load the html5 shiv.
-	wp_enqueue_script( 'twentysixteen-html5', $template_dir . '/js/html5.js', array(), '3.7.3' );
-	wp_script_add_data( 'twentysixteen-html5', 'conditional', 'lt IE 9' );
-
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-
-	if ( is_singular() && wp_attachment_is_image() ) {
-		//Dev Note: Return here and make this today's date
-		wp_enqueue_script( 'twentysixteen-keyboard-image-navigation', $template_dir . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20160816' );
-	}
+	wp_enqueue_style( 'font-awesome', $template_dir . '/assets/css/font-awesome.min.css', array(), '4.6.3' );
 
 	//Libraries
-	wp_enqueue_script( 'backgrounder', $template_dir . '/js/backgrounder.js', array( 'jquery' ), '0.1', true );
-	wp_enqueue_script( 'breakpoints', $template_dir . '/js/breakpoints.js', array(), '0.1', true );
+	wp_enqueue_script( 'backgrounder', $template_dir . '/assets/js/backgrounder.js', array( 'jquery' ), '0.1', true );
+	wp_enqueue_script( 'breakpoints', $template_dir . '/assets/js/breakpoints.js', array(), '0.1', true );
 
 	wp_enqueue_script( 'scrollmagic', '//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js', array( 'jquery' ), '2.0.5', true );
 	wp_enqueue_script( 'scrollmagic-indicators', '//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js', array( 'jquery', 'scrollmagic' ), '2.0.5', true );
 	wp_enqueue_script( 'tweenmax', '//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js', array( 'jquery' ), '1.18.0', true );
 	wp_enqueue_script( 'scrollto', '//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/ScrollToPlugin.min.js', array( 'jquery' ), '1.8.1', true );
 	
-	wp_enqueue_script( 'cssplugin', $template_dir . '/js/vendor/CSSPlugin.min.js', array( 'jquery' ), '1.18.0', true );
+	wp_enqueue_script( 'cssplugin', $template_dir . '/assets/js/vendor/CSSPlugin.min.js', array( 'jquery' ), '1.18.0', true );
 	
 	//Core functions
 	wp_enqueue_script( 'font-awesome', 'https://use.fontawesome.com/bac5c1e8d6.js', array(),'bac5c1e8d6', true );
+	
 	//Dev Note: Return here and make this today's date
-	wp_enqueue_script( 'global_functions', $template_dir . '/js/functions.js', array( 'jquery', 'backgrounder', 'breakpoints' ), '2.1.3', true );
+	wp_enqueue_script( 'global_functions', $template_dir . '/assets/js/functions.js', array( 'jquery', 'backgrounder', 'breakpoints' ), '2.1.3', true );
 
 }
-add_action( 'wp_enqueue_scripts', 'twentysixteen_scripts' );
+//add_action( 'wp_enqueue_scripts', 'frontend_scripts' );
+add_action( 'wp_enqueue_scripts', 'global_enqueue' );
 
 /**
  * Adds custom classes to the array of body classes.
@@ -1053,8 +1035,6 @@ if ( ! function_exists( 'nutrient_save_user_fields' ) ) :
   add_action( 'edit_user_profile_update', 'lons_save_user_fields' );
 endif;
 
-
-add_action( 'admin_enqueue_scripts', 'admin_scripts_styles', 10, 1 );
 function admin_scripts_styles( $hook ) {
 	global $typenow;
 
@@ -1062,39 +1042,32 @@ function admin_scripts_styles( $hook ) {
 
 	if ( ! in_array( $hook, array( 'post-new.php', 'post.php' ) ) ) return;
 	if ( isset( $typenow ) && in_array( $typenow, array( 'post') ) ) {
-		//Libraries
-		wp_enqueue_script( 'backgrounder', $template_dir . '/js/backgrounder.js', array( 'jquery' ), '0.3', true );
-		wp_enqueue_script( 'breakpoints', $template_dir . '/js/breakpoints.js', array(), '0.1', true );
-//		wp_enqueue_script( 'foundation', $template_dir . '/js/vendor/foundation.js', array( 'jquery' ), '6.0', true );
+		
+		// Admin Styles
+		wp_enqueue_style( 'admin_styles', $template_dir . '/assets/css/admin.css' );
+    wp_enqueue_style('wp-color-picker');
 	
 		// Admin Functions
-		wp_enqueue_script( 'post-settings', $template_dir . '/js/post-settings.js', array( 'jquery' ), '0.1' );
-		wp_enqueue_script( 'project-settings', $template_dir . '/js/project-settings.js', array( 'jquery' ), '0.1' );
-		wp_enqueue_script( 'theme-settings', $template_dir . '/js/theme-settings.js', array( 'jquery' ), '0.1' );
-		wp_enqueue_script( 'bike-settings', $template_dir . '/js/bike-settings.js', array( 'jquery' ), '0.1' );
+		wp_enqueue_script( 'post-settings', $template_dir . '/assets/js/post-settings.js', array( 'jquery' ), '0.1' );
+		wp_enqueue_script( 'project-settings', $template_dir . '/assets/js/project-settings.js', array( 'jquery' ), '0.1' );
+		wp_enqueue_script( 'theme-settings', $template_dir . '/assets/js/theme-settings.js', array( 'jquery' ), '0.1' );
+		wp_enqueue_script( 'bike-settings', $template_dir . '/assets/js/bike-settings.js', array( 'jquery' ), '0.1' );
 		
 		wp_enqueue_script('colorpicker', $template_dir . '/colorpicker.js');
 		
 		//Core functions
-		wp_enqueue_script( 'font-awesome', 'https://use.fontawesome.com/bac5c1e8d6.js', array(),'bac5c1e8d6', true );
-		//Dev Note: come back and make this dependant on the date today
-		wp_enqueue_script( 'global_functions', $template_dir . '/js/functions.js', array( 'jquery', 'backgrounder', 'breakpoints' ), '20170816', true );
-		wp_enqueue_script( 'admin_functions', $template_dir . '/js/admin.js', array(), '0.1', true );
+		wp_enqueue_script( 'admin_functions', $template_dir . '/assets/js/admin.js', array(), '0.1', true );
 		
     wp_enqueue_script('iris', admin_url('js/iris.min.js'),array('jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch'), false, 1);
     
     wp_enqueue_script('wp-color-picker', admin_url('js/color-picker.min.js'), array('iris'), false,1);
     
     $colorpicker_l10n = array('clear' => __('Clear'), 'defaultString' => __('Default'), 'pick' => __('Select Color'));
-    wp_localize_script( 'wp-color-picker', 'wpColorPickerL10n', $colorpicker_l10n ); 
-		
-		// Admin Styles
-		wp_enqueue_style( 'core_styles', $template_dir . '/css/core.css', array(), '1.5' );
-		wp_enqueue_style( 'admin_styles', $template_dir . '/css/admin.css' );
-		wp_enqueue_style( 'font-awesome', $template_dir . '/css/font-awesome.min.css', array(), '4.6.3' );
-    wp_enqueue_style('wp-color-picker');
+    wp_localize_script( 'wp-color-picker', 'wpColorPickerL10n', $colorpicker_l10n );
 	}
 }
+add_action( 'admin_enqueue_scripts', 'global_enqueue', 10, 1 );
+add_action( 'admin_enqueue_scripts', 'admin_scripts_styles', 10, 1 );
 
 /**
  * Creates a shortcode for anchors that are relative to the server automatically

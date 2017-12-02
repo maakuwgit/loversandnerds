@@ -1,0 +1,57 @@
+/* This looks to be a typo AND deprecated?
+.home.entry-content.active .entry-header h1 {
+	font-size: 9vw;
+}
+*/
+.home {
+	.entry-content {
+		background-position: center;
+		&:first-child {
+			h2 {
+				font-size: 1.5rem;
+				margin-top: 0.5rem;
+			}
+		}
+		&.callout {
+			padding: 1rem;
+			height: calc(50vh - 2rem);
+			background-position: center bottom;
+		}
+		h2 {
+			font-size: 1.75rem;
+			text-align: center;
+			line-height: 1;
+		}
+
+		.entry-header {
+			h1 {
+				text-align: center;
+				font-weight: $text-normal;
+				.unicorns {
+					font-size: 3.5rem;
+				}
+			}
+		}
+		
+		.entry-body {
+			p {
+				text-align: center;
+			}
+		}
+
+		/* Small Only */
+		@media only screen and (max-width:39.9375em) {	
+			h2 {
+			  margin-left: 3.75vw;
+				margin-right: 3.75vw;
+		  }
+		}
+		
+		/* Medium Up */
+		@media only screen and (min-width:40em) {
+			&.callout {
+				height: calc(40vh - 2rem);
+			}
+		}
+	}
+}

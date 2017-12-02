@@ -1,0 +1,96 @@
+main, 
+main > div, 
+main > section, 
+.entry-header,
+.entry-footer,
+.entry-footer button,
+.entry-footer .button,
+.entry-body, 
+.entry-header h1, 
+.entry-header h2, 
+.entry-content.active .entry-body,
+.entry-content:not(.callout).active .feature, 
+body:not(.home) .entry-content:not(.callout).active .feature, 
+.off-canvas-content > a:focus, 
+.off-canvas-content > a:hover, 
+.off-canvas-content > .scrollmagic-pin-spacer a:focus, 
+.off-canvas-content > .scrollmagic-pin-spacer a:hover, 
+.social-widget, 
+.social-widget figure div, 
+.social-widget.active figure div, 
+main .entry-content, 
+main.social-active .entry-content, 
+#masthead,
+#masthead.inactive, 
+#masthead > a,
+#masthead.bottom > a,
+#masthead.enter > a, 
+#masthead > a + .title-bar-title,
+#masthead.bottom > a + .title-bar-title, 
+#masthead.enter > a + .title-bar-title, 
+#content > a, 
+#content .button[data-href], 
+#nextBtn, 
+#nextBtn.disabled,
+#nextBtn:focus,
+#nextBtn:hover {
+	transition: all 300ms ease-in-out;
+	-webkit-transition: all 300ms ease-in-out;
+	-o-transition: all 300ms ease-in-out;
+	-moz-transition: all 300ms ease-in-out;
+}
+
+button:focus, 
+button:hover, 
+.button:focus, 
+.button:hover, 
+input[type="submit"]:focus,
+input[type="submit"]:hover, 
+input[type="button"]:focus, 
+input[type="button"]:hover,
+.gallery-item a:focus img,
+.gallery-item a:hover img,
+.off-canvas-content > a:focus,
+.off-canvas-content > a:hover,
+.off-canvas-content > .scrollmagic-pin-spacer a:focus, 
+.off-canvas-content > .scrollmagic-pin-spacer a:hover {
+	transition: all 300ms ease-out;
+	-webkit-transition: all 300ms ease-out;
+	-o-transition: all 300ms ease-out;
+	-moz-transition: all 300ms ease-out;
+}
+
+button, 
+.button, 
+input[type="submit"], 
+input[type="button"],
+.gallery-item a img,
+.off-canvas-content > a,
+.off-canvas-content > .scrollmagic-pin-spacer a {
+	transition: all 500ms ease-in;
+	-webkit-transition: all 500ms ease-in;
+	-o-transition: all 500ms ease-in;
+	-moz-transition: all 500ms ease-in;
+}
+ 
+.entry-footer {
+	transition-delay: 50ms;
+	-webkit-transition-delay: 50ms;
+	-o-transition-delay: 50ms;
+	-moz-transition-delay: 50ms;
+}
+	.entry-footer button,
+	.entry-footer .button,
+	.entry-body {
+		transition-delay:  150ms;
+		-webkit-transition-delay: 150ms;
+		-o-transition-delay:  150ms;
+		-moz-transition-delay:  150ms;
+	}
+
+#masthead.inactive {
+	transition-delay: 1s;
+	-webkit-transition-delay: 1s;
+	-o-transition-delay: 1s;
+	-moz-transition-delay: 1s;
+}
