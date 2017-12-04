@@ -168,6 +168,8 @@
 @media only screen and (max-width:39.9375em) {
 	#masthead {
 		position: absolute;
+	}
+	body.admin-bar #masthead {	
 		top: 46px;
 	}
 	

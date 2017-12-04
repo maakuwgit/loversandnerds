@@ -6,6 +6,18 @@ p {
 	font-size: 0.8125rem;
 }
 
+ul ul, ul ol, ol ol, ol ul {
+	margin-left: auto;
+}
+
+form select {
+  width: 25em;
+}
+
+table.fixed {
+	position: static;
+}
+
 .form-fieldset {
   border-collapse: collapse;
   margin-top: .5em;

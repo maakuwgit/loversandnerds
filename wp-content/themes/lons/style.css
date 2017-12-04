@@ -5,7 +5,7 @@ Theme URI: https://maakuw.com/loversandnerds/
 Author: the WordPress team
 Author URI: https://wordpress.org/
 Description: It's a newer version of the theme. It's even MORE amazing
-Version: 2.1.6.7
+Version: 2.1.7
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, footer-sidebar, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready, blog
@@ -712,7 +712,9 @@ body:not(.home) .entry-content.callout {
 /* Small Only */
 @media only screen and (max-width: 39.9375em) {
   #masthead {
-    position: absolute;
+    position: absolute; }
+
+  body.admin-bar #masthead {
     top: 46px; }
 
   #site-navigation.menu > li > a {
@@ -1299,10 +1301,10 @@ input[type="button"],
       height: calc(40vh - 2rem); } }
   @media only screen and (min-width: 64em) {
     .home .entry-content {
-     /*
-    h2 {
-    	font-size: 2.5vw;
-    }*/ }
+      /*
+      h2 {
+      	font-size: 2.5vw;
+      }*/ }
       .home .entry-content .entry-body {
         margin-right: auto; }
       .home .entry-content:first-child h2 {

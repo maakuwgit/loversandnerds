@@ -249,7 +249,7 @@ function global_enqueue() {
 	
 	//Theme stylesheets.
 	wp_enqueue_style( 'lons-style', $template_dir . '/style.min.css');
-	wp_enqueue_style( 'core_styles', $template_dir . '/assets/css/base.min.css', array(), '2' );
+	wp_enqueue_style( 'core_styles', $template_dir . '/assets/css/base.min.css', array(), '2.1' );
 	
 	// Add custom fonts, used in the main stylesheet.
 	wp_enqueue_style( 'roboto_slab', '//fonts.googleapis.com/css?family=Roboto+Slab', array(), null);
@@ -1039,12 +1039,14 @@ function admin_scripts_styles( $hook ) {
 	global $typenow;
 
 	$template_dir = get_template_directory_uri();
+	
+	// Admin Styles
+	wp_enqueue_style( 'admin_styles', $template_dir . '/assets/css/admin.css' );
 
 	if ( ! in_array( $hook, array( 'post-new.php', 'post.php' ) ) ) return;
 	if ( isset( $typenow ) && in_array( $typenow, array( 'post') ) ) {
 		
 		// Admin Styles
-		wp_enqueue_style( 'admin_styles', $template_dir . '/assets/css/admin.css' );
     wp_enqueue_style('wp-color-picker');
 	
 		// Admin Functions
@@ -1066,8 +1068,8 @@ function admin_scripts_styles( $hook ) {
     wp_localize_script( 'wp-color-picker', 'wpColorPickerL10n', $colorpicker_l10n );
 	}
 }
-add_action( 'admin_enqueue_scripts', 'global_enqueue', 10, 1 );
-add_action( 'admin_enqueue_scripts', 'admin_scripts_styles', 10, 1 );
+add_action( 'admin_enqueue_scripts', 'global_enqueue' );
+add_action( 'admin_enqueue_scripts', 'admin_scripts_styles' );
 
 /**
  * Creates a shortcode for anchors that are relative to the server automatically
