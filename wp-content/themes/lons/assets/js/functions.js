@@ -4,15 +4,16 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 1.7.3
+ * @since Lovers + Nerds 2.2.5
  * Contains handlers for navigation and widget area.
  */
 
 ( function( $ ) {
 	var vw,vh,
 			backgrounder = new Backgrounder(),
-			breakpoint = new Breakpoints();
-			is_dev = true;
+			breakpoint = new Breakpoints(),
+			is_dev = true,
+			return_top = $(window).scrollTop();
 			
 //Dev Note: Is this still relevant?	
 	$('.menu.nested').attr({'data-submenu':'','aria-hidden':true,'role':'tabpanel'});
@@ -85,13 +86,13 @@
 		function setNext(to) {
 			if(!$('body').hasClass('single')){
 				if(to == numSections){
-					if( !$('body').hasClass('archive') ) $('#masthead').addClass('bottom');
+					if( !$('body').hasClass('archive') ) $('body').addClass('bottom');
 //					$('#content > a').stop().addClass('disabled');
 					$('#nextBtn').stop().off('click').addClass('disabled');
 				}else{
 					next = to;
 					curr = to - 1;
-					if( !$('body').hasClass('archive') ) $('#masthead').removeClass('bottom');
+					if( !$('body').hasClass('archive') ) $('body').removeClass('bottom');
 //					$('#content > a').stop().removeClass('disabled');
 					$('#nextBtn').attr("data-href",sections[to]).stop().removeClass('disabled').off('click').on('click', gotoNext);
 				}
@@ -123,7 +124,7 @@
 		//  Bind anchors
 		$('#nextBtn').on('click', gotoNext);
 			
-		$('[href*="#"]').on('click', function(event){
+		$('[href="#twitter-feed"]').on('click', function(event){
 			event.preventDefault();
 			$('main').toggleClass('social-active');
 			$(this).toggleClass('active');
@@ -181,8 +182,16 @@
 			}
 		}
 	}
+	
+	function openMenu(event){
+		return_top = $(window).scrollTop();
+		var target = $(this).data('toggle');
+		$('#'+target).toggleClass('collapsed');
+		$('#masthead').toggleClass('menu-open');
+	}
 
 	function init(event){
+		$('[data-toggle]').on('click.openMenu', openMenu);
 		$('button.ellipsis, .button.ellipsis').click(toggleContent);
 		$(window).on('resize.refactor', refactor);
 		$('[data-href]').on('click', function(event){
@@ -200,14 +209,14 @@
 			$('[data-hover]').removeClass('active');
 		});
 		
-		var figcaption = $('.title-bar-title'),
-				title = figcaption.find('figcaption').text(),
+		var figcaption = $('.title-bar-title').find('figcaption'),
+				title = figcaption.text(),
 				lovers = title.substr(0, title.search(' ')),
 				nerds = title.substr(title.search(' ') + 3);
 		
 		if(	!$('body').hasClass('archive') && !$('body').hasClass('wp-admin')){
 			if(!$('body').hasClass('single'))$('h1').html('<span class="unicorns">'+lovers+'</span> & <span class="chava">'+nerds+'</span>');
-			$(figcaption).html('<span class="unicorns">L</span><span class="plus">+</span><span class="chava">N</span>');
+			$(figcaption).find('a.logo').html('<span class="unicorns">L</span><span class="plus">+</span><span class="chava">N</span>');
 		}
 		
 		refactor(event);

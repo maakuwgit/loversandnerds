@@ -22,7 +22,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.1.6.6
+ * @since Lovers + Nerds 2.2.5
  */
 
 /**
@@ -248,8 +248,8 @@ function global_enqueue() {
 	$template_dir = get_template_directory_uri();
 	
 	//Theme stylesheets.
-	wp_enqueue_style( 'lons-style', $template_dir . '/style.min.css');
-	wp_enqueue_style( 'core_styles', $template_dir . '/assets/css/base.min.css', array(), '2.1' );
+	wp_enqueue_style( 'lons-style', $template_dir . '/style.min.css', array('core_styles'), '2.2.7' );
+	wp_enqueue_style( 'core_styles', $template_dir . '/assets/css/base.min.css', array(), '2.2.5' );
 	
 	// Add custom fonts, used in the main stylesheet.
 	wp_enqueue_style( 'roboto_slab', '//fonts.googleapis.com/css?family=Roboto+Slab', array(), null);
@@ -993,25 +993,64 @@ if ( ! function_exists( 'lons_user_fields' ) ) :
  */
   function lons_user_fields( $user ) { 
 	
-		$gender = esc_attr( get_the_author_meta( 'gender', $user->ID ) );
+		$gender 	= esc_attr( get_the_author_meta( 'gender', $user->ID ) );
 		
 	?>
   <h3>Lovers&amp;Nerds specific info</h3>
   <table class="form-table">
+  	<tr>
+			<th scope="row"><label for="photo">Photo</label></th>
+			<td><input class="regular-text ltr" name="photo" type="text" id="photo" value="<?php echo esc_attr( get_the_author_meta( 'photo', $user->ID ) ); ?>" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60"></td>
+		</tr>
   	<tr class="form-required">
-			<th scope="row"><label for="user_title">Title</label></th>
+			<th scope="row"><label for="job_title">Title</label></th>
 			<td><input class="regular-text ltr" name="job_title" type="text" id="job_title" value="<?php echo esc_attr( get_the_author_meta( 'job_title', $user->ID ) ); ?>" aria-required="false" autocapitalize="none" autocorrect="off" maxlength="60"></td>
 		</tr>
   	<tr>
-			<th scope="row"><label for="user_title">Photo</label></th>
-			<td><input class="regular-text ltr" name="photo" type="text" id="photo" value="<?php echo esc_attr( get_the_author_meta( 'photo', $user->ID ) ); ?>" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60"></td>
+			<th scope="row"><label for="job_description">Job Description</label></th>
+			<td><textarea class="regular-text ltr" name="job_description" id="job_description" placeholder="<?php echo esc_attr( get_the_author_meta( 'job_description', $user->ID ) ); ?>" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="180"></textarea></td>
 		</tr>
   	<tr>
-			<th scope="row"><label for="user_title">Gender</label></th>
+			<th scope="row"><label for="gender">Gender</label></th>
 			<td><select class="regular-text ltr" name="gender" type="text" id="gender" cols="10">
 				<option value="m" <?php if( $gender == 'm' ) echo ' selected'; ?>>Male</option>
 				<option value="f" <?php if( $gender == 'f' ) echo ' selected'; ?>>Female</option>
 			</td>
+		</tr>
+  </table>
+  <h4>Social</h4>
+  <table class="form-table">
+  	<tr class="form-required">
+			<th scope="row"><label for="linkedin">LinkedIn</label></th>
+			<td><input class="regular-text ltr" name="linkedin" type="text" id="linkedin" value="<?php echo esc_attr( get_the_author_meta( 'linkedin', $user->ID ) ); ?>" aria-required="false" autocapitalize="none" autocorrect="off" maxlength="60"></td>
+		</tr>
+  	<tr class="form-required">
+			<th scope="row"><label for="indeed">Indeed</label></th>
+			<td><input class="regular-text ltr" name="indeed" type="text" id="indeed" value="<?php echo esc_attr( get_the_author_meta( 'indeed', $user->ID ) ); ?>" aria-required="false" autocapitalize="none" autocorrect="off" maxlength="60"></td>
+		</tr>
+  	<tr class="form-required">
+			<th scope="row"><label for="medium">Medium</label></th>
+			<td><input class="regular-text ltr" name="medium" type="text" id="medium" value="<?php echo esc_attr( get_the_author_meta( 'medium', $user->ID ) ); ?>" aria-required="false" autocapitalize="none" autocorrect="off" maxlength="60"></td>
+		</tr>
+  	<tr class="form-required">
+			<th scope="row"><label for="bitbucket">BitBucket</label></th>
+			<td><input class="regular-text ltr" name="bitbucket" type="text" id="bitbucket" value="<?php echo esc_attr( get_the_author_meta( 'bitbucket', $user->ID ) ); ?>" aria-required="false" autocapitalize="none" autocorrect="off" maxlength="60"></td>
+		</tr>
+  	<tr class="form-required">
+			<th scope="row"><label for="github">Git</label></th>
+			<td><input class="regular-text ltr" name="github" type="text" id="github" value="<?php echo esc_attr( get_the_author_meta( 'github', $user->ID ) ); ?>" aria-required="false" autocapitalize="none" autocorrect="off" maxlength="60"></td>
+		</tr>
+  	<tr class="form-required">
+			<th scope="row"><label for="twitter">Twitter</label></th>
+			<td><input class="regular-text ltr" name="twitter" type="text" id="twitter" value="<?php echo esc_attr( get_the_author_meta( 'twitter', $user->ID ) ); ?>" aria-required="false" autocapitalize="none" autocorrect="off" maxlength="60"></td>
+		</tr>
+  	<tr class="form-required">
+			<th scope="row"><label for="instagram">Instagram</label></th>
+			<td><input class="regular-text ltr" name="instagram" type="text" id="instagram" value="<?php echo esc_attr( get_the_author_meta( 'instagram', $user->ID ) ); ?>" aria-required="false" autocapitalize="none" autocorrect="off" maxlength="60"></td>
+		</tr>
+  	<tr class="form-required">
+			<th scope="row"><label for="facebook">Facebook</label></th>
+			<td><input class="regular-text ltr" name="facebook" type="text" id="facebook" value="<?php echo esc_attr( get_the_author_meta( 'facebook', $user->ID ) ); ?>" aria-required="false" autocapitalize="none" autocorrect="off" maxlength="60"></td>
 		</tr>
   </table>
 <?php
@@ -1020,15 +1059,23 @@ if ( ! function_exists( 'lons_user_fields' ) ) :
   add_action( 'edit_user_profile', 'lons_user_fields' );
 endif;
 
-if ( ! function_exists( 'nutrient_save_user_fields' ) ) :
+if ( ! function_exists( 'lons_save_user_fields' ) ) :
 
   function lons_save_user_fields( $user_id ) {
   	if ( !current_user_can( 'edit_user', $user_id ) )
       return false;
 
-  	update_user_meta( $user_id, 'job_title', $_POST['job_title'] );
+  	update_user_meta( $user_id, 'job_title', htmlentities( $_POST['job_title'] ) );
+  	update_user_meta( $user_id, 'job_description', htmlentities( $_POST['job_description'] ) );
   	update_user_meta( $user_id, 'gender', $_POST['gender'] );
   	update_user_meta( $user_id, 'photo', $_POST['photo'] );
+  	update_user_meta( $user_id, 'linkedin', $_POST['linkedin'] );
+  	update_user_meta( $user_id, 'medium', $_POST['medium'] );
+  	update_user_meta( $user_id, 'github', $_POST['github'] );
+  	update_user_meta( $user_id, 'bitbucket', $_POST['bitbucket'] );
+  	update_user_meta( $user_id, 'facebook', $_POST['facebook'] );
+  	update_user_meta( $user_id, 'twitter', $_POST['twitter'] );
+  	update_user_meta( $user_id, 'instagram', $_POST['instagram'] );
   }
 	
 	add_action( 'personal_options_update', 'lons_save_user_fields' );

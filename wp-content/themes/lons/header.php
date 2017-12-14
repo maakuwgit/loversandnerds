@@ -19,21 +19,18 @@
 	<?php endif; ?>
 	<?php wp_head(); ?>
 </head>
-
 <body <?php body_class(); ?>>
   <div class="site-inner off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper data-sticky-container>
 			<header id="masthead" class="site-header title-bar sticky" data-sticky data-stick-to="top">
-				<?php if( is_category() ) echo '<a href="' . get_bloginfo('url') . '"><em class="fa fa-home"></em></a>';?>
+				<a href="#menu-open" data-toggle="colophon" class="hide">
+					<span class="fa fa-bars"></span>
+				</a>
+				<?php if( is_category() ) echo '<a href="' . get_bloginfo('url') . '" class="home"><em class="fa fa-home"></em></a>';?>
 				<figure class="title-bar-title">
-				<?php if ( twentysixteen_the_custom_logo() ) :?>
-					<div>
-						<?php twentysixteen_the_custom_logo(); ?>
-					</div>
-				<?php endif; ?>
 					<figcaption>
 					<?php if( is_single() ) : ?>
-						<a href="<?php bloginfo('url');?>"><?php bloginfo('name'); ?></a>
+						<a href="<?php bloginfo('url');?>" class="logo"><?php bloginfo('name'); ?></a>
 					<?php elseif( is_category() ) : 
 							$cats = get_the_category();
 							$href = home_url();
@@ -44,9 +41,11 @@
 								}
 							}
 					?>
-						<a href="<?php echo $href;?>"><?php echo single_cat_title(); ?></a>
+						<a href="<?php echo $href;?>" class="logo"><?php echo single_cat_title(); ?></a>
 					<?php else: ?>
-						<?php bloginfo('name'); ?>
+						<a href="#top" class="logo">
+							<?php bloginfo('name'); ?>
+						</a>
 					<?php endif; ?>
 					</figcaption>
 				</figure>

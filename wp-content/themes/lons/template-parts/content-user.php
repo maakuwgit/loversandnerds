@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.1.1
+ * @since Lovers + Nerds 2.2.7
  */
 	$callout_header = get_option('lans_callout_header');
 	$callout_copy = get_option('lans_callout_copy');
@@ -30,7 +30,7 @@
 	<div class="feature">
 		<img alt="" src="<?php echo $mphoto; ?>" data-src-medium="<?php echo $tphoto;?>" data-src-large="<?php echo $dphoto;?>" data-src-xlarge="<?php echo $photo;?>">
 	</div>
-	<div class="cell small-4 medium-4 large-4 text-center">
+	<div class="cell small-6 medium-6 large-4 text-center">
 		<h1><?php echo $nickname;?></h1>
 		<p><?php echo $description;?></p>
 	</div>

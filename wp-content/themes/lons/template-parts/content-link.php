@@ -56,15 +56,13 @@ if( '' !== $project ) {
 			</header>
 		<?php if( '' !== $project ): ?>
 			<footer class="entry-footer" id="<?php echo $slug; ?>-footer">
-				<ul class="inline-list">
 				<?php if( $client || $date ) : ?>
-					<li>
-						<h3>
-						<?php if( $client ) echo $client; ?>
-						<?php if( $date ) echo '&nbsp;|&nbsp;' . $date; ?>
-						</h3>
-					</li>
+				<h4>
+				<?php if( $client ) echo $client; ?>
+				<?php if( $date ) echo '&nbsp;|&nbsp;' . $date; ?>
+				</h4>
 				<?php endif; ?>
+				<ul class="inline-list">
 				<?php if ( has_excerpt() ) : ?>
 					<li>
 						<button class="ellipsis button" id="<?php echo $slug; ?>-more" data-show-id="<?php echo $slug;?>">&bull;&bull;&bull;</button>

@@ -43,7 +43,7 @@ menu,
 nav,
 section,
 summary {
-	display:block
+	display:block;
 }
 
 blockquote,
@@ -66,7 +66,7 @@ td,
 th,
 ul {
 	margin:0;
-	padding:0
+	padding:0;
 }
 
 audio,
@@ -74,7 +74,7 @@ canvas,
 progress,
 video {
 	display:inline-block;
-	vertical-align:baseline
+	vertical-align:baseline;
 }
 
 h1, h2, h3, h4, h4, h5, h6,
@@ -93,17 +93,22 @@ p, dt, dd, a, li {
 
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
+h5 {
 	font-weight:$text-black;
+}
+
+h1, h2, h3, h4, h5, h6 {
 	font-style:normal;
 	color:inherit;
 	text-rendering:optimizeLegibility;
 	margin-top:0;
 	margin-bottom:.5rem;
-	line-height:1.4
+}
+
+h3,
+h4,
+h6 {
+	font-weight: $text-light;
 }
 
 h1 small,
@@ -113,7 +118,7 @@ h4 small,
 h5 small,
 h6 small {
 	color:$silver;
-	line-height:0
+	line-height:0;
 }
 
 
@@ -121,12 +126,12 @@ a:focus,
 a:active,
 a:hover {
 	color:$brand-secondary;
-	outline:0
+	outline:0;
 }
 
 select,
 textarea {
-	border-radius:3px
+	border-radius:3px;
 }
 
 button,
@@ -136,30 +141,30 @@ select,
 textarea {
 	color:inherit;
 	font:inherit;
-	margin:0
+	margin:0;
 }
 
 button,
 select {
-	text-transform:none
+	text-transform:none;
 }
 
 button,
 html input[type=button],
 input[type=reset],
 input[type=submit] {
-	cursor:pointer
+	cursor:pointer;
 }
 
 input[type=checkbox],
 input[type=radio] {
 	box-sizing:border-box;
-	padding:0
+	padding:0;
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-	height:auto
+	height:auto;
 }
 
 input[type=search]::-webkit-search-cancel-button,
@@ -170,18 +175,18 @@ input[type=search]::-webkit-search-decoration {
 
 button[disabled],
 html input[disabled] {
-	cursor:not-allowed
+	cursor:not-allowed;
 }
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
 	border:0;
-	padding:0
+	padding:0;
 }
 
 pre,
 textarea {
-	overflow:auto
+	overflow:auto;
 }
 
 code,
@@ -189,19 +194,19 @@ kbd,
 pre,
 samp {
 	font-family:monospace;
-	font-size:1rem
+	font-size:1rem;
 }
 
 em,
 i {
-	font-style:italic
+	font-style:italic;
 }
 
 b,
 em,
 i,
 strong {
-	line-height:inherit
+	line-height:inherit;
 }
 
 b,
@@ -216,7 +221,7 @@ ol,
 ul {
 	line-height:1.23;
 	margin-bottom:1rem;
-	list-style-position:outside
+	list-style-position:outside;
 }
 
 ol ol,
@@ -224,7 +229,7 @@ ol ul,
 ul ol,
 ul ul {
 	margin-left:1.25rem;
-	margin-bottom:0
+	margin-bottom:0;
 }
 
 /*! A custom reset stylesheet based on normalize.css v3.0.3, Foundation 6.6 and original script*/
@@ -232,13 +237,13 @@ ul ul {
 *,
 :after,
 :before {
-	box-sizing:inherit
+	box-sizing:inherit;
 }
 
 html {
 	font-family:sans-serif;
 	font-size:100%;
-	box-sizing:border-box
+	box-sizing:border-box;
 }
 
 body {
@@ -250,7 +255,7 @@ body {
 	color:$black;
 	background:$white;
 	-webkit-font-smoothing:antialiased;
-	-moz-osx-font-smoothing:grayscale
+	-moz-osx-font-smoothing:grayscale;
 }
 
 img {
@@ -259,16 +264,16 @@ img {
 	border:0;
 	-ms-interpolation-mode:bicubic;
 	display:inline-block;
-	vertical-align:middle
+	vertical-align:middle;
 }
 
 textarea {
 	height:auto;
-	min-height:50px
+	min-height:50px;
 }
 
 select {
-	width:100%
+	width:100%;
 }
 
 a {
@@ -290,15 +295,15 @@ hr {
 	border-bottom:1px solid $silver;
 	border-left:0;
 	margin:1.25rem auto;
-	clear:both
+	clear:both;
 }
 
 li {
-	font-size:inherit
+	font-size:inherit;
 }
 
 dl {
-	margin-bottom:1rem
+	margin-bottom:1rem;
 	dt {
 		margin-bottom:.3rem;
 		font-weight:$text-bold;
@@ -329,20 +334,20 @@ cite {
   line-height: 0.75;
   font-family: $font-alternate;
 	&:before {
-		content:'\2014 \0020'
+		content:'\2014 \0020';
 	}
 }
 
 abbr {
 	color:$black;
 	cursor:help;
-	border-bottom:1px dotted $black
+	border-bottom:1px dotted $black;
 }
 
 code {
 	font-weight:$text-bold;
 	border:1px solid $silver;
-	padding:.125rem .3125rem .0625rem
+	padding:.125rem .3125rem .0625rem;
 }
 
 code,
@@ -355,15 +360,15 @@ kbd {
 kbd {
 	padding:.125rem .25rem 0;
 	margin:0;
-	border-radius:3px
+	border-radius:3px;
 }
 
 abbr[title] {
-	border-bottom:1px dotted
+	border-bottom:1px dotted;
 }
 
 dfn {
-	font-style:italic
+	font-style:italic;
 }
 
 h1 {
@@ -372,7 +377,6 @@ h1 {
 }
 
 h4 {
-	font-weight: $text-black;
   font-size: 1.75rem;
 }
 
@@ -385,16 +389,16 @@ p {
 	font-size:1.25rem;
 	line-height:1.125;
 	margin-bottom:1.25rem;
-	text-rendering:optimizeLegibility
+	text-rendering:optimizeLegibility;
 }
 
 small {
 	font-size:80%;
-	line-height:inherit
+	line-height:inherit;
 }
 
 small {
-	font-size:80%
+	font-size:80%;
 }
 
 sub,
@@ -413,16 +417,16 @@ sub {
 }
 
 svg:not(:root) {
-	overflow:hidden
+	overflow:hidden;
 }
 
 figure {
-	margin:auto
+	margin:auto;
 }
 
 hr {
 	box-sizing:content-box;
-	height:0
+	height:0;
 }
 
 button {
@@ -430,11 +434,11 @@ button {
 	background:transparent;
 	padding:0;
 	border:0;
-	line-height:1
+	line-height:1;
 }
 
 input {
-	line-height:normal
+	line-height:normal;
 	&[type=search] {
 		box-sizing:content-box;
 	}
@@ -442,7 +446,7 @@ input {
 
 legend {
 	border:0;
-	padding:0
+	padding:0;
 }
 
 optgroup {
@@ -460,17 +464,17 @@ figure {
 
 table {
 	border-collapse:collapse;
-	border-spacing:0
+	border-spacing:0;
 }
 
 td,
 th {
-	padding:0
+	padding:0;
 }
 
 [hidden],
 template {
-	display:none
+	display:none;
 }
 
 nav button,
@@ -482,7 +486,7 @@ nav .button {
 /* Ellipsis-styled Buttons */
 button.ellipsis,
 .button.ellipsis {
-	display: none;
+//	display: none;
 	&:focus {
 		outline: none;
 	}
@@ -568,7 +572,14 @@ button.ellipsis,
 		vertical-align: middle;
 		.button, 
 		button {
+			margin-left: rem-calc(8);
 			margin-bottom: auto;
+		}
+		&:first-child {
+			.button,
+			button {
+				margin-left: auto;
+			}
 		}
 	}
 }
@@ -579,24 +590,29 @@ button.ellipsis,
 
 .no-bullet {
 	margin-left:0;
-	list-style:none
+	list-style:none;
 }
 
 .text-left {
-	text-align:left
+	text-align:left;
 }
 
 .text-right {
-	text-align:right
+	text-align:right;
 }
 
 .text-center {
-	text-align:center
+	text-align:center;
 }
 
 .text-justify {
-	text-align:justify
+	text-align:justify;
 }
+
+.text-light {
+	font-weight: 100;
+}
+
 /* Grid */
 /*Dev Note: Legacy*/
 .row {
@@ -684,6 +700,7 @@ button.ellipsis,
 
 .small-1 {
 	width:8.33333%;
+	max-width:8.33333%;
 	flex: .8333 1 auto;
 }
 
@@ -703,6 +720,7 @@ button.ellipsis,
 
 .small-2 {
 	width: 16.6667%;
+	max-width: 16.6667%;
 	flex: .1666 1 auto;
 }
 
@@ -722,6 +740,7 @@ button.ellipsis,
 
 .small-3 {
 	width: 25%;
+	max-width: 25%;
 	flex: .25 1 auto;
 }
 
@@ -741,6 +760,7 @@ button.ellipsis,
 
 .small-4 {
 	width: 33.3334%;
+	max-width: 33.3334%;
 	flex: .3333 1 auto;
 }
 
@@ -760,6 +780,7 @@ button.ellipsis,
 
 .small-5 {
 	width: 41.6667%;
+	max-width: 41.6667%;
   flex: .4166 1 auto;
 }
 
@@ -779,6 +800,7 @@ button.ellipsis,
 
 .small-6 {
 	width: 50%;
+	max-width: 50%;
 	flex: .5 1 auto;
 }
 
@@ -798,6 +820,7 @@ button.ellipsis,
 
 .small-7 {
 	width: 58.3334%;
+	max-width: 58.3334%;
   flex: .5833 1 auto;
 }
 
@@ -817,6 +840,7 @@ button.ellipsis,
 
 .small-8 {
 	width: 66.6667%;
+	max-width: 66.6667%;
   flex: .6666 1 auto;
 }
 
@@ -836,6 +860,7 @@ button.ellipsis,
 
 .small-9 {
 	width: 75%;
+	max-width: 75%;
   flex: .75 1 auto;
 }
 
@@ -855,6 +880,7 @@ button.ellipsis,
 
 .small-10 {
 	width: 83.3333%;
+	max-width: 83.3333%;
   flex: .8333 1 auto;
 }
 
@@ -874,6 +900,7 @@ button.ellipsis,
 
 .small-11 {
 	width: 91.6667%;
+	max-width: 91.6667%;
   flex: .9166 1 auto;
 }
 
@@ -1107,6 +1134,7 @@ button.ellipsis,
 @media screen and (min-width:40em) {
 	.medium-1 {
 		width:8.33333%;
+		max-width:8.33333%;
 		flex: .8333 1 auto;
 	}
 	
@@ -1126,6 +1154,7 @@ button.ellipsis,
 	
 	.medium-2 {
 		width: 16.6667%;
+		max-width: 16.6667%;
 	  flex: .1666 1 auto;
 	}
 	
@@ -1145,6 +1174,7 @@ button.ellipsis,
 	
 	.medium-3 {
 		width: 25%;
+	max-width: 25%;
 	  flex: .25 1 auto;
 	}
 	
@@ -1164,6 +1194,7 @@ button.ellipsis,
 	
 	.medium-4 {
 		width: 33.3334%;
+		max-width: 33.3334%;
 	  flex: .3333 1 auto;
 	}
 	
@@ -1183,6 +1214,7 @@ button.ellipsis,
 	
 	.medium-5 {
 		width: 41.6667%;
+		max-width: 41.6667%;
 	  flex: .4166 1 auto;
 	}
 	
@@ -1202,6 +1234,7 @@ button.ellipsis,
 	
 	.medium-6 {
 		width: 50%;
+	max-width: 50%;
 	  flex: .5 1 auto;
 	}
 	
@@ -1221,6 +1254,7 @@ button.ellipsis,
 	
 	.medium-7 {
 		width: 58.3334%;
+		max-width: 58.3334%;
 	  flex: .5833 1 auto;
 	}
 	
@@ -1240,6 +1274,7 @@ button.ellipsis,
 	
 	.medium-8 {
 		width: 66.6667%;
+		max-width: 66.6667%;
 	  flex: .6666 1 auto;
 	}
 	
@@ -1259,6 +1294,7 @@ button.ellipsis,
 	
 	.medium-9 {
 		width: 75%;
+		max-width: 75%;
 	  flex: .75 1 auto;
 	}
 	
@@ -1278,6 +1314,7 @@ button.ellipsis,
 	
 	.medium-10 {
 		width: 83.3333%;
+		max-width: 83.3333%;
 	  flex: .8333 1 auto;
 	}
 	
@@ -1297,6 +1334,7 @@ button.ellipsis,
 	
 	.medium-11 {	
 		width: 91.6667%;
+		max-width: 91.6667%;
 	  flex: .9166 1 auto;
 	}
 	
@@ -1534,6 +1572,7 @@ button.ellipsis,
 	
 	.large-1 {
 		width:8.33333%;
+		max-width:8.33333%;
 		flex: .8333 1 auto;
 	}
 	
@@ -1553,6 +1592,7 @@ button.ellipsis,
 	
 	.large-2 {
 		width: 16.6667%;
+		max-width: 16.6667%;
 	  flex: .1666 1 auto;
 	}
 	
@@ -1572,6 +1612,7 @@ button.ellipsis,
 	
 	.large-3 {
 		width: 25%;
+		max-width: 25%;
 	  flex: .25 1 auto;
 	}
 	
@@ -1591,6 +1632,7 @@ button.ellipsis,
 	
 	.large-4 {
 		width: 33.3334%;
+		max-width: 33.3334%;
 	  flex: .3333 1 auto;
 	}
 	
@@ -1610,6 +1652,7 @@ button.ellipsis,
 	
 	.large-5 {
 		width: 41.6667%;
+		max-width: 41.6667%;
 	  flex: .4166 1 auto;
 	}
 	
@@ -1629,6 +1672,7 @@ button.ellipsis,
 	
 	.large-6 {
 		width: 50%;
+		max-width: 50%;
 	  flex: .5 1 auto;
 	}
 	
@@ -1648,6 +1692,7 @@ button.ellipsis,
 	
 	.large-7 {
 		width: 58.3334%;
+		max-width: 58.3334%;
 	  flex: .5833 1 auto;
 	}
 	
@@ -1667,6 +1712,7 @@ button.ellipsis,
 	
 	.large-8 {
 		width: 66.6667%;
+		max-width: 66.6667%;
 	  flex: .6666 1 auto;
 	}
 	
@@ -1686,6 +1732,7 @@ button.ellipsis,
 	
 	.large-9 {
 		width: 75%;
+		max-width: 75%;
 	  flex: .75 1 auto;
 	}
 	
@@ -1705,6 +1752,7 @@ button.ellipsis,
 	
 	.large-10 {
 		width: 83.3333%;
+		max-width: 83.3333%;
 	  flex: .8333 1 auto;
 	}
 	
@@ -1724,6 +1772,7 @@ button.ellipsis,
 	
 	.large-11 {	
 		width: 91.6667%;
+		max-width: 91.6667%;
 	  flex: .9166 1 auto;
 	}
 	

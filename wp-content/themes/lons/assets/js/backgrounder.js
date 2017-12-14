@@ -8,13 +8,20 @@ class Backgrounder {
 		if( !size ) size = this.size;
 		
 		jQuery(this.target).each(function(args){
-			var feat	 	= jQuery(this).find('div.feature');
+			
+			var feat	 	= jQuery(this).find('.feature');
 			var target  = feat;
 			if(feat.length <= 0) target = jQuery(this);
 			
-			var img 		= jQuery(target).find('img'),
+			var img 		= false, 
 					is_img 	= jQuery(this).hasClass('format-image');
-					
+
+			if(feat.length > 0) {
+				img = jQuery(feat).find('img');
+			}else{
+				img = jQuery(this).find('img');
+			}
+			
 			if(img.length > 0) {
 				var src = jQuery(img).attr('src');
 				

@@ -24,9 +24,9 @@
 				$style = ' text-right';
 			}
 	?>
-		<div class="column small-12 medium-4 large-2<?php echo $style; ?>">
+		<div class="column small-12 medium-3 large-2<?php echo $style; ?>">
 			<p><?php echo $desc[0]; ?></p>
-			<p><a href="<?php echo $user->user_url;?>" title="See what Mark has been doing" class="button">Learn More</a></p>
+			<p><a href="<?php echo $user->user_url;?>" class="button">Learn More</a></p>
 		</div>
 	<?php $u++; endforeach; ?>
 	</div>

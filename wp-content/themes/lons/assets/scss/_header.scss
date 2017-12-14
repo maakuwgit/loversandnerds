@@ -28,6 +28,10 @@
 			line-height: 1.625rem;
 		}
 	}
+	a[data-toggle] {
+		margin-right: rem-calc(8);
+		min-height: rem-calc(40);
+	}
 }
 
 //Navigation
@@ -178,10 +182,33 @@
 	}
 }
 
+@media onlsy screen and (min-width: 40em) {
+	#masthead {
+		&.menu-open {
+			min-height: rem-calc(43);
+			> *:not([data-toggle]){
+				display: none;
+			}
+		}
+	}
+}
+
 /* Large Up */
 @media only screen and (min-width:64em) {
+	body.bottom #masthead, 
+	body.home #masthead {
+		border-bottom-color: transparent;
+		background: transparent;
+		> a {
+			border-bottom-right-radius: 0.5rem;
+			left: 0;
+			+ .title-bar-title {
+				margin-left: calc(2rem + 0.875vw);
+			}
+		}
+	}
+	
 	#masthead {
-		&.bottom,
 		&.transparent {
 			border-bottom-color: transparent;
 			background: transparent;

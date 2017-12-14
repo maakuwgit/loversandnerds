@@ -1,9 +1,3 @@
-body.archive .entry-header,
-body.archive .entry-body,
-body.archive .entry-footer {
-	padding: $row-padding;
-}
-
 .archive .entry-body p {
 	margin-top: 1.25rem;
 	margin-bottom: auto;
@@ -12,6 +6,10 @@ body.archive .entry-footer {
 		.archive.category .title-bar-right {
 			display: none;
 		}
+
+.archive .entry-content:nth-child(odd) {
+	background-attachment: initial;
+}
 
 /* Small Only */
 @media only screen and (max-width:39.9375em) {
