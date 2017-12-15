@@ -20,9 +20,6 @@
 		display: block;
 		margin: auto;
 		padding: 0.5rem;
-		+ .title-bar-title {
-			margin-left: calc(2rem + 0.875vw);
-		}
 		em.fa {
 			display: table-cell;
 			line-height: 1.625rem;
@@ -202,9 +199,6 @@
 		> a {
 			border-bottom-right-radius: 0.5rem;
 			left: 0;
-			+ .title-bar-title {
-				margin-left: calc(2rem + 0.875vw);
-			}
 		}
 	}
 	
@@ -220,17 +214,11 @@
 		&.bottom > a, 
 		&.enter > a {
 			left: 0;
-			+ .title-bar-title {
-				margin-left: calc(2rem + 0.875vw);
-			}
 
 		}
 		
 		> a {
 			left: -2.1875rem;
-			+ .title-bar-title {
-				margin-left: 0.875vw;
-			}
 		}
 		
 		.title-bar-right {

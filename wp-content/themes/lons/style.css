@@ -593,8 +593,6 @@ body:not(.home) .entry-content.callout {
     display: block;
     margin: auto;
     padding: 0.5rem; }
-    #masthead > a + .title-bar-title {
-      margin-left: calc(2rem + 0.875vw); }
     #masthead > a em.fa {
       display: table-cell;
       line-height: 1.625rem; }
@@ -740,9 +738,6 @@ body:not(.home) .entry-content.callout {
     body.home #masthead > a {
       border-bottom-right-radius: 0.5rem;
       left: 0; }
-      body.bottom #masthead > a + .title-bar-title,
-      body.home #masthead > a + .title-bar-title {
-        margin-left: calc(2rem + 0.875vw); }
 
   #masthead.transparent {
     border-bottom-color: transparent;
@@ -751,12 +746,8 @@ body:not(.home) .entry-content.callout {
       border-bottom-right-radius: 0.5rem; }
   #masthead.bottom > a, #masthead.enter > a {
     left: 0; }
-    #masthead.bottom > a + .title-bar-title, #masthead.enter > a + .title-bar-title {
-      margin-left: calc(2rem + 0.875vw); }
   #masthead > a {
     left: -2.1875rem; }
-    #masthead > a + .title-bar-title {
-      margin-left: 0.875vw; }
   #masthead .title-bar-right {
     font-size: 3vh; } }
 body.home #colophon {

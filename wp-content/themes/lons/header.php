@@ -6,7 +6,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 1.1
+ * @since Lovers + Nerds 2.2.6
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
@@ -49,7 +49,10 @@
 					<?php endif; ?>
 					</figcaption>
 				</figure>
-			  <nav class="title-bar-right">				  
+			  <nav class="title-bar-right">
+					<a href="<?php echo bloginfo('url') . '/wp-admin';?>">
+						<em class="fa fa-cog"></em>
+					</a>
 					<a href="#twitter-feed">
 						<em class="fa fa-twitter"></em>
 					</a>
