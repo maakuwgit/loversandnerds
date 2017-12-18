@@ -5,7 +5,7 @@ Theme URI: https://maakuw.com/loversandnerds/
 Author: the WordPress team
 Author URI: https://wordpress.org/
 Description: It's a newer version of the theme. It's even MORE amazing
-Version: 2.2.6
+Version: 2.2.8
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, footer-sidebar, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready, blog
@@ -283,7 +283,7 @@ body:not(.home) .entry-content.callout {
     .callout .table .columns:not(:last-child) {
       margin-bottom: 1rem; } }
 /* Medium Down */
-@media only screen and (max-width: 63.9375em) {
+@media only screen and (max-width: 64.9375em) {
   .show-for-large {
     display: none !important; }
 
@@ -305,7 +305,7 @@ body:not(.home) .entry-content.callout {
   body.admin-bar [data-stick-to] {
     top: 2.875rem; } }
 /* Medium Only */
-@media only screen and (min-width: 40em) and (max-width: 63.9375em) {
+@media only screen and (min-width: 40em) and (max-width: 64.9375em) {
   .entry-content.active .entry-body {
     max-height: 50vh; }
 
@@ -457,7 +457,7 @@ body:not(.home) .entry-content.callout {
   .off-canvas-content > .scrollmagic-pin-spacer a .fa {
     font-size: 0.75rem; } }
 /* Large Up */
-@media only screen and (min-width: 64em) {
+@media only screen and (min-width: 65em) {
   .hide-for-large {
     display: none !important; }
 
@@ -683,7 +683,7 @@ body:not(.home) .entry-content.callout {
     display: inline-block;
     margin-left: 0.875vw;
     padding: 0 1.5vw 0 0;
-    font-size: 2.5vh; }
+    font-size: 1.125rem; }
     .title-bar .title-bar-title .chava {
       vertical-align: 0.125rem; }
     .title-bar .title-bar-title .unicorns {
@@ -727,9 +727,12 @@ body:not(.home) .entry-content.callout {
   #masthead.menu-open {
     min-height: 2.6875rem; }
     #masthead.menu-open > *:not([data-toggle]) {
-      display: none; } }
+      display: none; }
+
+  .title-bar .title-bar-title {
+    font-size: 2.5vh; } }
 /* Large Up */
-@media only screen and (min-width: 64em) {
+@media only screen and (min-width: 65em) {
   body.bottom #masthead,
   body.home #masthead {
     border-bottom-color: transparent;
@@ -1004,7 +1007,7 @@ body.home #colophon {
           -webkit-box-flex: .5;
               -ms-flex: .5 1 auto;
                   flex: .5 1 auto; } }
-  @media only screen and (min-width: 40em) and (max-width: 63.9375em) {
+  @media only screen and (min-width: 40em) and (max-width: 64.9375em) {
     #colophon .th {
       margin-bottom: 1rem; }
       #colophon .th figcaption {
@@ -1024,10 +1027,10 @@ body.home #colophon {
     #colophon dl {
       width: calc(100% - 250px);
       min-height: 100vh; } }
-  @media only screen and (max-width: 63.9375em) {
+  @media only screen and (max-width: 64.9375em) {
     #colophon > div {
       min-height: 50vh; } }
-  @media only screen and (min-width: 64em) {
+  @media only screen and (min-width: 65em) {
     #colophon {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -1086,7 +1089,7 @@ body.single .entry-content .entry-body {
   body.single-post .entry-content .entry-header h1 {
     margin-top: 12vh; } }
 /* Medium Only */
-@media only screen and (min-width: 40em) and (max-width: 63.9375em) {
+@media only screen and (min-width: 40em) and (max-width: 64.9375em) {
   body.single-post .entry-content .entry-header h1 {
     margin-top: 10vh; } }
 /* Medium Up */
@@ -1137,11 +1140,11 @@ body.single .entry-content .entry-body {
   .single h1 {
     margin-top: 46px; } }
 /* Large Down */
-@media only screen and (max-width: 63.9375em) {
+@media only screen and (max-width: 64.9375em) {
   .single .entry-body p {
     font-size: 0.9375rem; } }
 /* Large Up */
-@media only screen and (min-width: 64em) {
+@media only screen and (min-width: 65em) {
   body:not(.single-post) .entry-header h1,
   body:not(.single-post) .entry-header h2 {
     margin-top: calc(33vh + 5.375rem/2.25); }
@@ -1151,13 +1154,15 @@ body.single .entry-content .entry-body {
 .archive .entry-body p {
   margin-top: 1.25rem;
   margin-bottom: auto; }
-
 .archive.category .title-bar-right {
   display: none; }
+.archive #masthead > a + .title-bar-title {
+  margin-left: calc(2rem + 0.875vw); }
 
-.archive .entry-content:nth-child(odd) {
-  background-attachment: initial; }
-
+/* Medium Down */
+@media only screen and (max-width: 64.9375em) {
+  .archive .entry-content:nth-child(odd) {
+    background-attachment: initial; } }
 /* Small Only */
 @media only screen and (max-width: 39.9375em) {
   cite {
@@ -1207,7 +1212,7 @@ body.single .entry-content .entry-body {
   .social-widget > * {
     border-left-style: none; } }
 /* Medium Only */
-@media only screen and (min-width: 40em) and (max-width: 63.9375em) {
+@media only screen and (min-width: 40em) and (max-width: 64.9375em) {
   .entry-content.active .entry-body {
     max-height: 50vh; }
 
@@ -1246,13 +1251,13 @@ body.single .entry-content .entry-body {
   .archive .format-aside nav {
     text-align: left; } }
 /* Large Up */
-@media only screen and (min-width: 64em) {
+@media only screen and (min-width: 65em) {
   .archive .entry-content:nth-child(odd) {
     background-attachment: fixed; } }
 body.category .callout {
   height: calc(50vh + 2rem + 40px);
   background-position-y: top; }
-@media only screen and (min-width: 64em) {
+@media only screen and (min-width: 65em) {
   body.category .callout {
     height: 50vh;
     background-size: auto calc(50vh + 2rem + 40px); } }
@@ -1378,7 +1383,7 @@ body.category-wolf {
       body.category-wolf .entry-content.format-image .feature img {
         border-width: 1px;
         border-color: #cacaca; } }
-  @media only screen and (min-width: 40em) and (max-width: 63.9375em) {
+  @media only screen and (min-width: 40em) and (max-width: 64.9375em) {
     body.category-wolf .entry-content .entry-header {
       padding-top: 25vh; }
     body.category-wolf .entry-content .entry-body {
@@ -1402,7 +1407,7 @@ body.category-wolf {
           width: 100%;
           height: 100%;
           content: ''; } }
-  @media only screen and (min-width: 64em) {
+  @media only screen and (min-width: 65em) {
     body.category-wolf .th > div {
       margin-top: 2rem;
       margin-bottom: 2rem; }
@@ -1585,7 +1590,7 @@ body.category-wolf {
   .social-widget > * {
     border-left-style: none; } }
 /* Medium Only */
-@media only screen and (min-width: 40em) and (max-width: 63.9375em) {
+@media only screen and (min-width: 40em) and (max-width: 64.9375em) {
   .social-widget > * {
     width: 50vw; }
 
@@ -1620,7 +1625,7 @@ body.category-wolf {
     right: 2rem;
     left: initial; } }
 /* Large Up */
-@media only screen and (min-width: 64em) {
+@media only screen and (min-width: 65em) {
   main.social-active .entry-body {
     margin-right: 0; }
 
@@ -1768,7 +1773,7 @@ input[type="button"],
   @media only screen and (min-width: 40em) {
     .home .entry-content.callout {
       height: calc(40vh - 2rem); } }
-  @media only screen and (min-width: 64em) {
+  @media only screen and (min-width: 65em) {
     .home .entry-content {
       /*
       h2 {

@@ -124,7 +124,7 @@
 		display:inline-block;
 	  margin-left: 0.875vw;
 	  padding: 0 1.5vw 0 0;
-		font-size: 2.5vh;
+		font-size: 1.125rem;
 		.chava {
 			vertical-align: 0.125rem;
 		}
@@ -188,10 +188,15 @@
 			}
 		}
 	}
+	.title-bar {
+		.title-bar-title {
+			font-size: 2.5vh;
+		}
+	}
 }
 
 /* Large Up */
-@media only screen and (min-width:64em) {
+@media only screen and (min-width:65em) {
 	body.bottom #masthead, 
 	body.home #masthead {
 		border-bottom-color: transparent;
@@ -214,7 +219,6 @@
 		&.bottom > a, 
 		&.enter > a {
 			left: 0;
-
 		}
 		
 		> a {

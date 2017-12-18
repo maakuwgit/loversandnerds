@@ -268,7 +268,7 @@ body.home {
 	
 		
 	/* Medium Only */
-	@media only screen and (min-width: 40em) and (max-width: 63.9375em) {
+	@media only screen and (min-width: 40em) and (max-width: 64.9375em) {
 		.th {
 			margin-bottom: rem-calc(16);
 			figcaption {
@@ -296,13 +296,13 @@ body.home {
 		}
 	}
 	
-	@media only screen and (max-width: 63.9375em){
+	@media only screen and (max-width: 64.9375em){
 		> div {
 			min-height: 50vh;
 		}
 	}
 	
-	@media only screen and (min-width: 64em){
+	@media only screen and (min-width: 65em){
 		display: flex;
 		> div {
 			width: 50%;

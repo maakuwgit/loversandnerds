@@ -22,7 +22,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.2.5
+ * @since Lovers + Nerds 2.2.8
  */
 
 /**
@@ -242,14 +242,25 @@ add_action( 'wp_head', 'twentysixteen_javascript_detection', 0 );
  *
  * @since Lovers + Nerds 2.1.6.7
  */
-function global_enqueue() {
+function frontend_enqueue() {
 	
 	$server = $_SERVER['SERVER_NAME'];
 	$template_dir = get_template_directory_uri();
 	
 	//Theme stylesheets.
-	wp_enqueue_style( 'lons-style', $template_dir . '/style.min.css', array('core_styles'), '2.2.7' );
 	wp_enqueue_style( 'core_styles', $template_dir . '/assets/css/base.min.css', array(), '2.2.5' );
+	wp_enqueue_style( 'lons-style', $template_dir . '/style.min.css', array('core_styles'), '2.2.8' );
+}
+/**
+ * Enqueues scripts and styles.
+ *
+ * @since Lovers + Nerds 2.1.6.7
+ */
+function global_enqueue() {
+	
+	$server = $_SERVER['SERVER_NAME'];
+	$template_dir = get_template_directory_uri();
+	
 	
 	// Add custom fonts, used in the main stylesheet.
 	wp_enqueue_style( 'roboto_slab', '//fonts.googleapis.com/css?family=Roboto+Slab', array(), null);
@@ -276,7 +287,7 @@ function global_enqueue() {
 	wp_enqueue_script( 'global_functions', $template_dir . '/assets/js/functions.js', array( 'jquery', 'backgrounder', 'breakpoints' ), '2.1.3', true );
 
 }
-//add_action( 'wp_enqueue_scripts', 'frontend_scripts' );
+add_action( 'wp_enqueue_scripts', 'frontend_enqueue' );
 add_action( 'wp_enqueue_scripts', 'global_enqueue' );
 
 /**

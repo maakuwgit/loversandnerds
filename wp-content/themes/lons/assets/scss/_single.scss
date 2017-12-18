@@ -50,7 +50,7 @@ body.single .entry-content .entry-body > *:last-child {
 }
 
 /* Medium Only */
-@media only screen and (min-width:40em) and (max-width:63.9375em) {
+@media only screen and (min-width:40em) and (max-width:64.9375em) {
 	body.single-post .entry-content .entry-header h1 {
 	  margin-top: 10vh;
 	}
@@ -116,14 +116,14 @@ body.single .entry-content .entry-body > *:last-child {
 }
 
 /* Large Down */
-@media only screen and (max-width:63.9375em) {
+@media only screen and (max-width:64.9375em) {
 	.single .entry-body p {
 		font-size: 0.9375rem;
 	}
 }
 
 /* Large Up */
-@media only screen and (min-width:64em) {
+@media only screen and (min-width:65em) {
 	body:not(.single-post) .entry-header h1,
 	body:not(.single-post) .entry-header h2 {
 	  margin-top: calc(33vh + 5.375rem/2.25);
