@@ -69,7 +69,7 @@
 	<dd></dd>
 	<?php endif; ?>
 	<dt>
-		<h6><?php the_title();?><?php edit_post_link(' <em class="fa fa-pencil"></em>'); ?></h6>
+		<h6><?php the_title();?><?php edit_post_link(' <em class="lnr lnr-pencil"></em>'); ?></h6>
 		<?php if ( has_excerpt() ) : ?>
 		<?php the_excerpt(); ?>
 		<?php endif; ?>

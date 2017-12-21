@@ -22,7 +22,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.2.8
+ * @since Lovers + Nerds 2.2.9
  */
 
 /**
@@ -65,29 +65,12 @@ function twentysixteen_setup() {
 	add_theme_support( 'title-tag' );
 
 	/*
-	 * Enable support for custom logo.
-	 *
-	 *  @since Twenty Sixteen 1.2
-	 */
-	add_theme_support( 'custom-logo', array(
-		'height'      => 240,
-		'width'       => 240,
-		'flex-height' => true,
-	) );
-
-	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 1200, 9999 );
-
-	// This theme uses wp_nav_menu() in two locations.
-	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'twentysixteen' ),
-		'social'  => __( 'Social Links Menu', 'twentysixteen' ),
-	) );
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -147,46 +130,6 @@ function twentysixteen_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'twentysixteen_content_width', 840 );
 }
 add_action( 'after_setup_theme', 'twentysixteen_content_width', 0 );
-
-/**
- * Registers a widget area.
- *
- * @link https://developer.wordpress.org/reference/functions/register_sidebar/
- *
- * @since Twenty Sixteen 1.0
- */
-function twentysixteen_widgets_init() {
-	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'twentysixteen' ),
-		'id'            => 'sidebar-1',
-		'description'   => __( 'Add widgets here to appear in your sidebar.', 'twentysixteen' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-
-	register_sidebar( array(
-		'name'          => __( 'Content Bottom 1', 'twentysixteen' ),
-		'id'            => 'sidebar-2',
-		'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'twentysixteen' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-
-	register_sidebar( array(
-		'name'          => __( 'Content Bottom 2', 'twentysixteen' ),
-		'id'            => 'sidebar-3',
-		'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'twentysixteen' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
-add_action( 'widgets_init', 'twentysixteen_widgets_init' );
 
 if ( ! function_exists( 'twentysixteen_fonts_url' ) ) :
 /**
@@ -248,7 +191,6 @@ function frontend_enqueue() {
 	$template_dir = get_template_directory_uri();
 	
 	//Theme stylesheets.
-	wp_enqueue_style( 'core_styles', $template_dir . '/assets/css/base.min.css', array(), '2.2.5' );
 	wp_enqueue_style( 'lons-style', $template_dir . '/style.min.css', array('core_styles'), '2.2.8' );
 }
 /**
@@ -261,13 +203,15 @@ function global_enqueue() {
 	$server = $_SERVER['SERVER_NAME'];
 	$template_dir = get_template_directory_uri();
 	
+	wp_enqueue_style( 'core_styles', $template_dir . '/assets/css/base.min.css', array(), '2.2.5' );
 	
 	// Add custom fonts, used in the main stylesheet.
 	wp_enqueue_style( 'roboto_slab', '//fonts.googleapis.com/css?family=Roboto+Slab', array(), null);
 	wp_enqueue_style( 'roboto', '//fonts.googleapis.com/css?family=Roboto:400,400i,700,700i', array(), null);
 	
-	// Add Genericons, used in the main stylesheet.
+	// Add Icon Fonts, used in the main stylesheet.
 	wp_enqueue_style( 'font-awesome', $template_dir . '/assets/css/font-awesome.min.css', array(), '4.6.3' );
+	wp_enqueue_style( 'linearicons', $template_dir . '/assets/css/linearicons.css', array(), '1.1.8' );
 
 	//Libraries
 	wp_enqueue_script( 'backgrounder', $template_dir . '/assets/js/backgrounder.js', array( 'jquery' ), '0.1', true );
@@ -515,6 +459,8 @@ function theme_settings_meta_box( $post ) {
 		$align   		= get_post_meta( $post_id, 'lons_project_theme_align', true );
 		$valign   		= get_post_meta( $post_id, 'lons_project_theme_valign', true );
 		
+		if($format) $format = $format[0];
+		
 		$project 		= get_post_meta( $post_id, 'lons_is_project', true );
 ?>
 <fieldset class="themediv">
@@ -525,30 +471,28 @@ function theme_settings_meta_box( $post ) {
 	</ul>
 	<div id="theme-visuals" class="tabs-panel">
 		<p>
-			<label title="If there is a dark background image, use this option for lighter (more readable) text" for="lons_project_theme_light">
-				<input type="radio" id="lons_project_theme_light" name="lons_project_theme" value="light"<?php if( $theme == 'light' ) echo ' checked'; ?>> <?php esc_html_e( 'Light', 'lons' ); ?>
-			</label><br>
+			<label title="If there is a dark background image, use this option for lighter (more readable) text" for="lons_project_theme_light" style="margin-right:10px;">
+				<input type="radio" id="lons_project_theme_light" name="lons_project_theme" value="light"<?php if( $theme == 'light' ) echo ' checked'; ?>><?php esc_html_e( 'Light', 'lons' ); ?>
+			</label>
 			<label type="radio" for="lons_project_theme_dark" title="If there is a light background image, use this option for darker (more readable) text">
-				<input type="radio" id="lons_project_theme_dark" name="lons_project_theme" value="dark"<?php if( $theme == 'dark' ) echo ' checked'; ?>> <?php esc_html_e( 'Dark', 'lons' ); ?>
+				<input type="radio" id="lons_project_theme_dark" name="lons_project_theme" value="dark"<?php if( $theme == 'dark' ) echo ' checked'; ?>><?php esc_html_e( 'Dark', 'lons' ); ?>
 			</label>
 		</p>
 		<p>
-			<label for="lons_project_theme_align"><?php esc_html_e( 'X Alignment', 'lons' ); ?>:
-				<select id="lons_project_theme_align" name="lons_project_theme_align">
-					<option default value="center" <?php  selected( $align, 'center' ); ?>>Center</option>
-					<option value="right" <?php  selected( $align, 'right' ); ?>>Right</option>
-					<option value="left" <?php selected( $align, 'left' ); ?>>Left</option>
-				</select>
-			</label>
+			<label for="lons_project_theme_align"><?php esc_html_e( 'X Alignment', 'lons' ); ?>:</label>
+			<select id="lons_project_theme_align" name="lons_project_theme_align" style="width:auto;">
+				<option default value="center" <?php  selected( $align, 'center' ); ?>>Center</option>
+				<option value="right" <?php  selected( $align, 'right' ); ?>>Right</option>
+				<option value="left" <?php selected( $align, 'left' ); ?>>Left</option>
+			</select>
 		</p>
 		<p>
-			<label for="lons_project_theme_valign"><?php esc_html_e( 'Y Alignment', 'lons' ); ?>:
-				<select id="lons_project_theme_valign" name="lons_project_theme_valign">
-					<option default value="top" <?php  selected( $valign, 'top' ); ?>>Top</option>
-					<option value="center" <?php  selected( $valign, 'center' ); ?>>Center</option>
-					<option value="bottom" <?php selected( $valign, 'bottom' ); ?>>Bottom</option>
-				</select>
-			</label>
+			<label for="lons_project_theme_valign"><?php esc_html_e( 'Y Alignment', 'lons' ); ?>:</label>
+			<select id="lons_project_theme_valign" name="lons_project_theme_valign" style="width:auto;">
+				<option default value="top" <?php  selected( $valign, 'top' ); ?>>Top</option>
+				<option value="center" <?php  selected( $valign, 'center' ); ?>>Center</option>
+				<option value="bottom" <?php selected( $valign, 'bottom' ); ?>>Bottom</option>
+			</select>
 		</p>
 		<p>
 			<label class="block" for="lons_project_color"><?php esc_html_e( 'Color', 'lons' ); ?>:</label>
@@ -1004,15 +948,68 @@ if ( ! function_exists( 'lons_user_fields' ) ) :
  */
   function lons_user_fields( $user ) { 
 	
-		$gender 	= esc_attr( get_the_author_meta( 'gender', $user->ID ) );
+		$gender 		= esc_attr( get_the_author_meta( 'gender', $user->ID ) );
+		$img_usage 	= esc_attr( get_the_author_meta( 'img_usage', $user->ID ) );
+		$img_align 	= esc_attr( get_the_author_meta( 'img_align', $user->ID ) );
 		
 	?>
-  <h3>Lovers&amp;Nerds specific info</h3>
+  <h4>Personal</h4>
+  <table class="form-table">
+  	<tr>
+			<th scope="row"><label for="gender">Gender</label></th>
+			<td><select class="regular-text ltr" name="gender" type="text" id="gender" cols="10">
+				<option value="m" <?php selected( $gender, 'm' ); ?>>Male</option>
+				<option value="f" <?php selected( $gender, 'f' ); ?>>Female</option>
+			</td>
+		</tr>
+  </table>
+  <h4>Imagery</h4>
   <table class="form-table">
   	<tr>
 			<th scope="row"><label for="photo">Photo</label></th>
-			<td><input class="regular-text ltr" name="photo" type="text" id="photo" value="<?php echo esc_attr( get_the_author_meta( 'photo', $user->ID ) ); ?>" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60"></td>
+			<td>
+			<?php 
+				$args = array(
+						'post_type' 		=> 'attachment',
+						'post_mime_type' 	=> 'image',
+						'numberposts'	=> -1,
+				);
+					
+				$media = get_posts( $args );
+
+				if( $media ) : ?>
+				<select name="photo" id="photo">
+					<?php foreach ( $media as $image ) :?>
+						<?php setup_postdata($image);?>
+					<option value="<?php echo $image->ID; ?>"><?php echo $image->post_title; ?></option>
+					<?php endforeach; ?>
+				</select>
+				<?php endif; ?>
+			</td>
 		</tr>
+  	<tr class="form-required">
+			<th scope="row"><label for="img_usage">Image Usage</label></th>
+			<td>
+				<select name="img_usage" id="img_usage" aria-required="false">
+					<option value="background"<?php  selected( $img_usage, 'background' ); ?>>Fullsize</option>
+					<option value="default"<?php  selected( $img_usage, 'default' ); ?>>Boxed</option>
+				</select>
+			</td>
+		</tr>
+  	<tr class="form-required">
+			<th scope="row"><label for="img_usage">Image Alignment</label></th>
+			<td>
+				<label for="img_right">
+					<input type="radio" id="img_left" name="img_align" value="left"<?php if( $img_align == 'left' ) echo ' checked'; ?>> <?php esc_html_e( 'Left', 'lons' ); ?>
+				</label>
+				<label type="radio" for="img_right">
+					<input type="radio" id="img_right" name="img_align" value="right"<?php if( $img_align == 'right' ) echo ' checked'; ?>> <?php esc_html_e( 'Right', 'lons' ); ?>
+				</label>
+			</td>
+  	</tr>
+  </table>
+  <h3>Occupation</h3>
+  <table class="form-table">
   	<tr class="form-required">
 			<th scope="row"><label for="job_title">Title</label></th>
 			<td><input class="regular-text ltr" name="job_title" type="text" id="job_title" value="<?php echo esc_attr( get_the_author_meta( 'job_title', $user->ID ) ); ?>" aria-required="false" autocapitalize="none" autocorrect="off" maxlength="60"></td>
@@ -1020,13 +1017,6 @@ if ( ! function_exists( 'lons_user_fields' ) ) :
   	<tr>
 			<th scope="row"><label for="job_description">Job Description</label></th>
 			<td><textarea class="regular-text ltr" name="job_description" id="job_description" placeholder="<?php echo esc_attr( get_the_author_meta( 'job_description', $user->ID ) ); ?>" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="180"></textarea></td>
-		</tr>
-  	<tr>
-			<th scope="row"><label for="gender">Gender</label></th>
-			<td><select class="regular-text ltr" name="gender" type="text" id="gender" cols="10">
-				<option value="m" <?php if( $gender == 'm' ) echo ' selected'; ?>>Male</option>
-				<option value="f" <?php if( $gender == 'f' ) echo ' selected'; ?>>Female</option>
-			</td>
 		</tr>
   </table>
   <h4>Social</h4>

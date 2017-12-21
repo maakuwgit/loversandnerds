@@ -30,7 +30,7 @@
 			<div class="entry-body">
 				<h1 class="entry-title"><?php the_title();?>
 			<?php if( current_user_can('edit_post', $post_id ) ) : ?>
-						<a href="<?php echo get_edit_post_link($post_id);?>"><em class="fa fa-pencil"></em></a>
+						<a href="<?php echo get_edit_post_link($post_id);?>"><em class="lnr lnr-pencil"></em></a>
 			<?php endif; ?></h1>
 				<?php the_content(); ?>
 			</div>

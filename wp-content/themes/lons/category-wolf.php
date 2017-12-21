@@ -25,7 +25,7 @@ get_header(); ?>
 			$prev = get_previous_posts_link();
 			$next = get_next_posts_link();
 
-			if(!empty($prev)) previous_posts_link('<em class="fa fa-chevron-left"></em>', 5);
+			if(!empty($prev)) previous_posts_link('<em class="fa fa-angle-left"></em>', 5);
 			// Start the loop.
 			while ( have_posts()) : the_post();
 				
@@ -38,7 +38,7 @@ get_header(); ?>
 		
 		// If no content, include the "No posts found" template.
 		
-			if(!empty($next)) next_posts_link('<em class="fa fa-chevron-right"></em>', 5);
+			if(!empty($next)) next_posts_link('<em class="fa fa-angle-right"></em>', 5);
 		} else {
 			get_template_part( 'template-parts/content', 'none' );
 		

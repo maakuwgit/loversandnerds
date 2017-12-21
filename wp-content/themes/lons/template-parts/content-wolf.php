@@ -44,7 +44,7 @@
 	<?php endif; ?>
 	<?php if ( has_excerpt() ) : ?>
 			<div id="<?php echo $slug; ?>-content" class="entry-body small-12 medium-8 large-9 cell">
-				<h2 class="entry-title"><a href="<?php echo get_the_permalink(); ?>"><?php the_title();?></a><?php edit_post_link(' <em class="fa fa-pencil"></em>'); ?></h2>
+				<h2 class="entry-title"><a href="<?php echo get_the_permalink(); ?>"><?php the_title();?></a><?php edit_post_link(' <em class="lnr lnr-pencil"></em>'); ?></h2>
 				<h4 class="text-light"><?php echo $nickname;?> | <?php the_date(); ?></h4>
 				<p><?php echo get_the_excerpt(); ?></p>
 				<p><small><?php the_tags(false); ?></small></p>

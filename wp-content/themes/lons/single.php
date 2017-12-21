@@ -12,7 +12,7 @@ get_header(); ?>
 <?php 
 		$prev = get_previous_posts_link();
 		$next = get_next_posts_link();
-		if(!empty($prev)) previous_posts_link('<em class="fa fa-chevron-left"></em>', 5);
+		if(!empty($prev)) previous_posts_link('<em class="fa fa-angle-left"></em>', 5);
 		
 		// Start the loop.
 		while ( have_posts() ) : the_post();
@@ -27,7 +27,7 @@ get_header(); ?>
 			echo do_shortcode("[nu_tweets]");
 		}
 		
-		if(!empty($next)) next_posts_link('<em class="fa fa-chevron-right"></em>', 5);
+		if(!empty($next)) next_posts_link('<em class="fa fa-angle-right"></em>', 5);
 ?>
 	</main>
 <?php get_footer(); ?>

@@ -12,6 +12,7 @@
  $header_style = false;
  $post_id 	= $post->ID;
  $slug 			= $post->post_name;
+ 
  $color   	= get_post_meta( $post_id, 'lons_project_color', true );
  $theme   	= get_post_meta( $post_id, 'lons_project_theme', true );
  $align   	= get_post_meta( $post_id, 'lons_project_theme_align', true );
@@ -39,9 +40,9 @@
 		 <?php endif; ?>
 			<header class="entry-header"<?php echo $header_style;?> id="<?php echo $slug; ?>-header">
 			<?php if($first == true) :?>
-				<h1 class="entry-title"><?php the_title();?><?php edit_post_link('<em class="fa fa-pencil"></em>'); ?></h1>
+				<h1 class="entry-title"><?php the_title();?><?php edit_post_link('<em class="lnr lnr-pencil"></em>'); ?></h1>
 			<?php else: ?>
-				<h2 class="entry-title"><?php the_title();?><?php edit_post_link('<em class="fa fa-pencil"></em>'); ?></h2>
+				<h2 class="entry-title"><?php the_title();?><?php edit_post_link('<em class="lnr lnr-pencil"></em>'); ?></h2>
 			<?php endif; ?>
 			</header>
 		<?php if ( has_excerpt() ) : ?>

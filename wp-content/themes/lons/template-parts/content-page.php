@@ -15,7 +15,7 @@
 		</div>
 	 <?php endif; ?>
 		<header class="entry-header">
-			<h1 class="entry-title"><?php the_title();?><?php edit_post_link(' <em class="fa fa-pencil"></em>'); ?></h1>
+			<h1 class="entry-title"><?php the_title();?><?php edit_post_link(' <em class="lnr lnr-pencil"></em>'); ?></h1>
 		</header>
 		<div class="entry-body">
 			<?php the_content(); ?>

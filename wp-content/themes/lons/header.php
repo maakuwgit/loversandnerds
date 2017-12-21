@@ -6,8 +6,26 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.2.6
+ * @since Lovers + Nerds 2.2.9
  */
+	global $post;
+	
+	$cat = get_queried_object();
+	
+	if ( $cat ) {
+		$user = get_user_by('slug', $cat->slug);
+		$user = $user->data;
+	}else{
+		$user = wp_get_current_user();
+	}
+	
+	$admin_url = get_bloginfo('url') . '/wp-admin';
+ 
+	if( current_user_can('publish_posts', $post->ID ) ) {
+		$user_url = $admin_url . '/user-edit.php?user_id=' . $user->ID;
+	}else{
+		$user_url = $admin_url;
+	}
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
@@ -24,9 +42,9 @@
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper data-sticky-container>
 			<header id="masthead" class="site-header title-bar sticky" data-sticky data-stick-to="top">
 				<a href="#menu-open" data-toggle="colophon" class="hide">
-					<span class="fa fa-bars"></span>
+					<span class="lnr lnr-menu"></span>
 				</a>
-				<?php if( is_category() ) echo '<a href="' . get_bloginfo('url') . '" class="home"><em class="fa fa-home"></em></a>';?>
+				<?php if( is_category() ) echo '<a href="' . get_bloginfo('url') . '" class="home"><em class="lnr lnr-home"></em></a>';?>
 				<figure class="title-bar-title">
 					<figcaption>
 					<?php if( is_single() ) : ?>
@@ -50,8 +68,13 @@
 					</figcaption>
 				</figure>
 			  <nav class="title-bar-right">
-					<a href="<?php echo bloginfo('url') . '/wp-admin';?>">
-						<em class="fa fa-cog"></em>
+				<?php if( is_user_logged_in() ) : ?>
+					<a href="<?php echo $admin_url;?>">
+						<em class="lnr lnr-cog"></em>
+					</a>
+				<?php endif; ?>
+					<a href="<?php echo $user_url;?>">
+						<em class="lnr lnr-user"></em>
 					</a>
 					<a href="#twitter-feed">
 						<em class="fa fa-twitter"></em>

@@ -1,11 +1,99 @@
 body.category-maakuw {
+	#nextBtn, 
+	.button, 
+	.off-canvas-content>.scrollmagic-pin-spacer a,
+	.off-canvas-content>a, 
+	input[type=submit], 
+	input[type=button] {
+		background-color: $salmon;
+	}
+	
+	.logo {
+		display: block;
+		max-width: 45px;
+		padding: 5px;
+		font-size: rem-calc(16);
+		line-height: 1;
+		text-align: center;
+		background-color: red;
+		font-family: Osaka;
+	}
+	
+	#masthead {
+		> a {
+			color: $white;
+			background-color: transparent;
+			em.fa, em.lnr {
+				width: 2rem;
+				text-align: center;
+				font-size: 1.5rem;
+				vertical-align: middle;
+				line-height: 45px;
+			}
+		}
+	}
+	
+	#masthead,
+	.entry-content {
+		border-bottom-color: $navy;
+	}
+	
+	.title-bar {
+		background-color: $navy;
+	}
+	
 	.entry-body,
 	.entry-header,
 	.entry-footer {
 		padding: $row-padding;
 	}
+		
+	#nextBtn,
+	.off-canvas-content > a,
+	.off-canvas-content > .scrollmagic-pin-spacer a {
+		background-color: $navy;
+		z-index: 2;
+	}
 	
 	.entry-content.callout {
-		background-color: #f1d5b6;
+		min-height: 75vh;
+		z-index: 3;
+		color: $white;
+		background-color: $black;
+		figure {
+			height: 100%;
+			background-color: #729dd2;
+			background-size: cover;
+			@media only screen and (min-width: 40em) {
+				border: solid 1px #333;
+				box-shadow: 0 0 50px rgba(0,0,0,0.3) inset;
+			}
+		}
+		@media only screen and (max-width: 39.9375em) {
+			figure {
+				height: 100%;
+				width: 100%;
+				max-width: initial;
+				position: absolute;
+				z-index: -1;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+			> div {
+				padding: 10px;
+				background-color: $black;
+				* {
+					text-shadow: none;
+				}
+			}
+	  }
+	}
+	
+	@media only screen and (min-width: 40em) {
+		#content.enter .entry-footer .button {
+			border: solid 1px #1d2939;
+		}
 	}
 }

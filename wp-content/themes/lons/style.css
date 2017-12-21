@@ -5,7 +5,7 @@ Theme URI: https://maakuw.com/loversandnerds/
 Author: the WordPress team
 Author URI: https://wordpress.org/
 Description: It's a newer version of the theme. It's even MORE amazing
-Version: 2.2.8
+Version: 2.2.9
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, footer-sidebar, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready, blog
@@ -124,7 +124,7 @@ body.admin-bar .off-canvas-content {
 
 .entry-content {
   vertical-align: middle;
-  width: 100vw;
+  width: 100%;
   border-bottom: solid 0.5vh #ffffff;
   background: transparent;
   background-size: cover;
@@ -133,17 +133,14 @@ body.admin-bar .off-canvas-content {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   height: 100vh; }
-
-.entry-content:not(.table) {
-  display: table;
-  margin: auto 0; }
-
-.entry-content ul:not(.inline-list) {
-  list-style-type: disc; }
-
-.entry-content ol:not(.inline-list),
-.entry-content ul:not(.inline-list) {
-  margin-left: 1.25rem; }
+  .entry-content:not(.table) {
+    display: table;
+    margin: auto 0; }
+  .entry-content ul:not(.inline-list) {
+    list-style-type: disc; }
+  .entry-content ol:not(.inline-list),
+  .entry-content ul:not(.inline-list) {
+    margin-left: 1.25rem; }
 
 /*========== Entry Body	==========*/
 .entry-body {
@@ -171,7 +168,7 @@ body.admin-bar .off-canvas-content {
 
 .entry-content.callout {
   height: 50vh;
-  padding: 3.6875rem 1rem 1rem; }
+  padding: 4.75rem 1rem 1rem; }
 
 body:not(.home) .entry-content.callout {
   -webkit-box-pack: start;
@@ -452,10 +449,22 @@ body:not(.home) .entry-content.callout {
     bottom: -2rem;
     opacity: 0; }
 
-  #nextBtn .fa,
+  #nextBtn .fa, #nextBtn .lnr,
+  .off-canvas-content > a .fa, .off-canvas-content > a .lnr,
+  .off-canvas-content > .scrollmagic-pin-spacer a .fa,
+  .off-canvas-content > .scrollmagic-pin-spacer a .lnr {
+    font-size: 1.5rem;
+    line-height: 1.1875; }
+
   .off-canvas-content > a .fa,
-  .off-canvas-content > .scrollmagic-pin-spacer a .fa {
-    font-size: 0.75rem; } }
+  .off-canvas-content > a .lnr {
+    line-height: 2.5; }
+    .off-canvas-content > a .fa[class*="-angle-left"],
+    .off-canvas-content > a .lnr[class*="-angle-left"] {
+      margin-left: -0.25rem; }
+    .off-canvas-content > a .fa[class*="-angle-right"],
+    .off-canvas-content > a .lnr[class*="-angle-right"] {
+      margin-right: -0.25rem; } }
 /* Large Up */
 @media only screen and (min-width: 65em) {
   .hide-for-large {
@@ -542,32 +551,25 @@ body:not(.home) .entry-content.callout {
 
   #content > a {
     top: calc(50vh - 25px);
-    width: 2rem;
-    height: 2rem;
-    border-radius: 6rem;
-    box-shadow: 0 -0.25vh 2px rgba(0, 0, 0, 0.3);
+    width: 1.5rem;
+    height: 4rem;
+    border-radius: 1rem;
     margin: auto;
-    line-height: 2rem;
+    line-height: 4rem;
     text-align: center;
     padding: 0; }
-
-  #content > a:first-of-type:not(:last-of-type).disabled,
-  #content > a:first-of-type:not(:last-of-type) {
-    left: -2rem;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0; }
-
-  #content.enter > a:first-of-type:not(:last-of-type):not(.disabled) {
-    left: 0; }
-
-  #content > a:last-of-type.disabled,
-  #content > a:last-of-type {
-    right: -2rem;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0; }
-
+    #content > a:first-of-type:not(:last-of-type).disabled, #content > a:first-of-type:not(:last-of-type) {
+      left: -2rem;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0; }
+    #content > a:last-of-type.disabled, #content > a:last-of-type {
+      right: -2rem;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0; }
   #content.enter > a:last-of-type:not(.disabled) {
     right: 0; }
+  #content.enter > a:first-of-type:not(:last-of-type):not(.disabled) {
+    left: 0; }
 
   #user.maakuw .cell {
     margin-left: 10%; }
@@ -575,6 +577,9 @@ body:not(.home) .entry-content.callout {
   #user.wolf .cell {
     margin-right: 10%; } }
 /*============= Header ==============*/
+body.home #masthead a {
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0, 0, 0, 0.6); }
+
 #masthead {
   z-index: 10;
   margin-top: auto !important;
@@ -593,7 +598,7 @@ body:not(.home) .entry-content.callout {
     display: block;
     margin: auto;
     padding: 0.5rem; }
-    #masthead > a em.fa {
+    #masthead > a em.fa, #masthead > a em.lnr {
       display: table-cell;
       line-height: 1.625rem; }
   #masthead a[data-toggle] {
@@ -1151,10 +1156,7 @@ body.single .entry-content .entry-body {
 
   body.single-post .entry-header h1 {
     margin-top: 15vh; } }
-.archive .entry-body p {
-  margin-top: 1.25rem;
-  margin-bottom: auto; }
-.archive.category .title-bar-right {
+.archive.category .title-bar-right a[href="#twitter-feed"] {
   display: none; }
 .archive #masthead > a + .title-bar-title {
   margin-left: calc(2rem + 0.875vw); }
@@ -1262,12 +1264,77 @@ body.category .callout {
     height: 50vh;
     background-size: auto calc(50vh + 2rem + 40px); } }
 
+body.category-maakuw #nextBtn,
+body.category-maakuw .button,
+body.category-maakuw .off-canvas-content > .scrollmagic-pin-spacer a,
+body.category-maakuw .off-canvas-content > a,
+body.category-maakuw input[type=submit],
+body.category-maakuw input[type=button] {
+  background-color: #e65f50; }
+body.category-maakuw .logo {
+  display: block;
+  max-width: 45px;
+  padding: 5px;
+  font-size: 1rem;
+  line-height: 1;
+  text-align: center;
+  background-color: red;
+  font-family: Osaka; }
+body.category-maakuw #masthead > a {
+  color: #ffffff;
+  background-color: transparent; }
+  body.category-maakuw #masthead > a em.fa, body.category-maakuw #masthead > a em.lnr {
+    width: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    vertical-align: middle;
+    line-height: 45px; }
+body.category-maakuw #masthead,
+body.category-maakuw .entry-content {
+  border-bottom-color: #1c2839; }
+body.category-maakuw .title-bar {
+  background-color: #1c2839; }
 body.category-maakuw .entry-body,
 body.category-maakuw .entry-header,
 body.category-maakuw .entry-footer {
   padding: 0 7.5vw; }
+body.category-maakuw #nextBtn,
+body.category-maakuw .off-canvas-content > a,
+body.category-maakuw .off-canvas-content > .scrollmagic-pin-spacer a {
+  background-color: #1c2839;
+  z-index: 2; }
 body.category-maakuw .entry-content.callout {
-  background-color: #f1d5b6; }
+  min-height: 75vh;
+  z-index: 3;
+  color: #ffffff;
+  background-color: #000000; }
+  body.category-maakuw .entry-content.callout figure {
+    height: 100%;
+    background-color: #729dd2;
+    background-size: cover; }
+    @media only screen and (min-width: 40em) {
+      body.category-maakuw .entry-content.callout figure {
+        border: solid 1px #333;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.3) inset; } }
+  @media only screen and (max-width: 39.9375em) {
+    body.category-maakuw .entry-content.callout figure {
+      height: 100%;
+      width: 100%;
+      max-width: initial;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0; }
+    body.category-maakuw .entry-content.callout > div {
+      padding: 10px;
+      background-color: #000000; }
+      body.category-maakuw .entry-content.callout > div * {
+        text-shadow: none; } }
+@media only screen and (min-width: 40em) {
+  body.category-maakuw #content.enter .entry-footer .button {
+    border: solid 1px #1d2939; } }
 
 body.category-wolf {
   /* Small Only */
@@ -1284,7 +1351,7 @@ body.category-wolf {
         color: #ff5722; }
       body.category-wolf #masthead > a.home {
         border-right: solid 1px #cacaca; }
-      body.category-wolf #masthead > a em.fa {
+      body.category-wolf #masthead > a em.fa, body.category-wolf #masthead > a em.lnr {
         line-height: 2.75rem; }
   body.category-wolf .title-bar {
     background-color: #ffffff; }
@@ -1312,6 +1379,7 @@ body.category-wolf {
     font-size: 1.25rem;
     color: #cacaca; }
   body.category-wolf .entry-content .entry-title {
+    position: relative;
     font-size: 3rem;
     font-family: "unicorns";
     font-weight: 100;
@@ -1319,6 +1387,10 @@ body.category-wolf {
     line-height: 0.875; }
     body.category-wolf .entry-content .entry-title a {
       font-family: inherit; }
+      body.category-wolf .entry-content .entry-title a.post-edit-link {
+        margin-right: -0.625rem;
+        margin-top: -0.75rem;
+        font-size: 1.5rem; }
   body.category-wolf .entry-content .entry-header {
     padding-top: 1rem; }
     body.category-wolf .entry-content .entry-header h2.entry-title {
@@ -1407,6 +1479,9 @@ body.category-wolf {
           width: 100%;
           height: 100%;
           content: ''; } }
+  @media only screen and (max-width: 64.9375em) {
+    body.category-wolf .entry-content.callout {
+      background-position: left center; } }
   @media only screen and (min-width: 65em) {
     body.category-wolf .th > div {
       margin-top: 2rem;
@@ -1763,7 +1838,7 @@ input[type="button"],
     font-weight: 300; }
     .home .entry-content .entry-header h1 .unicorns {
       font-size: 3.5rem; }
-  .home .entry-content .entry-body p {
+  .home .entry-content .entry-body h3, .home .entry-content .entry-body p {
     text-align: center; }
   @media only screen and (max-width: 39.9375em) {
     .home .entry-content h2 {

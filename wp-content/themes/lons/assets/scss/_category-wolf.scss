@@ -12,7 +12,7 @@ body.category-wolf {
 			&.home {
 				border-right: solid 1px $silver;
 			}
-			em.fa {
+			em.fa, em.lnr {
 				line-height: rem-calc(44);
 			}
 		}
@@ -58,6 +58,7 @@ body.category-wolf {
 			color: $silver;
 		}
 		.entry-title {
+			position: relative;
 			font-size: rem-calc(48);
 			font-family: $unicorns;
 			font-weight: 100;
@@ -65,6 +66,11 @@ body.category-wolf {
 			line-height: 0.875;
 			a {
 				font-family: inherit;
+				&.post-edit-link {
+					margin-right: rem-calc(-10);
+					margin-top: rem-calc(-12);
+					font-size: rem-calc(24);
+				}
 			}
 		}
 		.entry-header {
@@ -197,6 +203,12 @@ body.category-wolf {
 					content: '';
 				}
 			}
+		}
+	}
+	
+	@media only screen and (max-width:64.9375em) {
+		.entry-content.callout {
+			background-position: left center;
 		}
 	}
 	

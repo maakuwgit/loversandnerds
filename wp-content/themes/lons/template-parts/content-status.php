@@ -37,12 +37,16 @@
 		 <?php endif; ?>
 			<header class="entry-header"<?php echo $header_style;?> id="<?php echo $slug; ?>-header">
 				<h1 class="entry-title"><?php the_title();?><?php
-		edit_post_link('<em class="fa fa-pencil"></em>');
+		edit_post_link('<em class="lnr lnr-pencil"></em>');
 	?></h1>
 			</header>
 		<?php if ( has_excerpt() ) : ?>
 			<div id="<?php echo $slug; ?>-content" class="entry-body">
+				<?php if ( is_front_page() ) : ?>
+				<h3><?php echo get_the_excerpt(); ?></h3>
+				<?php else : ?>
 				<?php the_excerpt(); ?>
+				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 		</div>

@@ -29,5 +29,5 @@
  
  if($header_style) $header_style = ' style=""';?>
 <dt data-href="<?php echo get_the_permalink(); ?>">
-	<p><?php echo get_the_excerpt(); ?><?php edit_post_link(' <em class="fa fa-pencil"></em>'); ?></p>
+	<p><?php echo get_the_excerpt(); ?><?php edit_post_link(' <em class="lnr lnr-pencil"></em>'); ?></p>
 </dt>

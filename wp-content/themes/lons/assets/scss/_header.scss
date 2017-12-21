@@ -1,4 +1,7 @@
 /*============= Header ==============*/
+body.home #masthead a {
+	text-shadow: 0 0 15px rgba(0,0,0,0.3), 0 0 5px rgba(0,0,0,0.6);
+}
 //Masthead
 #masthead {
   z-index: 10;
@@ -20,7 +23,7 @@
 		display: block;
 		margin: auto;
 		padding: 0.5rem;
-		em.fa {
+		em.fa, em.lnr {
 			display: table-cell;
 			line-height: 1.625rem;
 		}

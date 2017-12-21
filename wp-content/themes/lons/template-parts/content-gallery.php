@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 1.6
+ * @since Lovers + Nerds 2.2.9
  */
  global $first;
  
@@ -13,15 +13,6 @@
  $post_id 	= $post->ID;
  $slug 			= $post->post_name;
  $project 	= get_post_meta( $post_id, 'lons_is_project', true );
- 
-if( '' !== $project ) {
- $client 		= get_post_meta( $post_id, 'lons_project_client', true );
- $title   	= get_post_meta( $post_id, 'lons_project_title', true );
- $date   		= get_post_meta( $post_id, 'lons_project_year', true );
- $btn_href  = get_post_meta( $post_id, 'lons_project_btn_href', true );
- $btn_label = get_post_meta( $post_id, 'lons_project_btn_label', true ); 
- $repo_href = get_post_meta( $post_id, 'lons_project_repo_href', true );
-}
 
  $color   	= get_post_meta( $post_id, 'lons_project_color', true );
  $theme   	= get_post_meta( $post_id, 'lons_project_theme', true );
@@ -51,9 +42,9 @@ if( '' !== $project ) {
 				<span class="sticky-post"><?php _e( 'Featured', 'twentysixteen' ); ?></span>
 			<?php endif; ?>
 			<?php if($first == true) :?>
-				<h1 class="entry-title"><?php the_title();?></h1>
+				<h1 class="entry-title"><?php the_title();?><?php edit_post_link(' <em class="lnr lnr-pencil"></em>'); ?></h1>
 			<?php else: ?>
-				<h2 class="entry-title"><?php the_title();?></h2>
+				<h2 class="entry-title"><?php the_title();?><?php edit_post_link(' <em class="lnr lnr-pencil"></em>'); ?></h2>
 			<?php endif; ?>
 			</header>
 		<?php if ( '' !== get_the_content() || has_excerpt() ) : ?>
@@ -68,38 +59,5 @@ if( '' !== $project ) {
 			?>
 			</div>
 		<?php endif; ?>
-		<?php if( '' !== $project ): ?>
-			<footer class="entry-footer" id="<?php echo $slug; ?>-footer">
-				<ul class="inline-list">
-				<?php if( $client || $date ) : ?>
-					<li>
-						<h3>
-						<?php if( $client ) echo $client; ?>
-						<?php if( $date ) echo '&nbsp;|&nbsp;' . $date; ?>
-						</h3>
-					</li>
-				<?php endif; ?>
-				<?php if ( has_excerpt() ) : ?>
-					<li>
-						<button class="ellipsis button" id="<?php echo $slug; ?>-more" data-show-id="<?php echo $slug;?>">&bull;&bull;&bull;</button>
-					</li>
-				<?php endif; ?>
-				<?php if( $repo_href ) : ?>
-					<li>
-						<button class="button" data-href="<?php echo $repo_href; ?>"><em class="fa fa-bitbucket"></em></button>
-					</li>
-				<?php endif; ?>
-				<?php if( $btn_href ) : ?>
-					<li>
-						<button class="button secondary" data-href="<?php echo $btn_href; ?>" title="<?php echo $btn_label; ?>"><em class="fa fa-external-link"></em></button>
-					</li>
-				<?php endif; ?>
-				<?php if( current_user_can('edit_post', $post_id ) ) : ?>
-					<li>
-						<a class="button" href="<?php echo get_edit_post_link($post_id);?>"><em class="fa fa-pencil"></em></a>
-					</li>
-				<?php endif; ?>
-				</ul>
-			</footer>
-			<?php endif; ?>
+		<?php if( '' !== $project ) get_template_part('template-parts/footer', 'project'); ?>
 		</div>

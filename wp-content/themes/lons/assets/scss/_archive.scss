@@ -1,11 +1,9 @@
 .archive {
-	.entry-body p {
-		margin-top: 1.25rem;
-		margin-bottom: auto;
-	}
 
 	&.category .title-bar-right {
-		display: none;
+		a[href="#twitter-feed"] {
+			display: none;
+		}
 	}
 	
 	#masthead {

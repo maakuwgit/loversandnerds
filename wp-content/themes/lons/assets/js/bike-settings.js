@@ -18,9 +18,8 @@
 			}
 		} );
 		
-		
-		if( target.attr('value') == 'checked' ){
-			$('#post-format-bike').attr('checked', true);
+		if( target.attr('value') === 'checked' ){
+//			$('#post-format-bike').attr('checked', true);
 		}else{
 			bike_settings.addClass('hidden');
 		}

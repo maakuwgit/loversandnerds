@@ -97,7 +97,7 @@ if( '' !== $project ) {
 				<?php endif; ?>
 				<?php if( current_user_can('edit_post', $post_id ) ) : ?>
 					<li>
-						<a class="button" href="<?php echo get_edit_post_link($post_id);?>"><em class="fa fa-pencil"></em></a>
+						<a class="button" href="<?php echo get_edit_post_link($post_id);?>"><em class="lnr lnr-pencil"></em></a>
 					</li>
 				<?php endif; ?>
 				</ul>

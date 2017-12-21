@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.1.1
+ * @since Lovers + Nerds 2.2.9
  */
 
  $cat = get_queried_object();
@@ -22,8 +22,7 @@ if( '' !== $project ) {
  $title   	= get_post_meta( $post_id, 'lons_project_title', true );
  $date   		= get_post_meta( $post_id, 'lons_project_year', true );
  $btn_href  = get_post_meta( $post_id, 'lons_project_btn_href', true );
- $btn_label = get_post_meta( $post_id, 'lons_project_btn_label', true ); 
- $repo_href = get_post_meta( $post_id, 'lons_project_repo_href', true );
+ $btn_label = get_post_meta( $post_id, 'lons_project_btn_label', true );
  $color   	= get_post_meta( $post_id, 'lons_project_color', true );
  $theme   	= get_post_meta( $post_id, 'lons_project_theme', true );
  $align   	= get_post_meta( $post_id, 'lons_project_theme_align', true );
@@ -58,7 +57,7 @@ if( '' !== $project ) {
 				<?php endif; ?>
 					<h2 class="entry-title"><?php the_title();?>
 					<?php if( current_user_can('edit_post', $post_id ) ) : ?>
-						<a href="<?php echo get_edit_post_link($post_id);?>"><em class="fa fa-pencil"></em></a>
+						<a class="post-edit-link" href="<?php echo get_edit_post_link($post_id);?>"><em class="lnr lnr-pencil"></em></a>
 					<?php endif; ?>
 					</h2>
 					<h4 class="text-light">

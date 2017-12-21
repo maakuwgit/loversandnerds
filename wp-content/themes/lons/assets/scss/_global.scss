@@ -133,7 +133,7 @@ input[type="button"],
 //Entry Content
 .entry-content {
   vertical-align: middle;
-	width: 100vw;
+	width: 100%;
   border-bottom: solid 0.5vh $white;
   background: transparent;
   background-size: cover;
@@ -142,20 +142,21 @@ input[type="button"],
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 	height: 100vh;
-}
-		.entry-content:not(.table){
-			display: table;
-		  margin: auto 0;
-		}
 
-	.entry-content ul:not(.inline-list) {
+	&:not(.table){
+		display: table;
+	  margin: auto 0;
+	}
+
+	ul:not(.inline-list) {
 		list-style-type:disc
 	}
 	
-	.entry-content ol:not(.inline-list),
-	.entry-content ul:not(.inline-list) {
+	ol:not(.inline-list),
+	ul:not(.inline-list) {
 		margin-left:1.25rem
 	}
+}
 
 /*========== Entry Body	==========*/
 .entry-body {
@@ -190,7 +191,7 @@ input[type="button"],
 }
 	.entry-content.callout {
 		height: 50vh;
-		padding: 3.6875rem 1rem 1rem;
+		padding: 4.75rem 1rem 1rem;
 	}
 	
 	body:not(.home) .entry-content.callout {
@@ -506,10 +507,22 @@ input[type="button"],
 	  	bottom: -2rem;
 	  	opacity: 0;
 	  }
-		#nextBtn .fa,
+		#nextBtn .fa, #nextBtn .lnr, 
+	  .off-canvas-content > a .fa, .off-canvas-content > a .lnr, 
+	  .off-canvas-content > .scrollmagic-pin-spacer a .fa, 
+	  .off-canvas-content > .scrollmagic-pin-spacer a .lnr {
+			font-size: rem-calc(24);
+			line-height: 1.1875;
+		}
 	  .off-canvas-content > a .fa, 
-	  .off-canvas-content > .scrollmagic-pin-spacer a .fa {
-			font-size: 0.75rem;
+	  .off-canvas-content > a .lnr {
+			line-height: 2.5;
+			&[class*="-angle-left"] {
+				margin-left: rem-calc(-4);
+			}
+			&[class*="-angle-right"] {
+				margin-right: rem-calc(-4);
+			}
 		}
 }
 
@@ -609,36 +622,40 @@ input[type="button"],
 		background-size: 100vw;
 	}
 	
-	#content > a {
-	  top: calc(50vh - 25px);
-	  width: 2rem;
-	  height: 2rem;
-	  border-radius: 6rem;
-	  box-shadow: 0 -0.25vh 2px rgba(0,0,0,0.3);
-	  margin: auto;
-	  line-height: 2rem;
-	  text-align: center;
-	  padding: 0;
-	}
-	
-	#content > a:first-of-type:not(:last-of-type).disabled,
-	#content > a:first-of-type:not(:last-of-type) {
-		left: -2rem;
-	  border-bottom-left-radius: 0;
-	  border-top-left-radius: 0;
-	}
-		#content.enter > a:first-of-type:not(:last-of-type):not(.disabled) {
-			left: 0;
+	#content {
+		> a {
+			top: calc(50vh - 25px);
+			width: 1.5rem;
+			height: 4rem;
+			border-radius: 1rem;
+			margin: auto;
+			line-height: 4rem;
+			text-align: center;
+			padding: 0;
+		
+			&:first-of-type:not(:last-of-type).disabled,
+			&:first-of-type:not(:last-of-type) {
+				left: -2rem;
+				border-bottom-left-radius: 0;
+				border-top-left-radius: 0;
+			}
+			
+			&:last-of-type.disabled, 
+			&:last-of-type {
+				right: -2rem;
+			  border-bottom-right-radius: 0;
+			  border-top-right-radius: 0;
+			}
 		}
-	#content > a:last-of-type.disabled, 
-	#content > a:last-of-type {
-		right: -2rem;
-	  border-bottom-right-radius: 0;
-	  border-top-right-radius: 0;
-	}
-		#content.enter > a:last-of-type:not(.disabled) {
-			right: 0;
+		&.enter {
+			> a:last-of-type:not(.disabled) {
+				right: 0;
+			}
+			> a:first-of-type:not(:last-of-type):not(.disabled) {
+				left: 0;
+			}
 		}
+	}
 	
 	#user.maakuw .cell{
 	  margin-left: 10%;
