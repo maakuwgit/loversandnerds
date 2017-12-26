@@ -10,15 +10,7 @@
  */
 	global $post;
 	
-	$cat = get_queried_object();
-	
-	if ( $cat ) {
-		$user = get_user_by('slug', $cat->slug);
-		$user = $user->data;
-	}else{
-		$user = wp_get_current_user();
-	}
-	
+	$user = wp_get_current_user();
 	$admin_url = get_bloginfo('url') . '/wp-admin';
  
 	if( current_user_can('publish_posts', $post->ID ) ) {

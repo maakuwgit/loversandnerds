@@ -4,12 +4,11 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.2.9
+ * @since Lovers + Nerds 2.3
  */
  global $first;
  
- $feature_style = $date_str = $client_str = $bg_img = $header_align = $content_style = '';
- $header_style = false;
+ $feature_style = $date_str = $client_str = $header_align = $content_style = '';
  $post_id 	= $post->ID;
  $slug 			= $post->post_name;
  $project 	= get_post_meta( $post_id, 'lons_is_project', true );
@@ -31,7 +30,6 @@
 	 }
 	 $feature_style .= '"';
  }
- if($header_style) $header_style = ' style=""';
 ?>
 		<div id="<?php echo $slug; ?>" <?php post_class('entry-content ' . ($project ? ' project ' . $theme : '')); echo $content_style; ?>>
 		<?php
@@ -40,16 +38,7 @@
 				 <img src="<?php echo get_the_post_thumbnail_url($post, 'thumbnail');?>" srcset="<?php echo get_the_post_thumbnail_url($post, 'large');?> 2x, <?php echo get_the_post_thumbnail_url($post, 'fullsize');?> 3x" data-src-medium="<?php echo get_the_post_thumbnail_url($post, 'medium');?>" data-src-large="<?php echo get_the_post_thumbnail_url($post, 'large');?>" data-src-xlarge="<?php echo get_the_post_thumbnail_url($post, 'fullsize');?>" alt="">
 			</div>
 		 <?php endif; ?>
-			<header class="entry-header"<?php echo $header_style;?> id="<?php echo $slug; ?>-header">
-			<?php if ( is_sticky() && is_home() && ! is_paged() ) : ?>
-				<span class="sticky-post"><?php _e( 'Featured', 'twentysixteen' ); ?></span>
-			<?php endif; ?>
-			<?php if($first == true) :?>
-				<h1 class="entry-title"><?php the_title();?></h1>
-			<?php else: ?>
-				<h2 class="entry-title"><?php the_title();?></h2>
-			<?php endif; ?>
-			</header>
+		 <?php get_template_part('template-parts/header', 'content'); ?>
 		<?php if ( has_excerpt() ) : ?>
 			<div id="<?php echo $slug; ?>-content" class="entry-body<?php if($project) echo ' project';?>">
 				<?php the_excerpt(); ?>

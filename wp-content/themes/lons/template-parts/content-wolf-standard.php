@@ -38,13 +38,7 @@
 				 <img src="<?php echo get_the_post_thumbnail_url($post, 'medium');?>" srcset="<?php echo get_the_post_thumbnail_url($post, 'large');?> 2x, <?php echo get_the_post_thumbnail_url($post, 'fullsize');?> 3x" data-src-large="<?php echo get_the_post_thumbnail_url($post, 'large');?>" data-src-xlarge="<?php echo get_the_post_thumbnail_url($post, 'fullsize');?>" alt="">
 			</div>
 		 <?php endif; ?>
-			<header class="entry-header"<?php echo $header_style;?> id="<?php echo $slug; ?>-header">
-			<?php if($first == true) :?>
-				<h1 class="entry-title"><?php the_title();?><?php edit_post_link('<em class="lnr lnr-pencil"></em>'); ?></h1>
-			<?php else: ?>
-				<h2 class="entry-title"><?php the_title();?><?php edit_post_link('<em class="lnr lnr-pencil"></em>'); ?></h2>
-			<?php endif; ?>
-			</header>
+		 <?php get_template_part('template-parts/header', 'content'); ?>
 		<?php if ( has_excerpt() ) : ?>
 			<div id="<?php echo $slug; ?>-content" class="entry-body<?php if($project) echo ' project';?>">
 				<?php the_excerpt(); ?>

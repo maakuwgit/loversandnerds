@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.2.9
+ * @since Lovers + Nerds 2.3
  */
  global $first;
   
@@ -32,12 +32,12 @@
 	<?php endif; ?>
 	<?php if( $bb_href ) : ?>
 		<li>
-			<button class="button" data-href="<?php echo $bb_href; ?>"><em class="lnr lnr-code"></em></button>
+			<button class="button" data-href="<?php echo $bb_href; ?>"><em class="fa fa-bitbucket"></em></button>
 		</li>
 	<?php endif; ?>
 	<?php if( $git_href ) : ?>
 		<li>
-			<button class="button" data-href="<?php echo $git_href; ?>"><em class="lnr lnr-code"></em></button>
+			<button class="button" data-href="<?php echo $git_href; ?>"><em class="fa fa-github"></em></button>
 		</li>
 	<?php endif; ?>
 	<?php if( $btn_href ) : ?>

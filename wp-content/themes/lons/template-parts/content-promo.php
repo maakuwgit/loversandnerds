@@ -1,7 +1,5 @@
 <?php
 	$dir = get_template_directory_uri() . '/assets/img/';
-	$callout_header = get_option('lans_callout_header');
-	$callout_copy = get_option('lans_callout_copy');
 	
 	$users = get_users(array( 'role' => 'author', 'order' => 'DESC' ) );
 	if( $users ) :

@@ -36,12 +36,12 @@ body.category-wolf {
 	}
 	
 	.entry-content {
+		&:before {
+			display: none;
+		}
 		&:not(.callout) {
 			height: auto;
 			background-color: $white;
-		}
-		&.callout {
-			background-color: #d58854;
 		}
 		
 		&:not(:first-child){
@@ -204,11 +204,10 @@ body.category-wolf {
 				}
 			}
 		}
-	}
-	
-	@media only screen and (max-width:64.9375em) {
-		.entry-content.callout {
-			background-position: left center;
+		.th > div {
+			border-bottom-left-radius: 80px;
+			border-top-right-radius: 80px;
+			overflow: hidden;
 		}
 	}
 	

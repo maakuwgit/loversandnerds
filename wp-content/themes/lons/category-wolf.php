@@ -13,24 +13,28 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 0.1
+ * @since Lovers + Nerds 2.3
  */
 
 get_header(); ?>
 	<main id="content" class="content-area off-canvas-content" data-off-canvas-content>
-	<?php get_template_part( 'template-parts/content', 'user' ); ?>
 	<?php 
 		if ( have_posts() ) {
 			$first = true;
 			$prev = get_previous_posts_link();
 			$next = get_next_posts_link();
 
-			if(!empty($prev)) previous_posts_link('<em class="fa fa-angle-left"></em>', 5);
+			
+			if( empty($prev) ) {
+				get_template_part( 'template-parts/content', 'user' );
+			}else{
+				previous_posts_link('<em class="fa fa-angle-left"></em>', 5);
+			}
+			
 			// Start the loop.
 			while ( have_posts()) : the_post();
 				
 				get_template_part( 'template-parts/content-wolf', get_post_format() );
-//				require( locate_template('template-parts/content-category.php') );
 				
 				$first = false;
 			// End the loop.

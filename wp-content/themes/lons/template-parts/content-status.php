@@ -4,8 +4,9 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.1.6.7
+ * @since Lovers + Nerds 2.3
  */
+
  $feature_style = $bg_img = $header_align = '';
  $header_style = false;
  $post_id 	= $post->ID;

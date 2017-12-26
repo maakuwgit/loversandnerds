@@ -13,13 +13,6 @@
 	}
 }
 
-/* Medium Down */
-@media only screen and (max-width:64.9375em) {
-	.archive .entry-content:nth-child(odd) {
-		background-attachment: initial;
-	}
-}
-
 /* Small Only */
 @media only screen and (max-width:39.9375em) {
 	cite {
@@ -124,7 +117,13 @@
 
 /* Large Up */
 @media only screen and (min-width:65em) {
-	.archive .entry-content:nth-child(odd) {
-		background-attachment: fixed;
+	.archive .entry-content {
+		.entry-body {
+			max-width: 640px;
+		}
+		
+		.entry-header {
+			max-width: 960px;
+		}
 	}
 }

@@ -47,7 +47,7 @@
 				<h2 class="entry-title"><a href="<?php echo get_the_permalink(); ?>"><?php the_title();?></a><?php edit_post_link(' <em class="lnr lnr-pencil"></em>'); ?></h2>
 				<h4 class="text-light"><?php echo $nickname;?> | <?php the_date(); ?></h4>
 				<p><?php echo get_the_excerpt(); ?></p>
-				<p><small><?php the_tags(false); ?></small></p>
+				<p><small><em class="lnr lnr-tag"></em><?php the_tags(false); ?></small></p>
 			</div>
 	<?php endif; ?>
 </article>
