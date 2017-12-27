@@ -1,0 +1,54 @@
+@mixin tina_h1($font-size : 72) {
+	font-family: $unicorns;
+	font-weight: 100;
+	font-size: rem-calc($font-size);
+}
+
+@mixin input($state : false) {
+	@if ($state == 'focus') {
+		border-bottom-color: #61b6ff;
+	}
+	@else if ($state == 'error') {
+		color: #ff7964;
+		border-bottom-color: #ff7964;
+	}
+	@else {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		border-bottom: solid 1px #eae7e7;
+		&.invalid {
+			color: #ff7964;
+			border-bottom: 1px solid #ff7964;
+		}
+	}
+}
+
+@mixin breakpoint($point){
+
+  @if ($point == lg){
+    @media (min-width: 1200px){ @content }
+  }
+  @else if ($point == md){
+    @media (min-width: 992px) and (max-width: 1199px){ @content }
+  }
+
+  @else if ($point == ipad){
+    @media (min-width: 992px) and (max-width: 1024px){ @content }
+  }
+
+  @else if ($point == sm){
+    @media (min-width: 768px) and (max-width: 991px){ @content }
+  }
+
+  @else if ($point == xs){
+    @media (min-width: 641px) and (max-width: 767px){ @content }
+  }
+
+  @else if ($point == xxs){
+    @media (min-width: 481px) and (max-width: 640px){ @content }
+  }
+
+  @else if ($point == xxxs){
+    @media  (max-width: 480px){ @content }
+  }
+}

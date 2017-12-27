@@ -23,16 +23,12 @@ body.category-wolf {
 			color: $brand-primary;
 		}
 		.title-bar-title {
-			font-family: $unicorns;
-			font-weight: 100;
-			font-size: rem-calc(28);
+			@include tina_h1(28);
 		}
 	}
 	
 	h1 {
-		font-family: $unicorns;
-		font-weight: 100;
-		font-size: rem-calc(72);
+		@include tina_h1();
 	}
 	
 	.entry-content {
@@ -59,9 +55,7 @@ body.category-wolf {
 		}
 		.entry-title {
 			position: relative;
-			font-size: rem-calc(48);
-			font-family: $unicorns;
-			font-weight: 100;
+			@include tina_h1(48);
 			color: $dark-grey;
 			line-height: 0.875;
 			a {

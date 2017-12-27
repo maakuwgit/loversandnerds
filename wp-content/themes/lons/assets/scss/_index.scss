@@ -20,10 +20,12 @@
 			height: calc(50vh - 2rem);
 			background-position: center bottom;
 		}
-		h2 {
-			text-align: center;
-/*			font-size: 1.75rem;
-			line-height: 1;*/
+		&:not(.project) {
+			h2 {
+				text-align: center;
+	/*			font-size: 1.75rem;
+				line-height: 1;*/
+			}
 		}
 
 		.entry-header {
@@ -44,11 +46,11 @@
 
 		/* Small Only */
 		@media only screen and (max-width:39.9375em) {	
-			h2 {
-			  margin-left: 3.75vw;
-				margin-right: 3.75vw;
-				font-size: 2.25rem;
-		  }
+			&:not(.project) {
+				h2 {
+					font-size: 2.25rem;
+			  }
+			}
 		}
 		
 		/* Medium Up */
@@ -63,10 +65,11 @@
 			.entry-body {
 				margin-right: auto;
 			}
-			/*
-			h2 {
-				font-size: 2.5vw;
-			}*/
+			&:not(.project) {
+				h2 {
+					font-size: 2.5vw;
+				}
+			}
 			&:first-child h2 {
 				font-size: 2vw;
 			}

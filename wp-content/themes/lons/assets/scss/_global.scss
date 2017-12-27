@@ -13,13 +13,15 @@ blockquote p:last-of-type {
 
 
 //Repeatables
-.entry-content.format-image .entry-header,
-.entry-content.format-image .entry-body,
-.entry-content.format-image .entry-footer, 
-.entry-content.format-standard .entry-header,
-.entry-content.format-standard .entry-body,
-.entry-content.format-standard .entry-footer {
-	padding: $row-padding;
+.entry-content {
+	&.format-image,
+	&.format-standard {
+		.entry-header,
+		.entry-body,
+		.entry-footer {
+			padding: $row-padding;
+		}
+	}
 }
 
 .entry-header,
@@ -42,6 +44,7 @@ blockquote p:last-of-type {
 }
 
 .button,
+button, 
 input[type="submit"],
 input[type="button"],
 #nextBtn,
@@ -84,27 +87,29 @@ input[type="button"],
 	}
 
 //Entry Content	: Repeatables
-	.entry-header h1 a,
-	.entry-header h2 a {
-		color: inherit;
+	.entry-header h1,
+	.entry-header h2 {
+		a {
+			color: inherit;
+		}
 	}
-	
+.entry-content {
 	.entry-header, 
 	.entry-body,
 	.entry-footer {
 		color: $white;
+		text-shadow: 0 0 3px $black;
 	}
 	
-	.entry-content.light .entry-header, 
-	.entry-content.light .entry-body,
-	.entry-content.light .entry-footer {
-		color: $cocoa;
+	&.light {
+		.entry-header, 
+		.entry-body,
+		.entry-footer {
+			color: $cocoa;
+		}
 	}
-.entry-header,
-.entry-body,
-.entry-footer  {
-	text-shadow: 0 0 3px $black;
 }
+
 .callout, 
 .entry-content.light .entry-header,
 .entry-content.light .entry-body,
@@ -145,6 +150,7 @@ input[type="button"],
 	
 	&.maakuw,
 	&.category-maakuw {
+		text-align: left;
 		border-bottom-color: $navy;
 		background-position: top center;
 		.button {
@@ -272,7 +278,7 @@ input[type="button"],
 	}
 
 //Callout
-body:not(.home) .entry-content.callout {
+.entry-content.callout:not(#portfolios) {
 	-webkit-box-pack: start;
 	-moz-box-pack: start;
 	-webkit-justify-content: flex-start;
