@@ -4,9 +4,9 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.3
+ * @since Lovers + Nerds 2.3.2
  */
- global $first;
+ global $first, $user;
  
  $feature_style = $date_str = $client_str = $bg_img = $header_align = '';
  $post_id 	= $post->ID;
@@ -27,8 +27,15 @@
 	 }
 	 $feature_style .= '"';
  }
+
+	if( $user ){
+		$username = ' ' . $user->user_nicename . ' ';
+	}else {
+		$user = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
+		$username = ' ' . get_the_author() . ' ';
+	}
 ?>
-		<div id="<?php echo $slug; ?>" <?php post_class('entry-content' . ($project ? ' project ' : ' ') . $theme); ?> data-background<?php echo $feature_style . $header_align; ?>>
+		<div id="<?php echo $slug; ?>" <?php post_class('entry-content' . ($project ? ' project' : '') . $username . $theme); ?> data-background<?php echo $feature_style . $header_align; ?>>
 		<?php
 		 if( has_post_thumbnail() ) :?>
 		 	<div class="feature">

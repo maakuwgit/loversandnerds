@@ -22,7 +22,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.2.9
+ * @since Lovers + Nerds 2.3.2
  */
 
 /**
@@ -78,8 +78,6 @@ function twentysixteen_setup() {
 	 */
 	add_theme_support( 'html5', array(
 		'search-form',
-		'comment-form',
-		'comment-list',
 		'gallery',
 		'caption',
 	) );
@@ -942,13 +940,14 @@ if ( ! function_exists( 'lons_user_fields' ) ) :
 /**
  * Create additional User fields
  *
- * @since Lovers&Nerds 1.2
+ * @since Lovers&Nerds 2.3.2
  * @author MaakuW
  *
  */
   function lons_user_fields( $user ) { 
 	
 		$gender 		= esc_attr( get_the_author_meta( 'gender', $user->ID ) );
+		$photo 			= esc_attr( get_the_author_meta( 'photo', $user->ID ) );
 		$img_usage 	= esc_attr( get_the_author_meta( 'img_usage', $user->ID ) );
 		$img_align 	= esc_attr( get_the_author_meta( 'img_align', $user->ID ) );
 		
@@ -981,7 +980,7 @@ if ( ! function_exists( 'lons_user_fields' ) ) :
 				<select name="photo" id="photo">
 					<?php foreach ( $media as $image ) :?>
 						<?php setup_postdata($image);?>
-					<option value="<?php echo $image->ID; ?>"><?php echo $image->post_title; ?></option>
+					<option value="<?php echo $image->ID; ?>"<?php  selected( $photo, $image->ID ); ?>><?php echo $image->post_title; ?></option>
 					<?php endforeach; ?>
 				</select>
 				<?php endif; ?>
@@ -1070,6 +1069,8 @@ if ( ! function_exists( 'lons_save_user_fields' ) ) :
   	update_user_meta( $user_id, 'job_description', htmlentities( $_POST['job_description'] ) );
   	update_user_meta( $user_id, 'gender', $_POST['gender'] );
   	update_user_meta( $user_id, 'photo', $_POST['photo'] );
+  	update_user_meta( $user_id, 'img_align', $_POST['img_align'] );
+  	update_user_meta( $user_id, 'img_usage', $_POST['img_usage'] );
   	update_user_meta( $user_id, 'linkedin', $_POST['linkedin'] );
   	update_user_meta( $user_id, 'medium', $_POST['medium'] );
   	update_user_meta( $user_id, 'github', $_POST['github'] );

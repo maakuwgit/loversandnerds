@@ -1,13 +1,26 @@
-/* This looks to be a typo AND deprecated?
-.home.entry-content.active .entry-header h1 {
-	font-size: 9vw;
-}
-*/
 .home {
 	.entry-content {
 		background-position: center;
-		#portfolios {
+		&#portfolios {
 			background-size: cover;
+			h2 {
+				position: relative;
+				&:after {
+					position: absolute;
+					content: '';
+					height: rem-calc(4);
+					left: 30%;
+					right: 30%;
+					bottom: rem-calc(-10);
+					margin: auto;
+					background-color: white;
+					box-shadow: 0 0 0.5rem #8c3727;
+				}
+			}
+			h2, h4, p {
+				color: $white;
+				text-shadow: 0 0 0.5rem #8c3727;
+			}
 		}
 		&:first-child {
 			h2 {
@@ -20,11 +33,22 @@
 			height: calc(50vh - 2rem);
 			background-position: center bottom;
 		}
-		&:not(.project) {
+		&.lonsadmin,
+		&.category-lans:not(.project),
+		&.wolf {
 			h2 {
 				text-align: center;
 	/*			font-size: 1.75rem;
 				line-height: 1;*/
+			}
+		}
+		
+		&.maakuw {	
+			.entry-body {
+				max-width: 70%;
+				p {
+					text-align: left;
+				}
 			}
 		}
 
@@ -45,11 +69,44 @@
 		}
 
 		/* Small Only */
-		@media only screen and (max-width:39.9375em) {	
-			&:not(.project) {
+		@media only screen and (max-width:39.9375em) {
+			&:not(.category-maakuw):not(.category-wolf) {
 				h2 {
 					font-size: 2.25rem;
 			  }
+			}
+			.entry-header h1 {
+				font-size: 15.5vw;
+				line-height: 1.06875;
+				.unicorns {
+					font-size: 27vw;
+				}
+			}
+		}
+		
+		/* Medium Down */
+		@media only screen and (max-width:64.9375em) {
+			&#portfolios {
+				h2 {
+					margin-bottom: rem-calc(40);
+				}
+			}
+		}
+		
+		/*Medium Only */
+		@media only screen and (min-width: 40em) and (max-width: 64.9375em) {			
+			&.active {
+				.entry-body {
+					max-height: 50vh;
+				}
+				.entry-header {
+					h1 {				
+						font-size: 7.5vw;
+						.unicorns {
+							font-size: 11.5vw;
+						}
+					}
+				}
 			}
 		}
 		
@@ -62,12 +119,12 @@
 		
 		/* Large Up */
 		@media only screen and (min-width:65em) {
-			.entry-body {
-				margin-right: auto;
-			}
-			&:not(.project) {
+			&.format-link,
+			&.format-standard,
+			&.format-status,
+			&.format-aside {
 				h2 {
-					font-size: 2.5vw;
+					font-size: 3.5vw;
 				}
 			}
 			&:first-child h2 {

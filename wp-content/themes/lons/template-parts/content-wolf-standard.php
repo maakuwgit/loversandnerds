@@ -31,7 +31,7 @@
  }
  if($header_style) $header_style = ' style=""';
 ?>
-		<div id="<?php echo $slug; ?>" <?php post_class('entry-content active'); ?>  data-background<?php echo $header_align; ?>>
+		<div id="<?php echo $slug; ?>" <?php post_class('entry-content'); ?>  data-background<?php echo $header_align; ?>>
 		<?php
 		 if( has_post_thumbnail() ) :?>
 		 	<div class="feature"<?php echo $feature_style;?>>

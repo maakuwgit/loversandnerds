@@ -77,7 +77,7 @@ video {
 	vertical-align:baseline;
 }
 
-h1, h2, h3, h4, h4, h5, h6,
+h1, h2, h3, h4, h5, h6,
 p, dt, dd, a, li {
 	font-family: $font-default;
   line-height: 1.125;
@@ -552,7 +552,7 @@ button.ellipsis,
 .absolute {
 	position: absolute;
 }
-.fixed {
+body:not(.wp-admin) .fixed {
 	position: fixed;
 }
 .relative {
@@ -572,14 +572,7 @@ button.ellipsis,
 		vertical-align: middle;
 		.button, 
 		button {
-			margin-left: rem-calc(8);
-			margin-bottom: auto;
-		}
-		&:first-child {
-			.button,
-			button {
-				margin-left: auto;
-			}
+			margin: auto rem-calc(4);
 		}
 	}
 }

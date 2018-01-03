@@ -1,15 +1,13 @@
 <?php
 /**
- * The template for displaying archive pages
+ * The main template file
  *
- * Used to display archive-type pages if nothing more specific matches a query.
- * For example, puts together date-based pages if no date.php file exists.
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
  *
- * If you'd like to further customize these archive views, you may create a
- * new template file for each one. For example, tag.php (Tag archives),
- * category.php (Category archives), author.php (Author archives), etc.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * @link http://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
@@ -23,27 +21,30 @@ get_header(); ?>
 			$first = true;
 			$prev = get_previous_posts_link();
 			$next = get_next_posts_link();
-
 			
 			if( empty($prev) ) {
 				get_template_part( 'template-parts/content', 'user' );
 			}else{
+				echo '<nav class="prev">';
 				previous_posts_link('<em class="fa fa-angle-left"></em>', 5);
+				echo '</nav>';
 			}
 			
 			// Start the loop.
 			while ( have_posts()) : the_post();
 				
-				get_template_part( 'template-parts/content-wolf', get_post_format() );
+				get_template_part( 'template-parts/content', get_post_format() );
 				
 				$first = false;
 			// End the loop.
 			endwhile;
 		
-		// If no content, include the "No posts found" template.
-		
+			echo '<nav class="next">';
 			if(!empty($next)) next_posts_link('<em class="fa fa-angle-right"></em>', 5);
-		} else {
+			echo '</nav>';
+			
+		} else {	
+			// If no content, include the "No posts found" template.
 			get_template_part( 'template-parts/content', 'none' );
 		
 		}

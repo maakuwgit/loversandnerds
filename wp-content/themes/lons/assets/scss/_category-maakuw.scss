@@ -1,4 +1,13 @@
+body.author-maakuw, 
 body.category-maakuw {
+	background-color: #1c2839;
+	.entry-header,
+	.entry-body,
+	.entry-footer {
+		margin-left: rem-calc(16);
+		margin-right: rem-calc(16);
+	}
+	
 	.off-canvas-content>.scrollmagic-pin-spacer a,
 	.off-canvas-content>a, 
 	input[type=submit], 
@@ -40,6 +49,7 @@ body.category-maakuw {
 	}
 		
 	#nextBtn,
+	#content > nav a, 
 	.off-canvas-content > a,
 	.off-canvas-content > .scrollmagic-pin-spacer a {
 		background-color: $navy;
@@ -47,7 +57,7 @@ body.category-maakuw {
 	}
 	
 	@media only screen and (min-width: 65em) {
-		.entry-content.active {
+		#content.enter .entry-content.active {
 			
 			&.dark:before {
 				background-color: rgba(0,0,0,0.5);

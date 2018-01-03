@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.2.5
+ * @since Lovers + Nerds 2.3.2
  * Contains handlers for navigation and widget area.
  */
 
@@ -12,7 +12,7 @@
 	var vw,vh,
 			backgrounder = new Backgrounder(),
 			breakpoint = new Breakpoints(),
-			is_dev = true,
+			is_dev = false,
 			return_top = $(window).scrollTop();
 			
 //Dev Note: Is this still relevant?	
@@ -174,8 +174,8 @@
 		backgrounder.make(size);
 		if( !$('body').hasClass('single') && is_dev === false ){
 			if(size !== 'small'){
-				$('#content, #masthead').on('mouseenter', function(){$(this).addClass('enter');});
-				$('#content, #masthead').on('mouseleave', function(){$(this).removeClass('enter');});
+				$('#content, #masthead').off('mouseenter').on('mouseenter', function(){$(this).addClass('enter');});
+				$('#content, #masthead').off('mouseleave').on('mouseleave', function(){$(this).removeClass('enter');});
 			}else{
 				$('#content, #masthead').off('mouseenter');
 				$('#content, #masthead').off('mouseleave');
@@ -198,7 +198,7 @@
 			window.open($(this).attr('data-href'), '_blank');
 		});
 		
-		$('#content').addClass('enter');
+		if(is_dev) $('#content').addClass('enter');
 		if(is_dev) $('#masthead').addClass('enter');
 		
 		$('[data-hover-target]').hover(function(){
@@ -209,21 +209,23 @@
 			$('[data-hover]').removeClass('active');
 		});
 		
-		var figcaption = $('.title-bar-title').find('figcaption'),
-				title = figcaption.text(),
-				lovers = title.substr(0, title.search(' ')),
-				nerds = title.substr(title.search(' ') + 3);
-		
-		if(	!$('body').hasClass('archive') && !$('body').hasClass('wp-admin')){
-			if(!$('body').hasClass('single'))$('h1').html('<span class="unicorns">'+lovers+'</span> & <span class="chava">'+nerds+'</span>');
-			$(figcaption).find('a.logo').html('<span class="unicorns">L</span><span class="plus">+</span><span class="chava">N</span>');
-		}
+		$('body').addClass('loaded');
 		
 		refactor(event);
 		initScrollMagic();
 	}
+			
+	var figcaption = $('.title-bar-title').find('figcaption'),
+			title = figcaption.text(),
+			lovers = title.substr(0, title.search(' ')),
+			nerds = title.substr(title.search(' ') + 3);
 	
-	$(document).ready(function(){
+	if(	!$('body').hasClass('wp-admin')){
+		if($('body').hasClass('home'))$('h1').html('<span class="unicorns">'+lovers+'</span> & <span class="chava">'+nerds+'</span>');
+		if(!$('body').hasClass('author'))$(figcaption).find('a.logo').html('<span class="unicorns">L</span><span class="plus">+</span><span class="chava">N</span>');
+	}
+	
+	$(window).on('load', function(){
 		init(false);
 	});
 		

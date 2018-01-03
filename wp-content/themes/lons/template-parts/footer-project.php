@@ -24,26 +24,28 @@
 	<?php if( $client || $date ) : ?>
 	<h4><?php if( $client ) echo $client; ?><?php if( $date ) echo '&nbsp;|&nbsp;' . $date; ?></h4>
 	<?php endif; ?>
-	<ul class="inline-list">
-	<?php if ( has_excerpt() ) : ?>
-		<li>
-			<button class="ellipsis button" id="<?php echo $slug; ?>-more" data-show-id="<?php echo $slug;?>">&hellip;</button>
-		</li>
-	<?php endif; ?>
-	<?php if( $bb_href ) : ?>
-		<li>
-			<button class="button" data-href="<?php echo $bb_href; ?>"><em class="fa fa-bitbucket"></em></button>
-		</li>
-	<?php endif; ?>
-	<?php if( $git_href ) : ?>
-		<li>
-			<button class="button" data-href="<?php echo $git_href; ?>"><em class="fa fa-github"></em></button>
-		</li>
-	<?php endif; ?>
-	<?php if( $btn_href ) : ?>
-		<li>
-			<button class="button secondary" data-href="<?php echo $btn_href; ?>" title="<?php echo $btn_label; ?>"><em class="lnr lnr-link"></em></button>
-		</li>
-	<?php endif; ?>
-	</ul>
+	<nav>
+		<ul class="inline-list">
+		<?php if ( has_excerpt() ) : ?>
+			<li>
+				<button class="ellipsis button" id="<?php echo $slug; ?>-more" data-show-id="<?php echo $slug;?>">&hellip;</button>
+			</li>
+		<?php endif; ?>
+		<?php if( $bb_href ) : ?>
+			<li>
+				<button class="button" data-href="<?php echo $bb_href; ?>"><em class="fa fa-bitbucket"></em></button>
+			</li>
+		<?php endif; ?>
+		<?php if( $git_href ) : ?>
+			<li>
+				<button class="button" data-href="<?php echo $git_href; ?>"><em class="fa fa-github"></em></button>
+			</li>
+		<?php endif; ?>
+		<?php if( $btn_href ) : ?>
+			<li>
+				<button class="button secondary" data-href="<?php echo $btn_href; ?>" title="<?php echo $btn_label; ?>"><em class="lnr lnr-link"></em></button>
+			</li>
+		<?php endif; ?>
+		</ul>
+	</nav>
 </footer>

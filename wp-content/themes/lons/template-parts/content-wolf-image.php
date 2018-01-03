@@ -1,15 +1,28 @@
 <?php
 /**
- * The template part for displaying content
+ * The template part for displaying content for the Wolf templates
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.2.9
+ * @since Lovers + Nerds 2.3.1
  */
 
  $cat = get_queried_object();
- $user = get_user_by('slug', $cat->slug);
- $nickname = get_user_meta($user->ID, 'nickname', true);
+ 
+ if( $cat ) {
+	if( $cat->slug) {
+		$nickname = ' ' . $cat->slug;
+		$user = get_user_by('slug', $cat->slug);
+	}else{
+		$user = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
+		$nickname = ' ' . get_the_author_meta('nickname');
+	}
+ }else if( $user ){
+	$nickname = ' ' . $user->user_nicename;
+ }else {
+	$user = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
+	$nickname = ' ' . get_the_author_meta('nickname');
+ }
  
  $feature_style = $date_str = $client_str = $bg_img = $header_align = $content_style = '';
  $header_style = false;
@@ -43,7 +56,7 @@ if( '' !== $project ) {
  if($header_style) $header_style = ' style=""';
 }
 ?>
-		<div id="<?php echo $slug; ?>" <?php post_class('entry-content light active' . ($project ? ' project' : ''));?>>
+		<div id="<?php echo $slug; ?>" <?php post_class('entry-content light' . ($project ? ' project' : ''));?>>
 		<?php
 		 if( has_post_thumbnail() ) :?>
 		 	<div class="feature" data-background<?php echo $feature_style . $header_align; ?>>

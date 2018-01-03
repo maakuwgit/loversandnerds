@@ -65,7 +65,7 @@ video {
   display: inline-block;
   vertical-align: baseline; }
 
-h1, h2, h3, h4, h4, h5, h6,
+h1, h2, h3, h4, h5, h6,
 p, dt, dd, a, li {
   font-family: Roboto, HelveticaNeue, Arial, sans-serif;
   line-height: 1.125; }
@@ -462,7 +462,7 @@ body.admin-bar [data-stick-to] {
 .absolute {
   position: absolute; }
 
-.fixed {
+body:not(.wp-admin) .fixed {
   position: fixed; }
 
 .relative {
@@ -481,11 +481,7 @@ body.admin-bar [data-stick-to] {
     vertical-align: middle; }
     .inline-list li .button,
     .inline-list li button {
-      margin-left: 0.5rem;
-      margin-bottom: auto; }
-    .inline-list li:first-child .button,
-    .inline-list li:first-child button {
-      margin-left: auto; }
+      margin: auto 0.25rem; }
 
 .uppercase {
   text-transform: uppercase; }

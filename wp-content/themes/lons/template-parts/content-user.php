@@ -14,15 +14,19 @@
 	$cat = get_queried_object();
 	
 	if( $cat ) {
-		$username = ' ' . $cat->slug;
-		$user = get_user_by('slug', $cat->slug);
+		if( $cat->slug) {
+			$username = ' ' . $cat->slug;
+			$user = get_user_by('slug', $cat->slug);
+		}else{
+			$user = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
+			$username = ' ' . get_query_var('author_name');
+		}
 	}else if( $user ){
 		$username = ' ' . $user->user_nicename;
 	}else {
-		return false;
+		$user = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
+		$username = ' ' . get_the_author();
 	}
-	
-	wp_reset_query();
 	
 ?>
 <article class="entry-content callout relative table user<?php echo $username;?>">

@@ -108,6 +108,12 @@
 				}
 		
  /* Tweets */
+.archive {
+	a[href*="twitter-feed"] {
+		display: none;
+	}
+}
+
 .tweets {
 	height: 100%;
 	padding-top: 0.75rem;
@@ -118,13 +124,6 @@
 }
 	.tweet p {
 	 	font-size: inherit;
-	}
-	
-#nextBtn {
-	display: none;
-}
-	#nextBtn:focus {
-		outline: none;
 	}
 
 .badge {

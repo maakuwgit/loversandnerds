@@ -11,7 +11,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.2.9
+ * @since Lovers + Nerds 2.3.2
  */
 
 get_header(); ?>
@@ -46,13 +46,12 @@ get_header(); ?>
 		}
 			
 			wp_reset_postdata();
-	?>
 
-	<?php 
 		if ( shortcode_exists( 'nu_tweets' ) ) {
 			echo do_shortcode("[nu_tweets]");
 		}
+		
+		get_template_part( 'template-parts/nav', 'next');
 	?>
-		<button id="nextBtn" data-href=""><em class="fa fa-chevron-down"></em></button>
 	</main>
 <?php get_footer(); ?>

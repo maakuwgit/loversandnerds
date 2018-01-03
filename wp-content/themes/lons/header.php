@@ -6,17 +6,18 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.2.9
+ * @since Lovers + Nerds 2.3.1
  */
 	global $post;
 	
+	$href = home_url();
 	$user = wp_get_current_user();
-	$admin_url = get_bloginfo('url') . '/wp-admin';
+	$user_url = $admin_url = get_bloginfo('url') . '/wp-admin';
  
-	if( current_user_can('publish_posts', $post->ID ) ) {
-		$user_url = $admin_url . '/user-edit.php?user_id=' . $user->ID;
-	}else{
-		$user_url = $admin_url;
+	if ( $post ) {
+		if( current_user_can('publish_posts', $post->ID ) ) {
+			$user_url = $admin_url . '/user-edit.php?user_id=' . $user->ID;
+		}
 	}
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
@@ -36,14 +37,13 @@
 				<a href="#menu-open" data-toggle="colophon" class="hide">
 					<span class="lnr lnr-menu"></span>
 				</a>
-				<?php if( is_category() ) echo '<a href="' . get_bloginfo('url') . '" class="home"><em class="lnr lnr-home"></em></a>';?>
+				<?php if( is_archive() ) echo '<a href="' . get_bloginfo('url') . '" class="home"><em class="lnr lnr-home"></em></a>';?>
 				<figure class="title-bar-title">
 					<figcaption>
 					<?php if( is_single() ) : ?>
 						<a href="<?php bloginfo('url');?>" class="logo"><?php bloginfo('name'); ?></a>
 					<?php elseif( is_category() ) : 
 							$cats = get_the_category();
-							$href = home_url();
 							if($cats) {
 								$href .= '/' . get_option( 'category_base' ) . '/';
 								foreach($cats as $cat){
@@ -52,10 +52,14 @@
 							}
 					?>
 						<a href="<?php echo $href;?>" class="logo"><?php echo single_cat_title(); ?></a>
+					<?php elseif( is_archive() ) :
+							$user = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
+							$username = get_the_author();
+							if($username === 'maakuw') $username = '真ー久W';
+					?>
+						<a href="<?php echo $href;?>" class="logo"><?php echo $username; ?></a>
 					<?php else: ?>
-						<a href="#top" class="logo">
-							<?php bloginfo('name'); ?>
-						</a>
+						<a href="#top" class="logo"><?php bloginfo('name'); ?></a>
 					<?php endif; ?>
 					</figcaption>
 				</figure>

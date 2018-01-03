@@ -13,7 +13,7 @@
 	if(!$photo) $photo = 'http://placehold.it/2560x700';
 	$xlphoto = wp_get_attachment_image_src($photo, 'fullsize' );
 	$mphoto = wp_get_attachment_image_src($photo, 'medium' );
-	$tphoto = wp_get_attachment_image_src($photo);
+	$tphoto = wp_get_attachment_image_src($photo, 'thumbnail');
 	$dphoto = wp_get_attachment_image_src($photo, 'large' );
  
 ?>

@@ -4,13 +4,26 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.2
+ * @since Lovers + Nerds 2.3.1
  */
- global $first;
+ global $user, $first;
 
  $cat = get_queried_object();
- $user = get_user_by('slug', $cat->slug);
- $nickname = get_user_meta($user->ID, 'nickname', true);
+ 
+ if( $cat ) {
+	if( $cat->slug) {
+		$nickname = ' ' . $cat->slug;
+		$user = get_user_by('slug', $cat->slug);
+	}else{
+		$user = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
+		$nickname = ' ' . get_the_author_meta('nickname');
+	}
+ }else if( $user ){
+	$nickname = ' ' . $user->user_nicename;
+ }else {
+	$user = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
+	$nickname = ' ' . get_the_author_meta('nickname');
+ }
  
  $post_id 	= $post->ID;
  $slug 			= $post->post_name;
@@ -33,7 +46,7 @@
  }
 
 ?>
-<article id="<?php echo $slug; ?>" <?php post_class('entry-content active light'); ?>>
+<article id="<?php echo $slug; ?>" <?php post_class('entry-content light'); ?>>
 	<div class="table row">
 	<?php if( has_post_thumbnail() ) :?>
 		 	<figure class="th small-12 medium-4 large-3 cell">

@@ -1,4 +1,11 @@
 <?php
+/**
+ * The template part for displaying user callouts
+ *
+ * @package WordPress
+ * @subpackage Lovers_and_nerds
+ * @since Lovers + Nerds 2.3.1
+ */
 	$dir = get_template_directory_uri() . '/assets/img/';
 	
 	$users = get_users(array( 'role' => 'author', 'order' => 'DESC' ) );
@@ -23,8 +30,9 @@
 			}
 	?>
 		<div class="column small-12 medium-4 large-3<?php echo $style; ?>">
+			<h4><?php echo $user->display_name; ?></h4>
 			<p><?php echo $desc[0]; ?></p>
-			<p><a href="<?php echo get_bloginfo('url') . '/a-nerd-named/' . $user->user_login;?>" class="button">What Else?</a></p>
+			<p><a href="<?php echo $user->user_url;?>" class="button">What Else?</a></p>
 		</div>
 	<?php $u++; endforeach; ?>
 	</div>
