@@ -1,24 +1,25 @@
-.single #masthead {
-	border-bottom: solid 1px $aluminum;
-}
-
-	.single .title-bar {
-		background-color: $white;
+body.single {
+	background-color: $white;
+	#masthead {
+		border-bottom: solid 1px $aluminum;
 	}
-		.single .title-bar * {
+
+	.title-bar {
+		background-color: $white;
+		* {
 			color: #2ba6cb;
 		}
-			
-body.single .entry-body,
-body.single .entry-footer {
-	padding: $row-padding;
-}
+	}
 
-body.single .entry-content .entry-header {
-	padding-top: 10vh;
-	padding-bottom: 17.5vh;
-	background-size: cover;
-	background-position: center;
+	.entry-content {
+	
+		.entry-header {
+			padding-top: 10vh;
+			padding-bottom: 17.5vh;
+			background-size: cover;
+			background-position: center;
+		}
+	}
 }
 
 body.single .entry-content .entry-body,

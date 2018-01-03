@@ -130,10 +130,6 @@ body.admin-bar .off-canvas-content {
 }
 
 //Entry Content
-#content.enter .entry-content.active {
-	background-blend-mode: soft-light;
-}
-
 .entry-content {
   vertical-align: middle;
 	width: 100%;
@@ -188,11 +184,6 @@ body.admin-bar .off-canvas-content {
 		text-align: left;
 		border-bottom-color: $navy;
 		background-position: top center;
-		&.active.enter {
-			&:before {
-				background-color: rgba(0,0,0, 0.5);
-			}
-		}
 		button, 
 		.button {
 			background-color: $salmon;
@@ -756,6 +747,7 @@ body.admin-bar .off-canvas-content {
 		body.loaded .user h1, 
 		body.loaded .user h2, 
 		body.loaded .user p, 
+		.single .entry-body, 
 		#masthead.enter .title-bar-title, 
 		body.loaded .title-bar-right a, 
 		.home #content.enter .entry-header,
@@ -844,8 +836,10 @@ body.admin-bar .off-canvas-content {
 	#content {
 		.entry-content {
 			&:not(.callout) {
-				background-blend-mode: overlay;
 				&:hover {
+					.entry-body {
+						opacity: 1;
+					}
 					&:before {
 						background-color: rgba($cocoa, 0.3);
 						box-shadow: 0 0 500px $black inset,

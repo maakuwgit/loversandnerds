@@ -116,9 +116,6 @@ body.admin-bar .off-canvas-content {
 .entry-header[data-background] {
   text-align: center; }
 
-#content.enter .entry-content.active {
-  background-blend-mode: soft-light; }
-
 .entry-content {
   vertical-align: middle;
   width: 100%;
@@ -167,8 +164,6 @@ body.admin-bar .off-canvas-content {
     text-align: left;
     border-bottom-color: #1c2839;
     background-position: top center; }
-    .entry-content.maakuw.active.enter:before, .entry-content.author-maakuw.active.enter:before, .entry-content.category-maakuw.active.enter:before {
-      background-color: rgba(0, 0, 0, 0.5); }
     .entry-content.maakuw button,
     .entry-content.maakuw .button, .entry-content.author-maakuw button,
     .entry-content.author-maakuw .button, .entry-content.category-maakuw button,
@@ -623,6 +618,7 @@ body.admin-bar .off-canvas-content {
   body.loaded .user h1,
   body.loaded .user h2,
   body.loaded .user p,
+  .single .entry-body,
   #masthead.enter .title-bar-title,
   body.loaded .title-bar-right a,
   .home #content.enter .entry-header,
@@ -697,11 +693,11 @@ body.admin-bar .off-canvas-content {
     background-size: auto calc(50vh + 2rem + 40px);
     /*		background-size: 100vw;*/ }
 
-  #content .entry-content:not(.callout) {
-    background-blend-mode: overlay; }
-    #content .entry-content:not(.callout):hover:before {
-      background-color: rgba(62, 31, 20, 0.3);
-      box-shadow: 0 0 500px #000000 inset, 0 0 250px rgba(62, 31, 20, 0.6) inset; }
+  #content .entry-content:not(.callout):hover .entry-body {
+    opacity: 1; }
+  #content .entry-content:not(.callout):hover:before {
+    background-color: rgba(62, 31, 20, 0.3);
+    box-shadow: 0 0 500px #000000 inset, 0 0 250px rgba(62, 31, 20, 0.6) inset; }
   #content .entry-content:nth-child(odd) {
     background-attachment: fixed; }
   #content > nav a {
@@ -1207,24 +1203,19 @@ body.home #colophon {
           font-size: 1.625rem;
           font-size: 2.03125vw; } }
 
-.single #masthead {
-  border-bottom: solid 1px #f2f2f2; }
-
-.single .title-bar {
+body.single {
   background-color: #ffffff; }
-
-.single .title-bar * {
-  color: #2ba6cb; }
-
-body.single .entry-body,
-body.single .entry-footer {
-  padding: 0 7.5vw; }
-
-body.single .entry-content .entry-header {
-  padding-top: 10vh;
-  padding-bottom: 17.5vh;
-  background-size: cover;
-  background-position: center; }
+  body.single #masthead {
+    border-bottom: solid 1px #f2f2f2; }
+  body.single .title-bar {
+    background-color: #ffffff; }
+    body.single .title-bar * {
+      color: #2ba6cb; }
+  body.single .entry-content .entry-header {
+    padding-top: 10vh;
+    padding-bottom: 17.5vh;
+    background-size: cover;
+    background-position: center; }
 
 body.single .entry-content .entry-body,
 body.single .entry-content .entry-footer {
