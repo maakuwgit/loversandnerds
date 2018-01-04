@@ -3,11 +3,18 @@ body.single {
 	#masthead {
 		border-bottom: solid 1px $aluminum;
 	}
+	
+	h1 {
+		font-family: $unicorns;
+		font-weight: $text-light;
+		margin-top: rem-calc(32);
+		margin-bottom: rem-calc(16);
+	}
 
 	.title-bar {
 		background-color: $white;
 		* {
-			color: #2ba6cb;
+			color: $brand-primary;
 		}
 	}
 
@@ -19,117 +26,141 @@ body.single {
 			background-size: cover;
 			background-position: center;
 		}
-	}
-}
-
-body.single .entry-content .entry-body,
-body.single .entry-content  .entry-footer {
-	background-color: white;
-  color: $cocoa;
-  text-shadow: none;
-}
-
-body.single .entry-content .entry-body > *:last-child {
-	margin-bottom: auto;
-}
-	body.single .entry-content .entry-body {
-  	padding-top: 5.75vh;
-  	padding-bottom: 5.75vh;
-	}
-	.single h1 {
-		font-family: 'unicorns';
-		font-weight: 100;
-		margin-top: 32px;
-		margin-bottom: 1rem;
-	}
-
-/* Small Only */
-@media only screen and (max-width:39.9375em) {
-	body.single-post .entry-content .entry-header h1 {
-	  margin-top: 12vh;
-	}
-}
-
-/* Medium Only */
-@media only screen and (min-width:40em) and (max-width:64.9375em) {
-	body.single-post .entry-content .entry-header h1 {
-	  margin-top: 10vh;
-	}
-}
-/* Medium Up */
-@media only screen and (min-width:40em) {
-  .single blockquote {
-	  margin-bottom: 2vh;
-	  background-color: transparent;
-	}
-	
-	  .single blockquote:before,
-	  .single blockquote:after {
-		  content: '“';
-		  margin-left: -2.5rem;
-		  width: 1.25rem;
-		  height: 1.25rem;
-		  display: block;
-		  margin-top: -10px;
-		  font-size: 5rem;
-		  color: #aea19c;
-		}
-		.single blockquote:after {
-		  content: '”';
-		  margin-left: auto;
-		  margin-right: -2.5rem;
+		
+		.entry-body,
+		.entry-footer {
+			background-color: $white;
+		  color: $cocoa;
+		  text-shadow: none;
 		}
 		
-	  .single blockquote p {
-		  color: #aea19c;
+		.entry-body {
+	  	padding-top: 5.75vh;
+	  	padding-bottom: 5.75vh;	
+	  	h4 {
+		  	font-size: 1.3125rem;
+		  }
+			blockquote {
+				max-width: 600px;
+				margin-left: auto;
+				margin-right: auto;
+				font-family: $unicorns;
+				p {
+					font-size: 1.25rem;
+					color: $dark-grey;
+					line-height: 1.25;
+					&:before,
+					&:after {
+						position: absolute;
+						font-family: $unicorns;
+						width: 1rem;
+						height: 1rem;
+						display: inline;
+						margin-top: rem-calc(-4);
+						font-size: 2rem;
+						color: $brown;
+					}
+					&:before {
+						content: '“';
+						margin-left: -1.125rem;
+					}
+					&:after {
+						content: '”';
+						margin-left: auto;
+						margin-right: -1.125rem;
+					}
+				}
+			}
+	  	> *:last-child {
+				margin-bottom: auto;
+			}
 		}
-	
-	body.single .entry-body {
-  	padding-top: 8.75vh;
-  	padding-bottom: 8.75vh;
-	}
-	
-	body.single-post .entry-content.active .entry-body {
-		height: auto;
-		max-height: none;
+		
 	}
 
-	.single-format-standard .entry-body figure > div {	
-		padding: 0;
+	/* Small Only */
+	@media only screen and (max-width:39.9375em) {
+		.entry-content .entry-header h1 {
+		  margin-top: 12vh;
+		}
 	}
 	
-	.single-format-standard .entry-body figcaption {
-		padding: 5vw;
+	/* Medium Only */
+	@media only screen and (min-width:40em) and (max-width:64.9375em) {
+		.entry-content .entry-header h1 {
+		  margin-top: 10vh;
+		}
 	}
-}
-
-/* Wordpress Specific Break (for the admin bar) */
-@media only screen and (max-width:782px) {
-	body.admin-bar .off-canvas-wrapper-inner, 
-	body.admin-bar .off-canvas-content,
-	body.admin-bar [data-stick-to] {
-		top: 46px;
+	/* Medium Up */
+	@media only screen and (min-width:40em) {
+		.entry-content {
+			.entry-body {
+		  	padding-top: 8.75vh;
+		  	padding-bottom: 8.75vh;
+				blockquote {
+					line-height: 1.5;
+					p {
+						&:before,
+						&:after {
+							margin-top: rem-calc(-32);
+							font-size: 5rem;
+						}
+						&:before {
+							margin-left: -2.5rem;
+						}
+						&:after {
+							margin-right: -2.5rem;
+						}
+					}
+				}
+		
+			&.active {
+				.entry-body {
+					height: auto;
+					max-height: none;
+				}
+			}
+		}
+		
+		&.single-format-standard {
+			.entry-body 
+				figure {
+					> div {	
+						padding: 0;
+					}
+		
+					figcaption {
+						padding: 5vw;
+					}
+				}
+			}
+		}
 	}
 	
-	.single h1 {
-		margin-top: 46px;
+	/* Wordpress Specific Break (for the admin bar) */
+	@media only screen and (max-width:782px) {
+		.entry-header {
+			h1 {
+				margin-top: 46px;
+			}
+		}
 	}
-}
-
-/* Large Down */
-@media only screen and (max-width:64.9375em) {
-	.single .entry-body p {
-		font-size: 0.9375rem;
+	
+	/* Large Down */
+	@media only screen and (max-width:64.9375em) {
+		.entry-body {
+			p {
+				font-size: 0.9375rem;
+			}
+		}
 	}
-}
-
-/* Large Up */
-@media only screen and (min-width:65em) {
-	body:not(.single-post) .entry-header h1,
-	body:not(.single-post) .entry-header h2 {
-	  margin-top: calc(33vh + 5.375rem/2.25);
-	}
-	body.single-post .entry-header h1 {
-	  margin-top: 15vh;
+	
+	/* Large Up */
+	@media only screen and (min-width:65em) {
+		.entry-header {
+			h1 {
+		  	margin-top: 15vh;
+		  }
+		}
 	}
 }

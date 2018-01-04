@@ -263,9 +263,7 @@ dl {
     font-weight: 400; }
 
 blockquote {
-  margin: 4px 0;
-  padding: 4vh 10vw;
-  background-color: #89462a; }
+  margin: 2rem auto; }
 
 blockquote,
 blockquote p {

@@ -8,7 +8,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.1.4
+ * @since Lovers + Nerds 2.3.3
  */
 
 $template_uri = get_template_directory_uri();
@@ -118,8 +118,8 @@ $uploads_dir 	= home_url() . '/wp-content/uploads/';
 		<dl data-journal>
 			<?php
 				$cc = 0;
-				$col1 = [];
-				$col2 = [];
+				$col1 = array();
+				$col2 = array();
 				
 					// Start the Loop.
 					while ( $categories->have_posts() ) : $categories->the_post();

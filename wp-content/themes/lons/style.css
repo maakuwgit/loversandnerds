@@ -422,12 +422,11 @@ body.admin-bar .off-canvas-content {
     right: 0; } }
 /* Medium Up */
 @media only screen and (min-width: 40em) {
-  blockquote,
-  blockquote p {
-    font-size: 1.5rem; }
-
   blockquote {
-    margin-bottom: 8.75vh; }
+    margin-bottom: 8.75vh;
+    font-size: 1.5rem; }
+    blockquote p {
+      font-size: inherit; }
 
   cite {
     font-size: 4.75vw; }
@@ -576,6 +575,10 @@ body.admin-bar .off-canvas-content {
       margin-right: -0.25rem; } }
 /* Medium Down */
 @media only screen and (max-width: 64.9375em) {
+  body:not(.single) .entry-header h1,
+  body:not(.single) .entry-header h2 {
+    margin-top: calc(33vh + 5.375rem/2.25); }
+
   .user.wolf.callout {
     background-position: left center; }
 
@@ -693,6 +696,13 @@ body.admin-bar .off-canvas-content {
     background-size: auto calc(50vh + 2rem + 40px);
     /*		background-size: 100vw;*/ }
 
+  #content .entry-content:not(.callout).light {
+    background-blend-mode: soft-light; }
+    #content .entry-content:not(.callout).light:hover:before {
+      background-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 500px #1c2839 inset, 0 0 250px rgba(255, 255, 255, 0.6) inset; }
+  #content .entry-content:not(.callout).dark {
+    background-blend-mode: overlay; }
   #content .entry-content:not(.callout):hover .entry-body {
     opacity: 1; }
   #content .entry-content:not(.callout):hover:before {
@@ -1204,105 +1214,104 @@ body.home #colophon {
           font-size: 2.03125vw; } }
 
 body.single {
-  background-color: #ffffff; }
+  background-color: #ffffff;
+  /* Small Only */
+  /* Medium Only */
+  /* Medium Up */
+  /* Wordpress Specific Break (for the admin bar) */
+  /* Large Down */
+  /* Large Up */ }
   body.single #masthead {
     border-bottom: solid 1px #f2f2f2; }
+  body.single h1 {
+    font-family: "unicorns";
+    font-weight: 100;
+    margin-top: 2rem;
+    margin-bottom: 1rem; }
   body.single .title-bar {
     background-color: #ffffff; }
     body.single .title-bar * {
-      color: #2ba6cb; }
+      color: #59b3c6; }
   body.single .entry-content .entry-header {
     padding-top: 10vh;
     padding-bottom: 17.5vh;
     background-size: cover;
     background-position: center; }
+  body.single .entry-content .entry-body,
+  body.single .entry-content .entry-footer {
+    background-color: #ffffff;
+    color: #3e1f14;
+    text-shadow: none; }
+  body.single .entry-content .entry-body {
+    padding-top: 5.75vh;
+    padding-bottom: 5.75vh; }
+    body.single .entry-content .entry-body h4 {
+      font-size: 1.3125rem; }
+    body.single .entry-content .entry-body blockquote {
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: "unicorns"; }
+      body.single .entry-content .entry-body blockquote p {
+        font-size: 1.25rem;
+        color: #9a9489;
+        line-height: 1.25; }
+        body.single .entry-content .entry-body blockquote p:before, body.single .entry-content .entry-body blockquote p:after {
+          position: absolute;
+          font-family: "unicorns";
+          width: 1rem;
+          height: 1rem;
+          display: inline;
+          margin-top: -0.25rem;
+          font-size: 2rem;
+          color: #89462a; }
+        body.single .entry-content .entry-body blockquote p:before {
+          content: '“';
+          margin-left: -1.125rem; }
+        body.single .entry-content .entry-body blockquote p:after {
+          content: '”';
+          margin-left: auto;
+          margin-right: -1.125rem; }
+    body.single .entry-content .entry-body > *:last-child {
+      margin-bottom: auto; }
+  @media only screen and (max-width: 39.9375em) {
+    body.single .entry-content .entry-header h1 {
+      margin-top: 12vh; } }
+  @media only screen and (min-width: 40em) and (max-width: 64.9375em) {
+    body.single .entry-content .entry-header h1 {
+      margin-top: 10vh; } }
+  @media only screen and (min-width: 40em) {
+    body.single .entry-content .entry-body {
+      padding-top: 8.75vh;
+      padding-bottom: 8.75vh; }
+      body.single .entry-content .entry-body blockquote {
+        line-height: 1.5; }
+        body.single .entry-content .entry-body blockquote p:before, body.single .entry-content .entry-body blockquote p:after {
+          margin-top: -2rem;
+          font-size: 5rem; }
+        body.single .entry-content .entry-body blockquote p:before {
+          margin-left: -2.5rem; }
+        body.single .entry-content .entry-body blockquote p:after {
+          margin-right: -2.5rem; }
+      body.single .entry-content .entry-body.active .entry-body {
+        height: auto;
+        max-height: none; }
+    body.single .entry-content.single-format-standard .entry-body
+    figure > div {
+      padding: 0; }
+    body.single .entry-content.single-format-standard .entry-body
+    figure figcaption {
+      padding: 5vw; } }
+  @media only screen and (max-width: 782px) {
+    body.single .entry-header h1 {
+      margin-top: 46px; } }
+  @media only screen and (max-width: 64.9375em) {
+    body.single .entry-body p {
+      font-size: 0.9375rem; } }
+  @media only screen and (min-width: 65em) {
+    body.single .entry-header h1 {
+      margin-top: 15vh; } }
 
-body.single .entry-content .entry-body,
-body.single .entry-content .entry-footer {
-  background-color: white;
-  color: #3e1f14;
-  text-shadow: none; }
-
-body.single .entry-content .entry-body > *:last-child {
-  margin-bottom: auto; }
-
-body.single .entry-content .entry-body {
-  padding-top: 5.75vh;
-  padding-bottom: 5.75vh; }
-
-.single h1 {
-  font-family: 'unicorns';
-  font-weight: 100;
-  margin-top: 32px;
-  margin-bottom: 1rem; }
-
-/* Small Only */
-@media only screen and (max-width: 39.9375em) {
-  body.single-post .entry-content .entry-header h1 {
-    margin-top: 12vh; } }
-/* Medium Only */
-@media only screen and (min-width: 40em) and (max-width: 64.9375em) {
-  body.single-post .entry-content .entry-header h1 {
-    margin-top: 10vh; } }
-/* Medium Up */
-@media only screen and (min-width: 40em) {
-  .single blockquote {
-    margin-bottom: 2vh;
-    background-color: transparent; }
-
-  .single blockquote:before,
-  .single blockquote:after {
-    content: '“';
-    margin-left: -2.5rem;
-    width: 1.25rem;
-    height: 1.25rem;
-    display: block;
-    margin-top: -10px;
-    font-size: 5rem;
-    color: #aea19c; }
-
-  .single blockquote:after {
-    content: '”';
-    margin-left: auto;
-    margin-right: -2.5rem; }
-
-  .single blockquote p {
-    color: #aea19c; }
-
-  body.single .entry-body {
-    padding-top: 8.75vh;
-    padding-bottom: 8.75vh; }
-
-  body.single-post .entry-content.active .entry-body {
-    height: auto;
-    max-height: none; }
-
-  .single-format-standard .entry-body figure > div {
-    padding: 0; }
-
-  .single-format-standard .entry-body figcaption {
-    padding: 5vw; } }
-/* Wordpress Specific Break (for the admin bar) */
-@media only screen and (max-width: 782px) {
-  body.admin-bar .off-canvas-wrapper-inner,
-  body.admin-bar .off-canvas-content,
-  body.admin-bar [data-stick-to] {
-    top: 46px; }
-
-  .single h1 {
-    margin-top: 46px; } }
-/* Large Down */
-@media only screen and (max-width: 64.9375em) {
-  .single .entry-body p {
-    font-size: 0.9375rem; } }
-/* Large Up */
-@media only screen and (min-width: 65em) {
-  body:not(.single-post) .entry-header h1,
-  body:not(.single-post) .entry-header h2 {
-    margin-top: calc(33vh + 5.375rem/2.25); }
-
-  body.single-post .entry-header h1 {
-    margin-top: 15vh; } }
 .archive.category .title-bar-right a[href="#twitter-feed"] {
   display: none; }
 .archive #masthead.enter > a + .title-bar-title {

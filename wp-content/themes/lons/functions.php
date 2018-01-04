@@ -539,7 +539,7 @@ function gallery_settings_meta_box( $post ) {
 		)
 	);
 	
-	$used_ids = [];
+	$used_ids = array();
 	$used_images = get_post_meta( $post_id, '_lons_used_images', true );
 	
 	wp_nonce_field( basename( __FILE__ ), 'lons_settings_nonce' );
@@ -589,7 +589,7 @@ function gallery_settings_meta_box( $post ) {
 		foreach ($media_query->posts as $attachment) :
 			$ID = $attachment->ID;
 			if ( !in_array( $ID, $used_ids ) ) :
-				$guid = wp_get_attachment_image_src( $ID, [75,75] );
+				$guid = wp_get_attachment_image_src( $ID, array(75,75) );
 				if( $guid ) :
 	?>
 		<li class="column column-block">
