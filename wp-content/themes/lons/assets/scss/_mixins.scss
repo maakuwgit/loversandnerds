@@ -1,3 +1,15 @@
+@mixin feature_effect($is_light : false) {
+	@if ($is_light == true) {		
+		background-color: rgba($white, 0.6);
+		box-shadow: 0 0 500px $navy inset,
+								0 0 250px rgba($white, 0.6) inset;
+	}
+	@else {
+		background-color: rgba($cocoa, 0.3);
+		box-shadow: 0 0 500px $black inset,
+								0 0 250px rgba($cocoa, 0.6) inset;
+	}
+}
 @mixin tina_h1($font-size : 72) {
 	font-family: $unicorns;
 	font-weight: 100;

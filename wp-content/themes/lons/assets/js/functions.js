@@ -173,7 +173,7 @@
 		//Dev Note: Create a date attr for the size and only call 'backgrounder' once per size.
 		backgrounder.make(size);
 		if( !$('body').hasClass('single') && is_dev === false ){
-			if(size !== 'small'){
+			if(size !== 'small' && size !== 'medium'){
 				$('#content, #masthead').off('mouseenter').on('mouseenter', function(){$(this).addClass('enter');});
 				$('#content, #masthead').off('mouseleave').on('mouseleave', function(){$(this).removeClass('enter');});
 			}else{
