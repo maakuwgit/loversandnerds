@@ -390,6 +390,10 @@ body.admin-bar .off-canvas-content {
 
 /* Small Only */
 @media only screen and (max-width:39.9375em) {
+	#nextBtn {
+		display: none;
+	}
+	
 	cite {
 		right: 0.875rem;
 	  bottom: 0.5rem;
@@ -473,21 +477,6 @@ body.admin-bar .off-canvas-content {
 				margin-bottom: 1rem;
 			}
 		}
-	}
-}
-
-/* Medium Down */
-@media only screen and (max-width:64.9375em) {
-	.show-for-large {
-		display:none!important
-	}
-	main > a,
-	
-	nav.prev a,
-	nav.next a, 
-	.off-canvas-content > a {
-		width: 100%;
-		margin: auto;
 	}
 }
 
@@ -700,6 +689,17 @@ body.admin-bar .off-canvas-content {
 
 /* Medium Down */
 @media only screen and (max-width:64.9375em) {	
+	.show-for-large {
+		display:none!important
+	}
+	main > a,
+	
+	nav.prev a,
+	nav.next a, 
+	.off-canvas-content > a {
+		width: 100%;
+		margin: auto;
+	}
 	body:not(.single) {
 		.entry-header {
 			h1,

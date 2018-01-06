@@ -215,7 +215,7 @@ function global_enqueue() {
 	wp_enqueue_script( 'backgrounder', $template_dir . '/assets/js/backgrounder.js', array( 'jquery' ), '0.1', true );
 	wp_enqueue_script( 'breakpoints', $template_dir . '/assets/js/breakpoints.js', array(), '0.1', true );
 
-	wp_enqueue_script( 'scrollmagic', '//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js', array( 'jquery' ), '2.0.5', true );
+	wp_enqueue_script( 'scrollmagic', '//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js', array( 'jquery', 'scrollto' ), '2.0.5', true );
 	wp_enqueue_script( 'scrollmagic-indicators', '//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js', array( 'jquery', 'scrollmagic' ), '2.0.5', true );
 	wp_enqueue_script( 'tweenmax', '//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js', array( 'jquery' ), '1.18.0', true );
 	wp_enqueue_script( 'scrollto', '//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/ScrollToPlugin.min.js', array( 'jquery' ), '1.8.1', true );

@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.3.2
+ * @since Lovers + Nerds 2.3.3
  * Contains handlers for navigation and widget area.
  */
 
@@ -49,16 +49,6 @@
 						}
 					}
 				});
-				var scene = new ScrollMagic.Scene({
-					triggerElement: '#lans_instagram',
-					offset: -1.5*$('#portfolios').outerHeight(), 
-				}).on('enter', function(event){
-					$('.home .entry-content:first-of-type').addClass('unfix');
-				}).on('leave', function(event){
-					$('.home .entry-content:first-of-type').removeClass('unfix');
-				});
-				
-				scenes.push(scene);
 			}
 		}
 		
@@ -100,14 +90,17 @@
 		}
 	
 		function gotoNext(e) {
-			if(curr == numSections) return;
+			if(curr === numSections) return;
 		  var id = '#' + $(this).attr('data-href');
 	
 		  if($(id).length > 0) {
 		    e.preventDefault();
 	
 		    // trigger scroll
-		    controller.scrollTo(positions[next]);
+		    var newPos 		= positions[next];
+		    var newSpeed 	= newPos - $('html,body').scrollTop();
+		    
+				$('html,body').animate({scrollTop : newPos }, newSpeed);
 	
 		    // If supported by the browser we can also update the URL
 		    if (window.history && window.history.pushState) {
@@ -118,7 +111,6 @@
 		    next++;
 				setNext(next);
 		  }
-	
 		}
 		
 		//  Bind anchors
@@ -194,10 +186,13 @@
 		$('[data-toggle]').on('click.openMenu', openMenu);
 		$('button.ellipsis, .button.ellipsis').click(toggleContent);
 		$(window).on('resize.refactor', refactor);
+		
+		//Make anything a button
 		$('[data-href]').on('click', function(event){
 			window.open($(this).attr('data-href'), '_blank');
 		});
 		
+		//To make deving easier
 		if(is_dev) $('#content').addClass('enter');
 		if(is_dev) $('#masthead').addClass('enter');
 		
