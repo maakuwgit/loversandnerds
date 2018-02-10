@@ -22,7 +22,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.3.2
+ * @since Lovers + Nerds 2.3.3
  */
 
 /**
@@ -212,6 +212,7 @@ function global_enqueue() {
 	wp_enqueue_style( 'linearicons', $template_dir . '/assets/css/linearicons.css', array(), '1.1.8' );
 
 	//Libraries
+//	wp_enqueue_style( 'bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', array(), '4.0.0');
 	wp_enqueue_script( 'backgrounder', $template_dir . '/assets/js/backgrounder.js', array( 'jquery' ), '0.1', true );
 	wp_enqueue_script( 'breakpoints', $template_dir . '/assets/js/breakpoints.js', array(), '0.1', true );
 
@@ -348,6 +349,27 @@ function twentysixteen_post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
 	return $attr;
 }
 add_filter( 'wp_get_attachment_image_attributes', 'twentysixteen_post_thumbnail_sizes_attr', 10 , 3 );
+
+
+add_filter('post_gallery','lons_gallery_output',10,2);
+
+function lons_gallery_output( $string, $attr){
+
+    $output = '<div class="gallery gallery-size-thumbnail">';
+		
+    $posts = get_posts(array('include' => $attr['ids'],'post_type' => 'attachment'));
+
+    foreach($posts as $imagePost){
+	    $output .= '<figure class="gallery-item">';
+			$output .= '<div class="gallery-icon landscape">';
+			$output .= '<a target="_blank" href="'.wp_get_attachment_image_src($imagePost->ID, 'extralarge')[0].'"><img width="540" height="320" src="'.wp_get_attachment_image_src($imagePost->ID, 'small')[0].'" class="attachment-thumbnail size-thumbnail" alt="" srcset="'.wp_get_attachment_image_src($imagePost->ID, 'small')[0].' 540w, '.wp_get_attachment_image_src($imagePost->ID, 'large')[0].' 1024w, '.wp_get_attachment_image_src($imagePost->ID, 'medium')[0].' 768w, '.wp_get_attachment_image_src($imagePost->ID, 'extralarge')[0].' 1400w" sizes="(max-width: 540px) 85vw, 540px"></a>';
+			$output .= '</div></figure>';
+    }
+
+    $output .= '</div>';
+
+    return $output;
+}
 
 function lons_register_posttypes() {
 	$labels = array(
@@ -528,7 +550,7 @@ function gallery_settings_meta_box( $post ) {
 	
 	$template = get_post_meta( $post_id, '_wp_page_template', true );
 	$format = get_post_format( $post_id );
-	$gallery = get_post_gallery_images( $post_id );
+	$gallery = get_post_meta( $post_id, 'lons_gallery', true);
 
 	$media_query = new WP_Query(
 		array(
@@ -545,13 +567,12 @@ function gallery_settings_meta_box( $post ) {
 	wp_nonce_field( basename( __FILE__ ), 'lons_settings_nonce' );
 ?>
 <fieldset>
-	<legend<?php if ( !get_post_gallery() ) echo ' style="display:none;"';?>>These images will appear in your gallery</legend>
+	<legend<?php if ( !$gallery ) echo ' style="display:none;"';?>>These images will appear in your gallery</legend>
+	<input id="lons_gallery" name="lons_gallery" type="hidden" value="<?php echo $gallery; ?>">
 	<ul id="used_images" class="row small-up-2 medium-up-3 large-up-6">
 	<?php
-		if ( get_post_gallery() ) :
-			$galleries = get_post_gallery( $post_id, false );
-			$used_ids = $galleries['ids'];
-			$used_ids = explode(',',$used_ids);
+		if ( $gallery ) :
+			$used_ids = explode(',',$gallery);
 
 			foreach ( $used_ids as $ID ) :
 				$base_url = wp_upload_dir();
@@ -576,6 +597,7 @@ function gallery_settings_meta_box( $post ) {
 					<a class="thumbnail" href="#<?php echo $ID;?>" data-href="<?php echo $ID;?>" title="<?php echo esc_attr( $title );?>">
 						<img width="75" height="75" src="<?php echo $base_url . $file;?>" alt="<?php echo esc_attr( $title );?>">
 					</a>
+				</div>
 			</figure>
 		</li>
 		<?php endforeach; ?>
@@ -932,6 +954,11 @@ function lons_metabox_settings_save_details( $post_id, $post ){
 		update_post_meta( $post_id, 'lons_component_r_hub', sanitize_text_field( $_POST['lons_component_r_hub'] ) );
 	else
 		delete_post_meta( $post_id, 'lons_component_r_hub' );	
+		
+	if ( isset( $_POST['lons_gallery'] ) )
+		update_post_meta( $post_id, 'lons_gallery', sanitize_text_field( $_POST['lons_gallery'] ) );
+	else
+		delete_post_meta( $post_id, 'lons_gallery' );	
 }
 add_action( 'save_post', 'lons_metabox_settings_save_details', 10, 2 );
 endif;
@@ -956,9 +983,11 @@ if ( ! function_exists( 'lons_user_fields' ) ) :
   <table class="form-table">
   	<tr>
 			<th scope="row"><label for="gender">Gender</label></th>
-			<td><select class="regular-text ltr" name="gender" type="text" id="gender" cols="10">
-				<option value="m" <?php selected( $gender, 'm' ); ?>>Male</option>
-				<option value="f" <?php selected( $gender, 'f' ); ?>>Female</option>
+			<td>
+				<select class="regular-text ltr" name="gender" type="text" id="gender" cols="10">
+					<option value="m" <?php selected( $gender, 'm' ); ?>>Male</option>
+					<option value="f" <?php selected( $gender, 'f' ); ?>>Female</option>
+				</select>
 			</td>
 		</tr>
   </table>
@@ -1015,7 +1044,7 @@ if ( ! function_exists( 'lons_user_fields' ) ) :
 		</tr>
   	<tr>
 			<th scope="row"><label for="job_description">Job Description</label></th>
-			<td><textarea class="regular-text ltr" name="job_description" id="job_description" placeholder="<?php echo esc_attr( get_the_author_meta( 'job_description', $user->ID ) ); ?>" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="180"></textarea></td>
+			<td><textarea class="regular-text ltr" name="job_description" id="job_description" aria-required="true" autocapitalize="none" autocorrect="off"><?php echo esc_attr( get_the_author_meta( 'job_description', $user->ID ) ); ?></textarea></td>
 		</tr>
   </table>
   <h4>Social</h4>
@@ -1181,3 +1210,45 @@ function local_img( $atts ) {
 	return '<img' . $alt . $src . $id . $class . $title .'>';
 }
 add_shortcode( 'local_img', 'local_img' );
+
+/**
+ * Adds Social meta tags to the head tag content
+ *
+ * @since Lovers&Nerds 2.3.3.2
+ * @author MaakuW
+ */
+function lons_seo_tags() {
+	global $wp, $post;
+	$url = home_url( $wp->request );
+	
+	if( is_archive() ) {
+		$user = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
+		$title = get_user_meta($user->ID, 'nickname', true);
+		if($title === 'MaakuW' || $title === 'maakuw') $title = '真ー久W';
+		$excerpt = get_user_meta($user->ID, 'description', true);
+		
+		$img = get_user_meta($user->ID, 'photo', true);
+		$img = wp_get_attachment_image_src($img, 'fullsize' );
+		$img = $img[0];
+		
+		$url .= '/';
+	}else{
+		$title = get_the_title();
+		$excerpt = get_the_excerpt();
+		$img = get_the_post_thumbnail_url($post, 'medium' );
+	}
+	
+	if(is_single() ) {
+		$url = get_permalink();
+	}
+	
+	$meta = '';
+	$meta .= '<meta name="twitter:description" content="' . $excerpt . '">';
+	$meta .= '<meta name="twitter:card" content="summary">';
+	$meta .= '<meta name="twitter:site" content="' . $url . '" >';
+	$meta .= '<meta name="twitter:title" content="' . $title . '">';
+	if( $img ) $meta .= '<meta name="twitter:image" content="' . $img . '">';
+	echo $meta;
+	
+}
+add_action( 'wp_head', 'lons_seo_tags', 0 );

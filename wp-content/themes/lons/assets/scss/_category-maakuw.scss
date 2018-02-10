@@ -35,12 +35,8 @@ body.category-maakuw {
 				text-align: center;
 				font-size: 1.5rem;
 				vertical-align: middle;
-				line-height: 45px;
 			}
 		}
-	}
-	
-	#masthead {
 		border-bottom-color: $navy;
 	}
 	
@@ -54,6 +50,37 @@ body.category-maakuw {
 	.off-canvas-content > .scrollmagic-pin-spacer a {
 		background-color: $navy;
 		z-index: 2;
+	}
+	
+	#colophon {
+		background-color: #f9e8e8;
+		article {
+			background-color: #6790ca;
+			background-blend-mode: multiply;
+			box-shadow: 0 -135px 270px rgba(0,0,0,0.3) inset;
+			h5 {
+				color: #ef5657;
+				text-shadow: 0 0 1px black;
+			}
+			h6 {
+				color: white;
+			}
+			p {
+				color: #e1e1e1;
+			}
+		}
+	}
+	
+	@media only screen and (min-width: 40em) {
+		#colophon {
+			article {
+				h5 {
+					&[data-href]:hover {
+						color: red;
+					}
+				}
+			}
+		}
 	}
 	
 	@media only screen and (min-width: 65em) {

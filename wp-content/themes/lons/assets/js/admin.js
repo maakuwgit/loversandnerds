@@ -41,7 +41,7 @@
 			$('#used_images').siblings('legend').show();
 			$('#used_images').append(target);
 			
-			$('#content').text('[gallery link="file" ids="'+ids.join()+'"]');
+			$('#lons_gallery').val(ids);
 			$(subtract).delay(150).fadeIn(150);
 		}
 		
@@ -54,7 +54,7 @@
 			
 			var subtract  = $(this),
 					figure 		= $(this).parents('figure'),
-					add 			= $(this).parent().siblings().find('[data-remove]'),
+					add 			= $(this).parent().siblings().find('[data-add]'),
 					anchor 		= $(figure).find('[data-href]'),
 					target 		= $(figure).parent(),
 					id 				= $(anchor).attr('data-href'),
@@ -62,12 +62,13 @@
 					iid 			= ids.indexOf(id);
 				
 			$(subtract).hide();
+			$(add).delay(150).fadeIn(150);
 			
 			if(gid > -1) gallery.splice(target, 1);
 			if(iid > -1) {
 				if (ids.length > 1) {
 					ids.splice(iid, 1);
-					txt = '[gallery link="file" ids="'+ids.join()+'"]';
+					txt = ids;
 				}else{
 					ids = [];
 					txt = '';
@@ -76,7 +77,7 @@
 			}
 			
 			$('#available_images').append(target);
-			$('#content').text(txt);
+			$('#lons_gallery').val(txt);
 			$(add).delay(150).fadeIn(150);
 		}
 	}

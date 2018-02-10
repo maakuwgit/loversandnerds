@@ -6,7 +6,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.3.1
+ * @since Lovers + Nerds 2.3.3
  */
 	global $post;
 	
@@ -34,7 +34,7 @@
   <div class="site-inner off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper data-sticky-container>
 			<header id="masthead" class="site-header title-bar sticky" data-sticky data-stick-to="top">
-				<a href="#menu-open" data-toggle="colophon" class="hide">
+				<a href="#menu-open" data-toggle="colophon">
 					<span class="lnr lnr-menu"></span>
 				</a>
 				<?php if( is_archive() ) echo '<a href="' . get_bloginfo('url') . '" class="home"><em class="lnr lnr-home"></em></a>';?>
@@ -66,14 +66,16 @@
 			  <nav class="title-bar-right">
 				<?php if( is_user_logged_in() ) : ?>
 					<a href="<?php echo $admin_url;?>">
-						<em class="lnr lnr-cog"></em>
+						<em class="fa fa-cog"></em>
 					</a>
 				<?php endif; ?>
 					<a href="<?php echo $user_url;?>">
-						<em class="lnr lnr-user"></em>
+						<em class="fa fa-user"></em>
 					</a>
+				<?php if ( shortcode_exists( 'nu_tweets' ) ) : ?>
 					<a href="#twitter-feed">
 						<em class="fa fa-twitter"></em>
 					</a>
+				<?php endif; ?>
 			  </nav>
 			</header>

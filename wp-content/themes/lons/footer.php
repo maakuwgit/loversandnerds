@@ -8,11 +8,10 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.3.3
+ * @since Lovers + Nerds 2.3.4
  */
 
 $template_uri = get_template_directory_uri();
-$uploads_dir 	= home_url() . '/wp-content/uploads/';
 ?>
 <footer id="colophon" class="collapsed" data-menu id="footer_menu">
 <?php
@@ -22,75 +21,41 @@ $uploads_dir 	= home_url() . '/wp-content/uploads/';
 		foreach( $users as $user ) :
 			//Thumbnail
 			$photo = get_user_meta($user->ID, 'photo', true);
-			$mphoto = $tphoto = $dphoto = substr($photo,0, strpos($photo, '.'));
-			$dphoto = $dphoto . '-1920x525' . substr($photo, strpos($photo, '.'));
-			$mphoto = $mphoto . '-640x175' . substr($photo, strpos($photo, '.'));
-			$tphoto = $tphoto . '-1024x280' . substr($photo, strpos($photo, '.'));
+			$xlphoto = wp_get_attachment_image_src($photo, 'fullsize' );
+			$mphoto = wp_get_attachment_image_src($photo, 'medium' );
+			$tphoto = wp_get_attachment_image_src($photo, 'thumbnail');
+			$dphoto = wp_get_attachment_image_src($photo, 'large' );
+ 
 			if(!$photo) $photo = 'http://placehold.it/2560x700';
-			$photo = $uploads_dir . $photo;
-			$mphoto = $uploads_dir . $mphoto;
-			$tphoto = $uploads_dir . $tphoto;
-			$dphoto = $uploads_dir . $dphoto;
 			
 			//General Info
 			$gender = get_user_meta($user->ID, 'gender', true);
 			$nickname = get_user_meta($user->ID, 'nickname', true);
+			if($user->user_nicename === 'maakuw') $nickname = '真ー久W';
 			$job_title = get_user_meta($user->ID, 'job_title', true);
 			$job_description = get_user_meta($user->ID, 'job_description', true);
 			$description = get_user_meta($user->ID, 'description', true);
-			
-			//Social
-			$github = get_user_meta($user->ID, 'github', true);
-			$bitbucket = get_user_meta($user->ID, 'bitbucket', true);
-			$linkedin = get_user_meta($user->ID, 'linkedin', true);
-			$twitter = get_user_meta($user->ID, 'twitter', true);
-			$instagram = get_user_meta($user->ID, 'instagram', true);
-			$facebook = get_user_meta($user->ID, 'facebook', true);
-			$medium = get_user_meta($user->ID, 'medium', true);
-			
-	 ?>
+?>
 	<div>
-		<article>
+		<article style="background-image: url(<?php echo $dphoto[0];?>);">
 			<figure class="th">
-					<img alt="" src="<?php echo $mphoto; ?>" data-src-medium="<?php echo $tphoto;?>" data-src-large="<?php echo $dphoto;?>" data-src-xlarge="<?php echo $photo;?>">
+				<div>
+					<img alt="" src="<?php echo $tphoto[0]; ?>" data-src-medium="<?php echo $mphoto[0];?>" data-src-large="<?php echo $dphoto[0];?>" data-src-xlarge="<?php echo $xlphoto[0];?>">
+				</div>
 				<figcaption>
-					<h5><?php echo $nickname;?></h5>
-					<h6><?php echo $job_title;?></h6>
-					<p><?php echo $description;?></p>
+					<h5 data-href="<?php echo $user->user_url;?>" data-target="_self"><?php echo $nickname;?></h5>
+				<?php if ($job_title !== '' ) : ?>
+					<h6 data-href="<?php echo $user->user_url;?>" data-target="_self"><?php echo $job_title;?></h6>
+				<?php endif; ?>
+					<p data-href="<?php echo $user->user_url;?>" data-target="_self"><?php echo $description;?></p>
+					<?php include(locate_template( 'template-parts/nav-social.php')); ?>
 				</figcaption>
 			</figure>
-			<nav>
-				<ul>
-				<?php if( $linkedin ) : ?>
-					<li><a target="_blank" href="https://www.linkedin.com/in/<?php echo $linkedin; ?>/"><em class="fa fa-linkedin-square"></em></a></li>
-				<?php endif; ?>
-				<?php if( $github ) : ?>
-					<li><a target="_blank" href="https://github.com/<?php echo $github; ?>"><em class="fa fa-github-square"></em></a></li>
-				<?php endif; ?>
-				<?php if( $bitbucket ) : ?>
-					<li><a target="_blank" href="https://bitbucket.org/<?php echo $bitbucket; ?>/"><em class="fa fa-bitbucket-square"></em></a></li>
-				<?php endif; ?>
-				<?php if( $twitter ) : ?>
-					<li><a target="_blank" href="https://twitter.com/<?php echo $twitter; ?>"><em class="fa fa-twitter-square"></em></a></li>
-				<?php endif; ?>
-				<?php if( $instagram ) : ?>
-					<li><a target="_blank" href="https://www.instagram.com/<?php echo $instagram; ?>/"><em class="fa fa-instagram"></em></a></li>
-				<?php endif; ?>
-				<?php if( $facebook ) : ?>
-					<li><a target="_blank" href="https://facebook.com/<?php echo $facebook; ?>"><em class="fa fa-facebook-square"></em></a></li>
-				<?php endif; ?>
-				<?php if( $medium ) : ?>
-					<li><a target="_blank" href="https://medium.com/@<?php echo $medium; ?>"><em class="fa fa-medium"></em></a></li>
-				<?php endif; ?>
-				</ul>
-			</nav>
 		</article>
 		<?php
-			$cat = ( $user->ID === 2 ? 7 : 25 );
-			
 			$args = array(
 				'posts_per_page' => 9,
-				'cat' => $cat,
+				'author' => $user->ID,
 			);
 			
 			$categories = new WP_Query( $args );

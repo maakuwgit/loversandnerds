@@ -1,6 +1,5 @@
 (function($){
 	$(document).ready( function(){
-		$('#postdivrich').hide();
 		$('label[rel="link"]').hide();
 			
 		$image_settings_box = $( '#image_settings' ),
@@ -14,23 +13,19 @@
 				case 'post-format-image':
 					$image_settings_box.show();
 					$gallery_settings_box.hide();
-					$('#postdivrich').hide();
 					$('label[rel="link"]').hide();
 					break;
 				case 'post-format-gallery':
 					$gallery_settings_box.show();
 					$image_settings_box.hide();
-					$('#postdivrich').hide();
 					$('label[rel="link"]').hide();
 					break;
 				case 'post-format-link':
 					$gallery_settings_box.hide();
 					$image_settings_box.hide();
 					$('label[rel="link"]').show();
-					$('#postdivrich').hide();
 					break;
 				default:
-					$('#postdivrich').show();
 					$image_settings_box.hide();
 					$gallery_settings_box.hide();
 					break;

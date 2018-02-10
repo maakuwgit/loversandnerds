@@ -1,4 +1,72 @@
 body.single {
+	&.loaded {
+		.entry-header, 
+		.entry-body,
+		.entry-footer {
+			opacity: 1;
+		}
+	}
+	
+	.entry-content {
+		.entry-body {		
+			max-height: initial;
+		}
+	}
+	
+	.entry-content.project {
+		.entry-header, 
+		.entry-body,
+		.entry-footer {
+			margin-left: 1rem;
+			margin-right: 1rem;
+		}
+		.entry-body {
+			overflow: visible;
+			padding-top: 2rem;
+			padding-bottom: 2rem;
+		}
+		.entry-footer {
+			a {
+				position: relative;
+				display: inline-block;
+				background-color: $brand-secondary;
+				padding: 2px 8px;
+				margin: 5px auto 5px 20px;
+				color: $white;
+				border-top-right-radius: 4px;
+				border-bottom-right-radius: 4px;
+				&:before,
+				&:after {
+					content: '';
+					position: absolute;
+				}
+				&:before {
+					border-radius: 50px;
+					height: 5px;
+					width: 5px;
+					background-color: $white;
+					z-index: 2;
+					top: 11px;
+					left: -3px;
+				}
+				&:after {
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 14px 14px 14px 0;
+					border-color: transparent $brand-secondary transparent transparent;
+					z-index: 1;
+					left: -14px;
+					top: 0;
+				}
+			}
+		}
+	}
+	.title-bar-right {
+		a[href="#twitter-feed"] {
+			display: none;
+		}
+	}
 	background-color: $white;
 	#masthead {
 		border-bottom: solid 1px $aluminum;
@@ -7,10 +75,17 @@ body.single {
 	h1 {
 		font-family: $unicorns;
 		font-weight: $text-light;
-		margin-top: rem-calc(32);
+		margin-top: rem-calc(88);
 		margin-bottom: rem-calc(16);
 	}
-
+	
+	.entry-header {
+		h1,
+		h2 {
+			margin-top: 40vh;
+		}
+	}
+	
 	.title-bar {
 		background-color: $white;
 		* {
@@ -18,7 +93,7 @@ body.single {
 		}
 	}
 
-	.entry-content {
+	.entry-content:not(.project) {
 	
 		.entry-header {
 			padding-top: 10vh;
@@ -48,7 +123,7 @@ body.single {
 				p {
 					font-size: 1.25rem;
 					color: $dark-grey;
-					line-height: 1.25;
+					line-height: 1.5;
 					&:before,
 					&:after {
 						position: absolute;
@@ -78,21 +153,92 @@ body.single {
 		
 	}
 
-	/* Small Only */
-	@media only screen and (max-width:39.9375em) {
-		.entry-content .entry-header h1 {
-		  margin-top: 12vh;
-		}
+}
+/* Small Only */
+@media only screen and (max-width:39.9375em) {
+	cite {
+		right: 0.875rem;
+	  bottom: 0.5rem;
+	}
+	#site-navigation.menu > li > a {
+		margin-right: 0.9375vw;
 	}
 	
-	/* Medium Only */
-	@media only screen and (min-width:40em) and (max-width:64.9375em) {
-		.entry-content .entry-header h1 {
-		  margin-top: 10vh;
+	.entry-header h1,
+	.entry-header h2 {
+		margin-top: 12vh;
+		line-height: 1;
+	  text-shadow: 0 0 0.5rem rgba(0,0,0,0.6);
+	}
+		.entry-content.light .entry-header h1,
+		.entry-content.light .entry-header h2 {
+		  text-shadow: 0 0 0.5rem rgba(255,255,255,0.6);
+		}
+	
+	body:not(.single-post) .entry-header h1,
+	body:not(.single-post) .entry-header h2 {
+	  margin-top: calc(22.5vh + 2rem);
+	}
+		body:not(.single-post) .format-standard .entry-header h1,
+		body:not(.single-post) .format-standard .entry-header h2 {
+		  margin-top: calc(20vh + 2rem);
+		}
+		body:not(.single-post) .format-image .entry-header h1,
+		body:not(.single-post) .format-image .entry-header h2 {
+		  margin-top: 1.5rem;
+		}
+	 
+	.format-image .feature {
+		margin: 1.75rem auto;
+		float: none;
+		position: relative;
+		text-align: center;
+		background-image: none !important;
+  }
+  	.format-image .feature img {
+	  	opacity: 1;
+	  	margin: auto;
+			border: solid 4px $white;
+	  }
+	 
+	.social-widget > * {
+		border-left-style: none;
+	}
+}
+
+/* Medium Only */
+@media only screen and (min-width:40em) and (max-width:64.9375em) {
+	.entry-content {
+		&.active .entry-body {
+			max-height: 50vh;
+		}
+		.entry-header h1,
+		.entry-header h2 {
+	  	margin-top: 10vh;
+			line-height: 1.0625;
 		}
 	}
-	/* Medium Up */
-	@media only screen and (min-width:40em) {
+			
+	.gallery-item {
+		width: 22.5%;
+	}
+	#content > a:not(:first-child) {
+		right: 0;
+	}
+	.social-widget > * {
+		width: 50vw;
+	}
+	main.social-active .entry-content {
+		width: 50vw;
+	}
+  #lans_images li:nth-of-type(3){
+	  display: none;
+	}
+}
+
+/* Medium Up */
+@media only screen and (min-width:40em) {
+	.single {
 		.entry-content {
 			.entry-body {
 		  	padding-top: 8.75vh;
@@ -135,32 +281,45 @@ body.single {
 				}
 			}
 		}
-	}
-	
-	/* Wordpress Specific Break (for the admin bar) */
-	@media only screen and (max-width:782px) {
-		.entry-header {
-			h1 {
-				margin-top: 46px;
-			}
+		.format-standard nav,
+		.format-aside nav {
+			text-align: left;
+		}
+		#nextBtn {
+			position: absolute;
+			top: calc(100vh - 1.5rem);
+			bottom: initial;
 		}
 	}
+}
 	
-	/* Large Down */
-	@media only screen and (max-width:64.9375em) {
+/* Wordpress Specific Break (for the admin bar) */
+@media only screen and (max-width:782px) {
+	.entry-header {
+		h1 {
+			margin-top: 46px;
+		}
+	}
+}
+/* Large Up */
+@media only screen and (min-width:65em) {
+	.single .entry-content.project {
+		.entry-header {
+			max-width: 960px;
+			h1 {
+		  	margin-top: 15vh;
+		  }
+		}
+	}
+}
+	
+/* Large Down */
+@media only screen and (max-width:64.9375em) {
+	.single {
 		.entry-body {
 			p {
 				font-size: 0.9375rem;
 			}
-		}
-	}
-	
-	/* Large Up */
-	@media only screen and (min-width:65em) {
-		.entry-header {
-			h1 {
-		  	margin-top: 15vh;
-		  }
 		}
 	}
 }

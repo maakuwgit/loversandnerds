@@ -1,3 +1,31 @@
+@mixin social_nav(){	
+	nav {
+		margin-top: rem-calc(8);
+		margin-right: rem-calc(-8);
+		margin-bottom: rem-calc(-8);
+		margin-left: rem-calc(-8);
+		ul {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: flex-start;
+			align-content: flex-start;
+			align-items: flex-start;
+			padding: 0;
+			margin: auto;
+			list-style: none;
+		}
+		li {
+			padding: rem-calc(8);
+			font-size: rem-calc(12);
+			a {
+				font-size: rem-calc(24);
+				color: $white;
+			}
+		}
+	}
+}
+
 @mixin feature_effect($is_light : false) {
 	@if ($is_light == true) {		
 		background-color: rgba($white, 0.6);

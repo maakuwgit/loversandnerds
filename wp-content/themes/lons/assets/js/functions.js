@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.3.3
+ * @since Lovers&Nerds 2.3.3.2
  * Contains handlers for navigation and widget area.
  */
 
@@ -84,14 +84,14 @@
 					curr = to - 1;
 					if( !$('body').hasClass('archive') ) $('body').removeClass('bottom');
 //					$('#content > a').stop().removeClass('disabled');
-					$('#nextBtn').attr("data-href",sections[to]).stop().removeClass('disabled').off('click').on('click', gotoNext);
+					$('#nextBtn').attr("data-anchor",sections[to]).stop().removeClass('disabled').off('click').on('click', gotoNext);
 				}
 			}
 		}
 	
 		function gotoNext(e) {
 			if(curr === numSections) return;
-		  var id = '#' + $(this).attr('data-href');
+		  var id = '#' + $(this).attr('data-anchor');
 	
 		  if($(id).length > 0) {
 		    e.preventDefault();
@@ -189,7 +189,9 @@
 		
 		//Make anything a button
 		$('[data-href]').on('click', function(event){
-			window.open($(this).attr('data-href'), '_blank');
+			var target = $(this).attr('data-target');
+			if( !target ) target = '_blank';
+			window.open($(this).attr('data-href'), target.toString());
 		});
 		
 		//To make deving easier

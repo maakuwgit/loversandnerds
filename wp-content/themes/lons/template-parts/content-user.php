@@ -4,13 +4,11 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.3.1
+ * @since Lovers + Nerds 2.3.3
  */
  	global $user, $first;
  	
  	$slug = '';
-	
-	$dir = home_url() . '/wp-content/uploads/';
 	$cat = get_queried_object();
 	
 	if( $cat ) {

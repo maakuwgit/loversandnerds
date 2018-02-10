@@ -4,9 +4,9 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 1.4
+ * @since Lovers + Nerds 2.3.4
  */
-  global $first;
+ global $first;
  
  $feature_style = $bg_img = $header_align = '';
  $header_style = false;
@@ -28,6 +28,6 @@
  }
  
  if($header_style) $header_style = ' style=""';?>
-<dt data-href="<?php echo get_the_permalink(); ?>">
-	<p><?php echo get_the_excerpt(); ?><?php edit_post_link(' <em class="lnr lnr-pencil"></em>'); ?></p>
+<dt data-href="<?php echo get_the_permalink(); ?>" data-target="_self">
+	<p><mark><?php echo get_the_excerpt(); ?><?php edit_post_link(' <em class="lnr lnr-pencil"></em>'); ?></mark></p>
 </dt>

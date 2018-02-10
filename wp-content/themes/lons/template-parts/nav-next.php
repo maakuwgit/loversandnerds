@@ -7,4 +7,4 @@
  * @since Lovers + Nerds 2.3.2
  */
 ?>
-<button id="nextBtn" data-href=""><em class="fa fa-angle-down"></em></button>
+<button id="nextBtn" data-anchor="<?php echo $slug; ?>"><em class="fa fa-angle-down"></em></button>

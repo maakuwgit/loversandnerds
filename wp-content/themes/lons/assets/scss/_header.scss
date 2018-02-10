@@ -4,24 +4,27 @@ body.home #masthead a {
 }
 //Masthead
 #masthead {
-  z-index: 10;
+  z-index: 12;
 	margin-top: auto !important;
   border-bottom: solid 0.5vh $white;
 	&.inactive {
 		top: -10vh;
 	}
+	&.menu-open {
+		a {
+			text-shadow: none !important;
+		}
+  }
 	
 	> a {
-		color: $cocoa;
+		color: $white;
 		font-size: 1.25rem;
-		background-color: $white;
 		top: 0;
 		left: 0;
-		position: absolute;
 		bottom: 0;
 		vertical-align: middle;
 		display: block;
-		margin: auto;
+		margin: auto 0;
 		padding: 0.5rem;
 		em.fa, em.lnr {
 			display: table-cell;
@@ -29,7 +32,6 @@ body.home #masthead a {
 		}
 	}
 	a[data-toggle] {
-		margin-right: rem-calc(8);
 		min-height: rem-calc(40);
 	}
 }
@@ -129,15 +131,15 @@ body.home #masthead a {
 	  padding: 0 1.5vw 0 0;
 		font-size: 1.125rem;
 		.chava {
-			font-size: 2.5vh;
+			font-size: 0.9375rem;
 			vertical-align: 0.125rem;
 		}
 		.unicorns {
-		  font-size: 3.5vh;
+		  font-size: 1.3125rem;
 			vertical-align: 0.125rem;
 		}
 		.plus {
-	  	font-size: 2.25vh;
+	  	font-size: 0.875rem;
 			vertical-align: 0.25rem;
 		}
 		a {
@@ -171,9 +173,10 @@ body.home #masthead a {
 
 /* Small Only */
 @media only screen and (max-width:39.9375em) {
+	/* Trying out a fixed menu on mobile
 	#masthead {
 		position: absolute;
-	}
+	}*/
 	body.admin-bar #masthead {	
 		top: 46px;
 	}
@@ -195,10 +198,10 @@ body.home #masthead a {
 @media only screen and (min-width: 40em) {
 	#masthead {
 		&.menu-open {
-			min-height: rem-calc(43);
-			> *:not([data-toggle]){
-				display: none;
-			}
+			+ .off-canvas-content {
+				overflow: hidden;
+				max-height: calc(100vh - 32px);
+		  }
 		}
 	}
 	.title-bar {
@@ -212,8 +215,10 @@ body.home #masthead a {
 @media only screen and (min-width:65em) {
 	body.bottom #masthead, 
 	body.home #masthead {
-		border-bottom-color: transparent;
-		background: transparent;
+		&:not(.menu-open) {
+			border-bottom-color: transparent;
+			background: transparent;
+		}
 		> a {
 			border-bottom-right-radius: 0.5rem;
 			left: 0;

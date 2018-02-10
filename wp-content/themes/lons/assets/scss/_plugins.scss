@@ -148,6 +148,7 @@
 .gallery {
 	display: table;
   max-width: 62.5rem;
+  max-height: initial;
   margin: 1.25% -0.1875rem;
 }
 .gallery-item {
@@ -240,7 +241,6 @@
 	main.social-active .entry-content {
 		width: 75vw;
 	}
-	
 	.gallery {
 		margin-left: -0.75rem;
 		margin-right: -0.75rem;

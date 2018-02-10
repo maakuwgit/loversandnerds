@@ -319,8 +319,7 @@ h4 {
   font-size: 1.75rem; }
 
 mark {
-  background: #cacaca;
-  color: #000000; }
+  background: linear-gradient(to right, #ff5722 0%, #ff5722 0.1%, rgba(255, 87, 34, 0) 0.2%); }
 
 p {
   font-size: 1.25rem;

@@ -30,7 +30,6 @@
 		}
 		&.callout:not(#portfolios) {
 			padding: 1rem;
-			height: calc(50vh - 2rem);
 			background-position: center bottom;
 		}
 		&.lonsadmin,
@@ -107,6 +106,11 @@
 						}
 					}
 				}
+			}
+			
+			&.callout:not(#portfolios) {
+				padding: 1rem;
+				height: calc(50vh - 2rem);
 			}
 		}
 		
