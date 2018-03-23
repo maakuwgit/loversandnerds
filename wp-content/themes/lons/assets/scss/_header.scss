@@ -185,8 +185,14 @@ body.home #masthead a {
 		margin-right: 0.9375vw;
 	}
 }
-/* Medium Up */
+/* Medium Down */
 @media only screen and (max-width: 64.9375em) {
+	.title-bar .title-bar-title a {
+		position: absolute;
+		left: 50%;
+		right: 50%;
+		top: 10px;
+	}
 	.archive .title-bar {
 		.title-bar-title {
 			margin-left: rem-calc(42);

@@ -152,6 +152,7 @@
   margin: 1.25% -0.1875rem;
 }
 .gallery-item {
+	position: relative;
 	width: 30.8334%;
 	overflow: hidden;
   float: left;
@@ -159,10 +160,33 @@
   box-shadow: 0 0 2px #59b3c6, 
   						0 0 2px #59b3c6, 
   						0 0 2px #59b3c6;
-}
-	.gallery-icon a {
-		display: block;
+  &:hover {
+		figcaption {
+			opacity: 1;
+		}
 	}
+	figcaption {
+		opacity: 0;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		font-size: rem-calc(10);
+		top: 0;
+		padding: rem-calc(5);
+		background-color: rgba(0,0,0,0.6);
+		text-align: center;
+		display: flex;
+		align-items: center;
+		align-content: center;
+		pointer-events: none;
+	}
+	.gallery-icon {
+		a {
+			display: block;
+		}
+	}
+}
 
 /* Vignettes */
 .vignette {

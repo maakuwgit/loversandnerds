@@ -4,7 +4,7 @@ Theme URI: https://maakuw.com/loversandnerds/
 Author: the WordPress team
 Author URI: https://wordpress.org/
 Description: It's a newer version of the theme. It's even MORE amazing
-Version: 2.3.2
+Version: 2.3.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, footer-sidebar, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready, blog
@@ -31,3 +31,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 @import "index";
 @import "plugins";
 @import "animation";
+
+//Slick
+@import "slick/slick-theme";
+@import "slick/slick";

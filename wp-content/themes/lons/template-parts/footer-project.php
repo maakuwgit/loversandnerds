@@ -19,6 +19,8 @@
  $btn_label = get_post_meta( $post_id, 'lons_project_btn_label', true ); 
  $git_href 	= get_post_meta( $post_id, 'lons_project_git_href', true );
  $bb_href 	= get_post_meta( $post_id, 'lons_project_repo_href', true );
+
+ $gallery 	= get_post_meta( $post_id, 'lons_gallery', true);
 ?>
 <footer class="entry-footer" id="<?php echo $slug; ?>-footer">
 	<?php if( $client || $date ) : ?>
@@ -26,7 +28,7 @@
 	<?php endif; ?>
 	<nav>
 		<ul class="inline-list">
-		<?php if ( has_excerpt() ) : ?>
+		<?php if ( has_excerpt() || $gallery ) : ?>
 			<li>
 				<button class="ellipsis button" id="<?php echo $slug; ?>-more" data-show-id="<?php echo $slug;?>">&hellip;</button>
 			</li>

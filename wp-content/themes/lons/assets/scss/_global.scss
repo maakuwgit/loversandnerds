@@ -327,7 +327,7 @@ body:not(.single){
 		}
 		
 		&.wolf {
-			background-color: #5a6072;
+			background-color: $steel;
 			h2 {
 				font-family: $unicorns;
 				font-weight: 100;
@@ -475,7 +475,7 @@ body:not(.single){
 			}
 			&.wolf {
 				color: $white;
-				background-color: #8c8b9c;
+				background-color: #5a6072;
 				figure {
 					background-color: #c8c8c8;
 					@media only screen and (min-width: 40em) {
@@ -484,7 +484,7 @@ body:not(.single){
 				}
 				@media only screen and (max-width: 39.9375em) {
 					> div {
-						background-color: #8c8b9c;
+						background-color: $steel;
 					}
 			  }
 				.cell {

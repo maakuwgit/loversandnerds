@@ -22,7 +22,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.3.3
+ * @since Lovers + Nerds 2.3.4
  */
 
 /**
@@ -353,6 +353,15 @@ add_filter( 'wp_get_attachment_image_attributes', 'twentysixteen_post_thumbnail_
 
 add_filter('post_gallery','lons_gallery_output',10,2);
 
+/**
+ * Output a custom version of the standard WP gallery
+ *
+ * @since Lovers + Nerds 2.3.4
+ *
+ * @param array $attr Attributes for the image markup.
+ * @param string $string is unused
+ * @return string An html list of figures, each containing markup pertaining to the image.
+ */
 function lons_gallery_output( $string, $attr){
 
     $output = '<div class="gallery gallery-size-thumbnail">';
@@ -360,10 +369,39 @@ function lons_gallery_output( $string, $attr){
     $posts = get_posts(array('include' => $attr['ids'],'post_type' => 'attachment'));
 
     foreach($posts as $imagePost){
+	    $excerpt = $imagePost->post_content;
+	    $title = $imagePost->post_excerpt;
+	    if($title) $title = ' title="' . $title . '"';
+			$sm = wp_get_attachment_image_src($imagePost->ID, 'small');
+			$md = wp_get_attachment_image_src($imagePost->ID, 'medium');
+			$lg = wp_get_attachment_image_src($imagePost->ID, 'large');
+	    $xl = wp_get_attachment_image_src($imagePost->ID, 'extralarge');
 	    $output .= '<figure class="gallery-item">';
 			$output .= '<div class="gallery-icon landscape">';
-			$output .= '<a target="_blank" href="'.wp_get_attachment_image_src($imagePost->ID, 'extralarge')[0].'"><img width="540" height="320" src="'.wp_get_attachment_image_src($imagePost->ID, 'small')[0].'" class="attachment-thumbnail size-thumbnail" alt="" srcset="'.wp_get_attachment_image_src($imagePost->ID, 'small')[0].' 540w, '.wp_get_attachment_image_src($imagePost->ID, 'large')[0].' 1024w, '.wp_get_attachment_image_src($imagePost->ID, 'medium')[0].' 768w, '.wp_get_attachment_image_src($imagePost->ID, 'extralarge')[0].' 1400w" sizes="(max-width: 540px) 85vw, 540px"></a>';
-			$output .= '</div></figure>';
+			if($sm) {
+				$output .= '<a target="_blank"' . $title . ' href="';
+				if($xl) {
+					$output .= $xl[0];
+				}elseif($lg) {
+					$output .= $lg[0];
+				}elseif($md) {
+					$output .= $md[0];
+				}else{
+					$output .= $sm[0];
+				}
+				$output .= '"><img width="540" height="320" src="';
+				$output .= $sm[0];
+				$output .= '" class="attachment-thumbnail size-thumbnail" alt="" srcset="'.$sm[0].' 540w';
+				if($lg) $output .= ', ' . $lg[0] .' 1024w';
+				if($md) $output .= ', ' . $md[0] .' 768w';
+				if($xl) $output .= ', ' . $xl[0].' 1400w';
+				$output .= '" sizes="(max-width: 540px) 85vw, 540px"></a>';
+			}
+			$output .= '</div>';
+			if($excerpt) {
+				$output .= '<figcaption>' . $excerpt . '</figcaption>';
+			}
+			$output .= '</figure>';
     }
 
     $output .= '</div>';

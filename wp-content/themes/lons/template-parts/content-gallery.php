@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.3.2
+ * @since Lovers + Nerds 2.3.4
  */
  global $first, $user;
  
@@ -17,6 +17,8 @@
  $theme   	= get_post_meta( $post_id, 'lons_project_theme', true );
  $align   	= get_post_meta( $post_id, 'lons_project_theme_align', true );
  $valign   	= get_post_meta( $post_id, 'lons_project_theme_valign', true );
+
+ $gallery 	= get_post_meta( $post_id, 'lons_gallery', true);
 
  if($align || $color){
 	 $feature_style = ' style="';
@@ -43,15 +45,11 @@
 			</div>
 		 <?php endif; ?>
 		 <?php get_template_part('template-parts/header', 'content'); ?>
-		<?php if ( '' !== get_the_content() || has_excerpt() ) : ?>
+		<?php if ( $gallery || has_excerpt() ) : ?>
 			<div id="<?php echo $slug; ?>-content" class="entry-body<?php if($project) echo ' project';?>">
 			<?php 
-				if( '' !== get_the_content() ) {
-					the_excerpt();
-					the_content();
-				}else{
-					the_excerpt();
-				}
+				if( has_excerpt() ) the_excerpt();
+				if ( $gallery ) echo do_shortcode('[gallery ids="'.$gallery.'"]');
 			?>
 			</div>
 		<?php endif; ?>
