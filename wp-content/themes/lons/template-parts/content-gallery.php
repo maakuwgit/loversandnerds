@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.3.4
+ * @since Lovers + Nerds 2.3.5
  */
  global $first, $user;
  

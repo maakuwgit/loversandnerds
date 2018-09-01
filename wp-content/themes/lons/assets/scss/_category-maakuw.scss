@@ -1,3 +1,7 @@
+%nav-link-shadow {	
+	text-shadow: 1px 1px 2px rgba(4, 11, 82, 0.2);
+}
+
 body.author-maakuw, 
 body.category-maakuw {
 	background-color: #1c2839;
@@ -24,12 +28,16 @@ body.category-maakuw {
 		text-align: center;
 		background-color: red;
 		font-family: Osaka;
+		text-shadow: 1px 1px 0 rgba(222, 90, 97, 0.31);
+		color: #3c4449;
+		background-color: #c3cc52;
 	}
 	
 	#masthead {
 		> a {
 			color: $white;
 			background-color: transparent;
+			@extend %nav-link-shadow;
 			em.fa, em.lnr {
 				width: 2rem;
 				text-align: center;
@@ -37,11 +45,15 @@ body.category-maakuw {
 				vertical-align: middle;
 			}
 		}
-		border-bottom-color: $navy;
+		border-bottom-color: $white;
 	}
 	
 	.title-bar {
 		background-color: $navy;
+	}
+	
+	.title-bar-right em {	
+		@extend %nav-link-shadow;
 	}
 		
 	#nextBtn,
@@ -55,7 +67,7 @@ body.category-maakuw {
 	#colophon {
 		background-color: #f9e8e8;
 		article {
-			background-color: #6790ca;
+			background-color: #bcecdd;
 			background-blend-mode: multiply;
 			box-shadow: 0 -135px 270px rgba(0,0,0,0.3) inset;
 			h5 {
@@ -63,7 +75,7 @@ body.category-maakuw {
 				text-shadow: 0 0 1px black;
 			}
 			h6 {
-				color: white;
+				color: $white;
 			}
 			p {
 				color: #e1e1e1;

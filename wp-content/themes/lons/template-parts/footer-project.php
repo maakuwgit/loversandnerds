@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Lovers_and_nerds
- * @since Lovers + Nerds 2.3
+ * @since Lovers + Nerds 2.3.5
  */
  global $first;
   
@@ -28,9 +28,14 @@
 	<?php endif; ?>
 	<nav>
 		<ul class="inline-list">
-		<?php if ( has_excerpt() || $gallery ) : ?>
+		<?php if ( has_excerpt() ) : ?>
 			<li>
 				<button class="ellipsis button" id="<?php echo $slug; ?>-more" data-show-id="<?php echo $slug;?>">&hellip;</button>
+			</li>
+		<?php endif; ?>
+		<?php if ( $gallery && !has_excerpt() ) : ?>
+			<li>
+				<button class="button" id="<?php echo $slug; ?>-gallery" data-show-id="<?php echo $slug;?>"><em class="fa fa-photo"></em></button>
 			</li>
 		<?php endif; ?>
 		<?php if( $bb_href ) : ?>

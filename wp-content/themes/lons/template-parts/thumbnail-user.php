@@ -15,10 +15,13 @@
 	$mphoto = wp_get_attachment_image_src($photo, 'medium' );
 	$tphoto = wp_get_attachment_image_src($photo, 'thumbnail');
 	$dphoto = wp_get_attachment_image_src($photo, 'large' );
+	$link = '<a href="' . $user->user_url . '" target="_self" class="block">';
  
 ?>
 <figure class="cell small-6 medium-6 large-8 text-center" data-background>
+<?php if(!is_archive()) echo $link;?>
 	<div class="feature">
 		<img alt="" src="<?php echo $tphoto[0]; ?>" data-src-medium="<?php echo $mphoto[0];?>" data-src-large="<?php echo $dphoto[0];?>" data-src-xlarge="<?php echo $xlphoto[0];?>">
 	</div>
+<?php if(!is_archive()) echo '</a>';?>
 </figure>

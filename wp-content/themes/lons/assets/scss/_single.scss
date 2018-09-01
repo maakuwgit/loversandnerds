@@ -218,10 +218,6 @@ body.single {
 			line-height: 1.0625;
 		}
 	}
-			
-	.gallery-item {
-		width: 22.5%;
-	}
 	#content > a:not(:first-child) {
 		right: 0;
 	}
@@ -231,6 +227,7 @@ body.single {
 	main.social-active .entry-content {
 		width: 50vw;
 	}
+	/*Dev note: is this necessary? This would be in the global normally..*/
   #lans_images li:nth-of-type(3){
 	  display: none;
 	}

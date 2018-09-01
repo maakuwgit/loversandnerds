@@ -485,7 +485,7 @@ function project_settings_meta_box( $post ) {
 			<input name="lons_project_title" type="text" value="<?php echo $title; ?>" style="width:100%;">
 		</label>
 		<label for="lons_project_year"><?php esc_html_e( 'Launch Date', 'lons' ); ?>:
-			<input name="lons_project_year" type="number" min="2000" max="2017" maxlength="4" placeholder="----" value="<?php echo $date; ?>" style="width:100%;">
+			<input name="lons_project_year" type="number" min="2000" max="<?php echo date("Y"); ?>" maxlength="4" placeholder="----" value="<?php echo $date; ?>" style="width:100%;">
 		</label>
 		<label rel="link" for="lons_project_btn_href"><?php esc_html_e( 'Link', 'lons' ); ?>:
 			<input name="lons_project_btn_href" type="url" value="<?php echo $href; ?>" style="width:100%;">

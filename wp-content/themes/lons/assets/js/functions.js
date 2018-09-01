@@ -181,10 +181,23 @@
 		$('#'+target).toggleClass('collapsed');
 		$('#masthead').toggleClass('menu-open');
 	}
+	
+	function swapFeature(event){
+		event.preventDefault();
+		var href = $(this).attr('href');
+		var target = $(this).parents('.entry-content');
+		if(target) {
+			$('body').addClass('stuck');
+			target.addClass('stuck').css({backgroundImage:'url('+href+')',
+									height: 'auto',
+									minHeight: '100vh'});
+		}
+	}
 
 	function init(event){
 		$('[data-toggle]').on('click.openMenu', openMenu);
-		$('button.ellipsis, .button.ellipsis').click(toggleContent);
+		$('[data-show-id]').click(toggleContent);
+		$('.gallery-icon a').on('click.swapFeature', swapFeature);
 		$(window).on('resize.refactor', refactor);
 		
 		//Make anything a button
