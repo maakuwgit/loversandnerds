@@ -3,17 +3,73 @@
 
     <div class="navbar-header">
 
-      <?php $logo = get_field( 'global_logo', 'option' ); ?>
-      <?php if ( $logo ) : ?>
-        <a href="<?php echo esc_url(home_url('/')); ?>">
-          <img class="logo logo--header" src="<?php echo $logo['url']; ?>" alt="<?php bloginfo('name'); ?>">
-        </a>
-      <?php else : ?>
-        <a class="logo__brand" href="<?php echo esc_url(home_url('/')); ?>">
-          <?php echo ll_get_logo(); ?>
-        </a>
-        <!--<?php //bloginfo('name'); ?><span class="logo__brand_tagline"><?php //bloginfo('description'); ?></span>-->
-      <?php endif; ?>
+    <?php $logo = get_field( 'global_logo', 'option' ); ?>
+        
+			<figure class="title-bar-title">
+				<figcaption>
+				<?php if( is_single() ) : ?>
+				
+			    <?php if ( $logo ) : ?>
+		      <a class="logo logo__brand" href="<?php echo bloginfo('url');?>">
+		        <img class="logo--header" src="<?php echo $logo['url']; ?>" alt="<?php echo $username; ?>">
+		      </a>
+					<?php else : ?>
+		      <a class="logo logo__brand" href="<?php echo bloginfo('url');?>">
+		        <?php echo bloginfo('name');?>
+		      </a>
+					<?php endif; ?>
+					
+				<?php elseif( is_category() ) : 
+						$cats = get_the_category();
+						
+						if($cats) {
+							$href .= '/' . get_option( 'category_base' ) . '/';
+							foreach($cats as $cat){
+								$href .= $cat->slug;
+							}
+						}
+				?>
+					
+			    <?php if ( $logo ) : ?>
+		      <a class="logo logo__brand" href="<?php echo $href;?>">
+		        <img class="logo--header" src="<?php echo $logo['url']; ?>" alt="<?php echo single_cat_title(); ?>">
+		      </a>
+					<?php else : ?>
+		      <a class="logo logo__brand" href="<?php echo $href;?>">
+		        <?php echo single_cat_title();?>
+		      </a>
+					<?php endif; ?>
+					
+				<?php elseif( is_archive() ) :
+						$user = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
+						$username = get_the_author();
+						if($username === 'maakuw') $username = '真ー久W';
+				?>
+			    <?php if ( $logo ) : ?>
+		      <a class="logo logo__brand" href="<?php echo $href;?>">
+		        <img class="logo--header" src="<?php echo $logo['url']; ?>" alt="<?php echo $username; ?>">
+		      </a>
+					<?php else : ?>
+		      <a class="logo logo__brand" href="<?php echo $href;?>">
+		        <?php echo $username; ?>
+		      </a>
+					<?php endif; ?>
+		    
+				<?php else: ?>
+		    
+			    <?php if ( $logo ) : ?>
+		      <a class="logo logo__brand" href="#top">
+		        <img class="logo--header" src="<?php echo $logo['url']; ?>" alt="<?php bloginfo('name'); ?>">
+		      </a>
+					<?php else : ?>
+		      <a class="logo logo__brand" href="#top">
+		        <?php echo bloginfo('name'); ?>
+		      </a>
+					<?php endif; ?>
+		    
+				<?php endif; ?>
+				</figcaption>
+			</figure>
 
       <nav class="primary-nav" id="primary-nav" role="navigation">
         <?php
@@ -43,5 +99,21 @@
       </button><!-- .navbar-toggle -->
       <?php endif; ?>
     </div>
+	  <nav class="title-bar-right">
+		<?php if( is_user_logged_in() ) : ?>
+			<a href="<?php echo $admin_url;?>">
+				<em class="fa fa-cog"></em>
+			</a>
+		<?php endif; ?>
+			<a href="<?php echo $user_url;?>">
+				<em class="fa fa-user"></em>
+			</a>
+		<?php if ( shortcode_exists( 'nu_tweets' ) ) : ?>
+			<a href="#twitter-feed">
+				<em class="fa fa-twitter"></em>
+			</a>
+		<?php endif; ?>
+	  </nav>
+    
   </div>
 </header>
